@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Valientte Joyería · El lujo de ser tú</title>
+  <meta name="description" content="Joyas en plata 925 y esmeraldas colombianas, accesorios en rodio y acero. Desde Manizales para toda Colombia.">
+  <meta name="theme-color" content="#E0662E">
+  <meta property="og:title" content="Valientte Joyería · El lujo de ser tú">
+  <meta property="og:description" content="Plata 925, esmeraldas colombianas, rodio y acero. Desde Manizales.">
+  <meta property="og:type" content="website">
+  <!-- PENDIENTE: <meta property="og:image" content="img/og-compartir.jpg"> (1200x630) -->
+
+  <!-- Tipografías: Bodoni Moda (titulares) + Hanken Grotesk (todo lo demás) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- Íconos (sprite SVG) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+  <symbol id="i-mas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v2.6a7 7 0 0 1-3.8-1.2v6.1a5.6 5.6 0 1 1-5.6-5.6l.6.1v2.8a2.9 2.9 0 1 0 2.2 2.8V3h2.7z"/></symbol>
+  <!-- La gema: talla esmeralda vista desde arriba (ilustración propia) -->
+  <symbol id="i-gema" viewBox="0 0 200 260">
+    <polygon fill="#0A5C40" points="40,0 160,0 146,22 54,22"/>
+    <polygon fill="#13875F" points="160,0 200,32 178,46 146,22"/>
+    <polygon fill="#0C6A4A" points="200,32 200,228 178,214 178,46"/>
+    <polygon fill="#07422E" points="200,228 160,260 146,238 178,214"/>
+    <polygon fill="#06362A" points="160,260 40,260 54,238 146,238"/>
+    <polygon fill="#0A5C40" points="40,260 0,228 22,214 54,238"/>
+    <polygon fill="#1B9E6C" points="0,228 0,32 22,46 22,214"/>
+    <polygon fill="#3CCB95" points="0,32 40,0 54,22 22,46"/>
+    <polygon class="brillo" fill="#1FA674" points="54,22 146,22 132,48 68,48"/>
+    <polygon class="brillo" fill="#0E7A55" points="146,22 178,46 152,64 132,48"/>
+    <polygon fill="#0A5C40" points="178,46 178,214 152,196 152,64"/>
+    <polygon class="brillo" fill="#083F2D" points="178,214 146,238 132,212 152,196"/>
+    <polygon fill="#0A4F37" points="146,238 54,238 68,212 132,212"/>
+    <polygon class="brillo" fill="#13875F" points="54,238 22,214 48,196 68,212"/>
+    <polygon fill="#22B07B" points="22,214 22,46 48,64 48,196"/>
+    <polygon class="brillo" fill="#5FE0AE" points="22,46 54,22 68,48 48,64"/>
+    <polygon fill="#139067" points="68,48 132,48 152,64 152,196 132,212 68,212 48,196 48,64"/>
+    <polygon fill="#3CCB95" opacity=".5" points="68,48 112,48 60,180 48,196 48,64"/>
+    <polygon class="brillo" fill="#F0FFF8" opacity=".55" points="74,58 92,58 62,120 58,100"/>
+  </symbol>
+</svg>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <button class="header__btn" type="button" aria-expanded="false" aria-controls="menu" data-abrir-menu>
+    <span class="rayas" aria-hidden="true"><i></i><i></i></span> Menú
+  </button>
+  <!-- LOGO TEMPORAL en texto. Reemplazar por <img src="img/logo.svg" alt="Valientte Joyería" width="140" height="40"> -->
+  <a href="index.html" class="logo" aria-label="Valientte Joyería, inicio">
+    <span class="logo__vl">VL</span><span class="logo__nombre">VALIENTTE</span>
+  </a>
+  <button class="header__btn header__btn--der" type="button" data-abrir-carrito aria-label="Abrir bolsa">
+    Bolsa <span class="burbuja" data-contador>0</span>
+  </button>
+</header>
+
+<!-- ============ MENÚ: cada opción tiene su foto en cápsula curva que se expande ============ -->
+<!-- TEMPORAL: fotos del menú → img/menu-*.jpg -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="menu__top">
+    <button class="header__btn" type="button" data-cerrar-menu><svg width="18" height="18" aria-hidden="true"><use href="#i-cerrar"/></svg> Cerrar</button>
+    <span class="logo"><span class="logo__vl">VL</span></span>
+    <span></span>
+  </div>
+  <!-- Fotos de fondo del menú: una por opción, aparecen fundidas al acercar el mouse -->
+  <div class="menu__fondos" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="https://images.unsplash.com/photo-1761735489573-15b2d60280f5?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+  </div>
+  <nav class="menu__nav" aria-label="Principal">
+    <ul class="menu__lista">
+      <li style="--i:0"><a class="opcion-menu" href="#materiales" data-cerrar-menu>Materiales</a></li>
+      <li style="--i:1"><a class="opcion-menu" href="#vitrina" data-cerrar-menu>La vitrina</a></li>
+      <li style="--i:2"><a class="opcion-menu" href="#dos" data-cerrar-menu>Ella &amp; él</a></li>
+      <li style="--i:3"><a class="opcion-menu" href="#piedra" data-cerrar-menu>La esmeralda</a></li>
+      <li style="--i:4"><a class="opcion-menu" href="nosotros.html">Quiénes somos</a></li>
+      <li style="--i:5"><a class="opcion-menu" href="#recibo" data-cerrar-menu>Envíos y pagos</a></li>
+    </ul>
+  </nav>
+  <div class="menu__pie">
+    <p class="menu__redes rotulo"><a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener">@joyeria.valientte</a><span>Manizales · Colombia</span></p>
+    <a class="boton boton--whatsapp" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-whatsapp>
+      <svg aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Escríbenos</span>
+    </a>
+  </div>
+</div>
+
+<main id="contenido">
+
+  <!-- ============ 1. LA VENTANA ============
+       Al entrar solo se ve el nombre. Al bajar, nace una ventana con forma de esmeralda
+       que crece hasta llenar la pantalla y aparece el lema. -->
+  <section class="ventana" data-ventana aria-label="Bienvenida">
+    <div class="ventana__pegado">
+      <div class="ventana__marca" aria-hidden="true">VALIENTTE</div>
+      <p class="ventana__sub">Joyería en plata 925 y esmeraldas<span>·</span>Manizales</p>
+
+      <div class="ventana__vidrio" data-vidrio>
+        <!-- TEMPORAL (Unsplash): reemplazar por img/hero.jpg — foto con joyas Valientte, luz cálida (mín. 1600 px) -->
+        <img src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=1600&q=72" width="1600" height="1100" alt="Mujer con aretes de plata y camisa blanca" fetchpriority="high">
+      </div>
+
+      <div class="ventana__desliza rotulo" aria-hidden="true">Desliza<span class="linea-scroll"></span></div>
+
+      <div class="ventana__lema">
+        <h1>El lujo<br>de <i>ser tú</i></h1>
+        <a class="boton boton--claro" href="#vitrina"><span>Ver la vitrina</span><span class="flecha" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. MATERIALES: arcos que se expanden (colecciones) ============ -->
+  <!-- Precios "desde" de EJEMPLO -->
+  <section class="materiales" id="materiales" aria-labelledby="titulo-materiales">
+    <div class="contenedor">
+      <div class="titulo-seccion">
+        <h2 id="titulo-materiales" class="aparecer">Escoge tu <i>metal</i></h2>
+        <p class="aparecer">Cinco colecciones, un brillo para cada estilo.</p>
+      </div>
+      <div class="arcos">
+        <a class="arco aparecer" href="#vitrina" data-ir-material="plata">
+          <!-- TEMPORAL: img/coleccion-plata.jpg -->
+          <img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=900&q=70" width="600" height="800" loading="lazy" alt="Collar de plata con dije">
+          <div class="arco__info">
+            <span class="arco__nombre">Plata 925</span>
+            <span class="arco__frase">Clásica, noble y para siempre</span>
+            <span class="arco__precio"><span>Desde $89.900</span><span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="arco arco--esmeralda aparecer" style="--retraso:80ms" href="#vitrina" data-ir-material="esmeraldas">
+          <!-- TEMPORAL: img/coleccion-esmeraldas.jpg -->
+          <img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=900&q=70" width="600" height="800" loading="lazy" alt="Anillo con esmeralda en la mano">
+          <div class="arco__info">
+            <span class="arco__nombre">Esmeraldas</span>
+            <span class="arco__frase">El verde que nos hace únicos</span>
+            <span class="arco__precio"><span>Desde $159.900</span><span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="arco aparecer" style="--retraso:160ms" href="#vitrina" data-ir-material="rodio">
+          <!-- TEMPORAL: img/coleccion-rodio.jpg -->
+          <img src="https://images.unsplash.com/photo-1589674781759-c21c37956a44?auto=format&fit=crop&w=900&q=70" width="600" height="800" loading="lazy" alt="Anillo con circones">
+          <div class="arco__info">
+            <span class="arco__nombre">Rodio</span>
+            <span class="arco__frase">Brillo intenso, precio amable</span>
+            <span class="arco__precio"><span>Desde $69.900</span><span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="arco aparecer" style="--retraso:240ms" href="#vitrina" data-ir-material="acero">
+          <!-- TEMPORAL: img/coleccion-acero.jpg -->
+          <img src="https://images.unsplash.com/photo-1605884878538-6468614df578?auto=format&fit=crop&w=900&q=70" width="600" height="800" loading="lazy" alt="Pulsera de eslabones de acero">
+          <div class="arco__info">
+            <span class="arco__nombre">Acero</span>
+            <span class="arco__frase">Para no quitártelo nunca</span>
+            <span class="arco__precio"><span>Desde $54.900</span><span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="arco aparecer" style="--retraso:320ms" href="#vitrina" data-ir-material="accesorios">
+          <!-- TEMPORAL: img/coleccion-accesorios.jpg -->
+          <img src="https://images.unsplash.com/photo-1633555231978-7a70d3516c1f?auto=format&fit=crop&w=900&q=70" width="600" height="800" loading="lazy" alt="Mujer con diadema">
+          <div class="arco__info">
+            <span class="arco__nombre">Accesorios</span>
+            <span class="arco__frase">El detalle que completa</span>
+            <span class="arco__precio"><span>Desde $29.900</span><span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. ELLA / ÉL ============ -->
+  <section class="dos" id="dos" aria-label="Para ella y para él">
+    <a class="dos__mitad dos__mitad--ella" href="#vitrina">
+      <div class="dos__foto">
+        <!-- TEMPORAL: img/mujer-valiente.jpg -->
+        <img src="https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&w=700&q=70" width="600" height="800" loading="lazy" alt="Mujer con aretes colgantes de plata">
+      </div>
+      <p class="rotulo" style="position:relative;z-index:2">#MujerValiente</p>
+      <div>
+        <span class="dos__palabra">Ella</span>
+        <div class="dos__pie"><p>Para la que se atreve a brillar sin pedir permiso.</p><span class="rotulo">Ver →</span></div>
+      </div>
+    </a>
+    <a class="dos__mitad dos__mitad--el" href="#vitrina">
+      <div class="dos__foto">
+        <!-- TEMPORAL: img/linea-hombre.jpg -->
+        <img src="https://images.unsplash.com/photo-1639065643006-e217c4fee12e?auto=format&fit=crop&w=700&q=70" width="600" height="800" loading="lazy" alt="Pulsera sobre fondo oscuro">
+      </div>
+      <p class="rotulo" style="position:relative;z-index:2">Línea hombre</p>
+      <div>
+        <span class="dos__palabra">Él</span>
+        <div class="dos__pie"><p>Porque ellos también llevan la elegancia.</p><span class="rotulo">Ver →</span></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- ============ 4. LA VITRINA: ordenada por TIPO de joya ============ -->
+  <!-- Precios de EJEMPLO. Cada pieza: data-tipo (anillos|collares|aretes|pulseras) y data-material -->
+  <section class="vitrina" id="vitrina" aria-labelledby="titulo-vitrina">
+    <div class="contenedor">
+      <div class="titulo-seccion">
+        <h2 id="titulo-vitrina" class="aparecer">La <i>vitrina</i></h2>
+        <p class="aparecer">Lo más pedido por nuestras clientas, ordenado para que encuentres rápido.</p>
+      </div>
+
+      <div class="pestanas" role="tablist" aria-label="Tipo de joya" data-pestanas>
+        <button class="pestana" type="button" role="tab" aria-selected="true" data-tipo="todo">Todo<sup data-cuenta="todo"></sup></button>
+        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="anillos">Anillos<sup data-cuenta="anillos"></sup></button>
+        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="collares">Collares<sup data-cuenta="collares"></sup></button>
+        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="aretes">Aretes<sup data-cuenta="aretes"></sup></button>
+        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="pulseras">Pulseras<sup data-cuenta="pulseras"></sup></button>
+      </div>
+      <div class="filtro-activo" data-filtro-activo aria-live="polite"></div>
+
+      <div class="carrete" data-carrete>
+      <div class="carrete__pista" data-grid-productos data-pista tabindex="0" aria-label="Piezas de la vitrina: arrastra o usa las flechas">
+
+        <article class="pieza aparecer" data-tipo="collares" data-material="plata">
+          <div class="pieza__foto">
+            <span class="pieza__sello pieza__sello--naranja rotulo">Más pedido</span>
+            <!-- TEMPORAL: img/productos/collar-aurora-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Collar Aurora en plata 925 con circones">
+            <img class="alterna" src="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Collar Aurora a la bolsa" data-agregar data-id="collar-aurora" data-nombre="Collar Aurora" data-precio="139900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag"><span class="rotulo">Plata 925 · Circones</span><h3 class="tag__nombre"><a href="producto.html">Collar Aurora</a></h3><span class="tag__precio">$139.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:80ms" data-tipo="anillos" data-material="esmeraldas">
+          <div class="pieza__foto">
+            <span class="pieza__sello pieza__sello--verde rotulo">Nuevo</span>
+            <!-- TEMPORAL: img/productos/anillo-muzo-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Anillo Muzo en plata 925 con esmeralda colombiana">
+            <img class="alterna" src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Anillo Muzo a la bolsa" data-agregar data-id="anillo-muzo" data-nombre="Anillo Muzo" data-precio="189900" data-variante="Plata 925 · Talla 7" data-img="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:2deg"><span class="rotulo">Plata 925 · Esmeralda</span><h3 class="tag__nombre"><a href="producto.html">Anillo Muzo</a></h3><span class="tag__precio">$189.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:160ms" data-tipo="aretes" data-material="esmeraldas">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/aretes-gota-verde-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1731929315875-3ab60c006577?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Aretes Gota Verde con esmeraldas">
+            <img class="alterna" src="https://images.unsplash.com/photo-1655328723829-3140909b335b?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Aretes Gota Verde a la bolsa" data-agregar data-id="aretes-gota-verde" data-nombre="Aretes Gota Verde" data-precio="159900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1731929315875-3ab60c006577?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag"><span class="rotulo">Plata 925 · Esmeralda</span><h3 class="tag__nombre"><a href="producto.html">Aretes Gota Verde</a></h3><span class="tag__precio">$159.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:240ms" data-tipo="anillos" data-material="rodio">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/anillo-vintage-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1591209608777-fb022eac7112?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Anillo Vintage en rodio con circones">
+            <img class="alterna" src="https://images.unsplash.com/photo-1612239396116-4da3087f8f79?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Anillo Vintage a la bolsa" data-agregar data-id="anillo-vintage" data-nombre="Anillo Vintage" data-precio="69900" data-variante="Rodio · Talla 7" data-img="https://images.unsplash.com/photo-1591209608777-fb022eac7112?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:-3deg"><span class="rotulo">Rodio · Circones</span><h3 class="tag__nombre"><a href="producto.html">Anillo Vintage</a></h3><span class="tag__precio">$69.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" data-tipo="anillos" data-material="rodio">
+          <div class="pieza__foto">
+            <span class="pieza__sello rotulo">−15%</span>
+            <!-- TEMPORAL: img/productos/anillo-pave-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1550368566-f9cc32d7392d?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Anillo Pavé en rodio">
+            <img class="alterna" src="https://images.unsplash.com/photo-1762505464529-1a37df13674f?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Anillo Pavé a la bolsa" data-agregar data-id="anillo-pave" data-nombre="Anillo Pavé" data-precio="79900" data-variante="Rodio · Talla 7" data-img="https://images.unsplash.com/photo-1550368566-f9cc32d7392d?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:1deg"><span class="rotulo">Rodio · Circones</span><h3 class="tag__nombre"><a href="producto.html">Anillo Pavé</a></h3><span class="tag__precio">$79.900<s>$94.000</s></span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:80ms" data-tipo="pulseras" data-material="acero">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/pulsera-eslabon-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1605884878538-6468614df578?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Pulsera Eslabón en acero inoxidable">
+            <img class="alterna" src="https://images.unsplash.com/photo-1761222101900-9c9e34fac2ce?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Pulsera Eslabón a la bolsa" data-agregar data-id="pulsera-eslabon" data-nombre="Pulsera Eslabón" data-precio="59900" data-variante="Acero" data-img="https://images.unsplash.com/photo-1605884878538-6468614df578?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:-2deg"><span class="rotulo">Acero inoxidable</span><h3 class="tag__nombre"><a href="producto.html">Pulsera Eslabón</a></h3><span class="tag__precio">$59.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:160ms" data-tipo="collares" data-material="acero">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/collar-arbol-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1636103952204-0b738c225264?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Collar Árbol de la Vida en acero">
+            <img class="alterna" src="https://images.unsplash.com/photo-1585053736987-f817dc225fc5?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Collar Árbol de la Vida a la bolsa" data-agregar data-id="collar-arbol" data-nombre="Collar Árbol de la Vida" data-precio="54900" data-variante="Acero" data-img="https://images.unsplash.com/photo-1636103952204-0b738c225264?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:2deg"><span class="rotulo">Acero inoxidable</span><h3 class="tag__nombre"><a href="producto.html">Árbol de la Vida</a></h3><span class="tag__precio">$54.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:240ms" data-tipo="collares" data-material="plata">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/collar-corazon-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Collar Corazón en plata 925">
+            <img class="alterna" src="https://images.unsplash.com/photo-1621939745912-aad97fd3a34d?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Collar Corazón a la bolsa" data-agregar data-id="collar-corazon" data-nombre="Collar Corazón" data-precio="99900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:-2deg"><span class="rotulo">Plata 925</span><h3 class="tag__nombre"><a href="producto.html">Collar Corazón</a></h3><span class="tag__precio">$99.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" data-tipo="aretes" data-material="plata">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/aretes-luna-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1573717008136-5a9f0820e8bf?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Aretes Luna en plata 925">
+            <img class="alterna" src="https://images.unsplash.com/photo-1553018561-d068dedd80b0?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Aretes Luna a la bolsa" data-agregar data-id="aretes-luna" data-nombre="Aretes Luna" data-precio="89900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1573717008136-5a9f0820e8bf?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:2deg"><span class="rotulo">Plata 925</span><h3 class="tag__nombre"><a href="producto.html">Aretes Luna</a></h3><span class="tag__precio">$89.900</span></div>
+        </article>
+
+        <article class="pieza aparecer" style="--retraso:80ms" data-tipo="pulseras" data-material="rodio">
+          <div class="pieza__foto">
+            <!-- TEMPORAL: img/productos/pulsera-riviera-1.jpg y -2.jpg -->
+            <img src="https://images.unsplash.com/photo-1763029513623-37d488cb97b1?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Pulsera Riviera en rodio con circones">
+            <img class="alterna" src="https://images.unsplash.com/photo-1639065643006-e217c4fee12e?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
+            <button class="pieza__agregar" type="button" aria-label="Agregar Pulsera Riviera a la bolsa" data-agregar data-id="pulsera-riviera" data-nombre="Pulsera Riviera" data-precio="99900" data-variante="Rodio" data-img="https://images.unsplash.com/photo-1763029513623-37d488cb97b1?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+          </div>
+          <div class="tag" style="--giro:-2deg"><span class="rotulo">Rodio · Circones</span><h3 class="tag__nombre"><a href="producto.html">Pulsera Riviera</a></h3><span class="tag__precio">$99.900</span></div>
+        </article>
+      </div>
+      <!-- Mandos del carrete: flechas + riel con manija que se arrastra -->
+      <div class="carrete__mandos">
+        <button class="carrete__flecha" type="button" aria-label="Piezas anteriores" data-anterior><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <div class="carrete__riel" data-riel aria-hidden="true">
+          <span class="carrete__mango" data-mango><svg viewBox="0 0 26 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h24M6 2L1 7l5 5M20 2l5 5-5 5"/></svg></span>
+        </div>
+        <button class="carrete__flecha" type="button" aria-label="Piezas siguientes" data-siguiente><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      </div>
+
+      <div class="vitrina__vacia" data-vitrina-vacia hidden>
+        <p>Los accesorios cambian cada semana. Pídenos el catálogo del momento por WhatsApp.</p>
+        <a class="boton boton--whatsapp" style="margin-top:1.2rem" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me compartes el catálogo de accesorios?"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Pedir catálogo</span></a>
+      </div>
+
+      <div class="vitrina__pie">
+        <a class="boton boton--claro" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me compartes el catálogo completo?"><span>Ver catálogo completo</span><span class="flecha" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. LA PIEDRA DE LOS VALIENTES ============ -->
+  <section class="piedra-sec" id="piedra" aria-labelledby="titulo-piedra">
+    <div class="contenedor piedra-sec__intro">
+      <p class="rotulo aparecer">La historia de la esmeralda colombiana</p>
+      <h2 id="titulo-piedra" class="aparecer">La piedra de<br>los <i>valientes</i></h2>
+    </div>
+
+    <!-- Gema que se inclina siguiendo el mouse o el dedo -->
+    <div class="escenario" data-escenario aria-hidden="true">
+      <div class="escenario__halo"></div>
+      <div class="gema3d" data-gema3d><svg viewBox="0 0 200 260"><use href="#i-gema"/></svg></div>
+      <span class="destello" data-destello></span>
+      <span class="escenario__pista rotulo">Muévela con tu dedo</span>
+    </div>
+
+    <div class="contenedor historia">
+      <!-- I. La leyenda -->
+      <div class="relato">
+        <div class="aparecer">
+          <span class="rotulo">I · La leyenda</span>
+          <h3>Nació de unas <i>lágrimas</i></h3>
+          <p>Cuenta la leyenda del pueblo Muzo que las esmeraldas nacieron de las lágrimas de Fura. Hoy, dos cerros llamados Fura y Tena todavía cuidan el río Minero, en el corazón esmeraldero de Boyacá.</p>
+        </div>
+        <figure class="arco-foto fundida">
+          <!-- TEMPORAL: img/esmeralda-leyenda.jpg (paisaje de Boyacá o esmeralda en bruto) -->
+          <img src="https://images.unsplash.com/photo-1623449567043-e0cad8ee793a?auto=format&fit=crop&w=800&q=70" width="600" height="750" loading="lazy" alt="Anillo con esmeralda sobre una mesa">
+        </figure>
+      </div>
+
+      <!-- II. El jardín (lupa) -->
+      <div class="relato relato--inverso">
+        <div class="aparecer">
+          <span class="rotulo">II · El jardín</span>
+          <h3>Mírala de <i>cerca</i></h3>
+          <p>Pasa la lupa sobre la piedra. Esas pequeñas marcas que ves por dentro se llaman <em>jardín</em>: no son defectos, son la huella de que tu esmeralda es natural. No existe otra igual en el mundo.</p>
+        </div>
+        <div class="lupa" data-lupa>
+          <!-- TEMPORAL: img/esmeralda-jardin.jpg (macro de una esmeralda real de la tienda) -->
+          <img src="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=900&h=900&q=75" width="900" height="900" loading="lazy" alt="Esmeralda en un anillo, vista de cerca">
+          <span class="lupa__lente" data-lente></span>
+          <span class="lupa__ayuda rotulo">Toca o pasa el mouse</span>
+        </div>
+      </div>
+
+      <!-- III. Lo que significa -->
+      <div class="relato">
+        <div class="aparecer">
+          <span class="rotulo">III · Lo que significa</span>
+          <h3>Un regalo que <i>dice algo</i></h3>
+          <p>Regalar una esmeralda es regalar un deseo. Por eso la escogen para mamás, aniversarios y nuevos comienzos.</p>
+          <span class="mayo rotulo">✦ Es la piedra de mayo</span>
+        </div>
+        <ul class="significados aparecer">
+          <li><b>Esperanza</b><span>Para quien empieza algo nuevo.</span></li>
+          <li><b>Amor</b><span>Para quien está contigo siempre.</span></li>
+          <li><b>Renacer</b><span>Para quien se levantó con valentía.</span></li>
+        </ul>
+      </div>
+
+      <!-- Comprar directo -->
+      <div class="regalo">
+        <div class="titulo-seccion" style="margin-bottom:.5rem">
+          <h3 class="aparecer" style="font-size:clamp(2rem,6vw,3.4rem)">Regala una <i style="color:var(--esmeralda-viva)">esmeralda</i></h3>
+          <a class="boton boton--claro aparecer" href="#vitrina" data-ir-material="esmeraldas"><span>Ver todas</span><span class="flecha" aria-hidden="true">→</span></a>
+        </div>
+        <div class="regalo__piezas">
+          <a class="mini aparecer" href="producto.html"><span class="mini__foto"><img src="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=400&q=65" width="300" height="375" loading="lazy" alt="Anillo Muzo"></span><b>Anillo Muzo</b><span>$189.900</span></a>
+          <a class="mini aparecer" style="--retraso:100ms" href="producto.html"><span class="mini__foto"><img src="https://images.unsplash.com/photo-1731929315875-3ab60c006577?auto=format&fit=crop&w=400&q=65" width="300" height="375" loading="lazy" alt="Aretes Gota Verde"></span><b>Aretes Gota Verde</b><span>$159.900</span></a>
+          <a class="mini aparecer" style="--retraso:200ms" href="producto.html"><span class="mini__foto"><img src="https://images.unsplash.com/photo-1676329945867-01c9975aa9d1?auto=format&fit=crop&w=400&q=65" width="300" height="375" loading="lazy" alt="Collar Jardín"></span><b>Collar Jardín</b><span>$119.900</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. EL RECIBO ============ -->
+  <!-- PENDIENTE confirmar con la clienta: tiempos, monto de envío gratis, garantía y medios de pago -->
+  <section class="recibo-seccion" id="recibo" aria-labelledby="titulo-recibo">
+    <h2 id="titulo-recibo" class="aparecer">Tu compra <i>incluye</i></h2>
+    <div class="recibo revelar">
+      <div class="recibo__cabeza">
+        <strong>VL</strong>
+        <span class="rotulo">Valientte Joyería</span>
+        <span class="rotulo" style="color:var(--gris)">Manizales · Caldas</span>
+      </div>
+      <ul class="recibo__lineas">
+        <li><span>Envío nacional</span><span>1–4 días</span><small>A cualquier ciudad de Colombia.</small></li>
+        <li><span>Envío gratis</span><span>desde $150.000</span></li>
+        <li><span>En Manizales</span><span>hoy o mañana</span><small>Y puedes pagar contraentrega.</small></li>
+        <li><span>Garantía</span><span>incluida</span><small>En el material y el engaste de tus joyas.</small></li>
+        <li><span>Empaque de regalo</span><span>$0</span></li>
+        <li><span>Asesoría</span><span>por WhatsApp</span></li>
+      </ul>
+      <div class="recibo__total"><span>TOTAL</span><span>Tranquilidad</span></div>
+      <div class="recibo__barras" aria-hidden="true"></div>
+      <p class="recibo__gracias rotulo">Gracias por ser valiente</p>
+    </div>
+    <div class="recibo__pagos aparecer" aria-label="Medios de pago">
+      <span>Nequi</span><span>Daviplata</span><span>Bancolombia</span><span>PSE</span><span>Tarjetas</span><span>Contraentrega</span>
+    </div>
+  </section>
+
+  <!-- ============ 7. CHATS (reseñas DE EJEMPLO) ============ -->
+  <!-- IMPORTANTE: mensajes INVENTADOS para el boceto. Reemplazar por chats reales de clientas (con permiso). -->
+  <section class="chats" aria-labelledby="titulo-chats">
+    <div class="contenedor chats__grid">
+      <div class="chats__texto">
+        <h2 id="titulo-chats" class="aparecer">Lo que nos <i>escriben</i></h2>
+        <p class="aparecer">Nuestras clientas nos cuentan cómo les llegó su joya.</p>
+        <p class="aviso-ejemplo rotulo aparecer" role="note">Reseñas de ejemplo · se cambian por chats reales</p>
+      </div>
+      <div class="telefono aparecer">
+        <div class="telefono__top">
+          <span class="telefono__avatar" aria-hidden="true">VL</span>
+          <div><b>Clientas Valientte</b><span class="rotulo">Chat de ejemplo</span></div>
+        </div>
+        <div class="burbujas">
+          <span class="fecha-chat rotulo">Ejemplo</span>
+          <p class="msj aparecer"><span class="msj__nombre">Laura · Manizales</span>Me llegó el Collar Aurora y es más lindo en persona 😍 y el empaque divino<time>9:41</time></p>
+          <p class="msj msj--yo aparecer" style="--retraso:150ms">¡Qué alegría, Laura! Gracias por escogernos 💚<time>9:43</time></p>
+          <p class="msj aparecer" style="--retraso:300ms"><span class="msj__nombre">Camila · Pereira</span>Le regalé el anillo con esmeralda a mi mamá y no se lo quita<time>11:02</time></p>
+          <p class="msj aparecer" style="--retraso:450ms"><span class="msj__nombre">Juan · Bogotá</span>La pulsera de acero la uso hasta para entrenar y sigue igualita<time>15:20</time></p>
+          <p class="msj msj--yo aparecer" style="--retraso:600ms">Eso es ser valiente ✨<time>15:21</time></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. REDES ============ -->
+  <section class="redes" id="redes" aria-labelledby="titulo-redes">
+    <div class="contenedor" style="text-align:center">
+      <p class="rotulo aparecer" id="titulo-redes">Síguenos en Instagram y TikTok</p>
+      <a class="redes__usuario aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener">@joyeria.valientte</a>
+    </div>
+    <!-- TEMPORAL: reemplazar por fotos reales de su Instagram (img/instagram-1.jpg ... -5.jpg) -->
+    <div class="collage">
+      <a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver en Instagram"><img src="https://images.unsplash.com/photo-1612239396116-4da3087f8f79?auto=format&fit=crop&w=460&h=575&q=65" width="230" height="288" loading="lazy" alt=""></a>
+      <a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver en Instagram"><img src="https://images.unsplash.com/photo-1761735489573-15b2d60280f5?auto=format&fit=crop&w=460&h=575&q=65" width="230" height="288" loading="lazy" alt=""></a>
+      <a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver en Instagram"><img src="https://images.unsplash.com/photo-1573717008136-5a9f0820e8bf?auto=format&fit=crop&w=460&h=575&q=65" width="230" height="288" loading="lazy" alt=""></a>
+      <a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver en Instagram"><img src="https://images.unsplash.com/photo-1585053736987-f817dc225fc5?auto=format&fit=crop&w=460&h=575&q=65" width="230" height="288" loading="lazy" alt=""></a>
+      <a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver en Instagram"><img src="https://images.unsplash.com/photo-1762505464779-17f78cbfa8b4?auto=format&fit=crop&w=460&h=575&q=65" width="230" height="288" loading="lazy" alt=""></a>
+    </div>
+    <div class="redes__botones">
+      <a class="boton" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram</span></a>
+      <!-- PENDIENTE: enlace real de TikTok -->
+      <a class="boton boton--hueco" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tiktok"/></svg><span>TikTok</span></a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__lema">El lujo<br>de ser tú.</p>
+        <p style="margin-top:1rem;max-width:32ch">Joyas en plata 925 y esmeraldas colombianas. Accesorios en rodio y acero. Manizales, Caldas.</p>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="#materiales">Materiales</a></li>
+          <li><a href="#vitrina">La vitrina</a></li>
+          <li><a href="#piedra">La esmeralda</a></li>
+          <li><a href="nosotros.html">Quiénes somos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <!-- PENDIENTE: crear estas páginas -->
+        <ul>
+          <li><a href="#recibo">Envíos y pagos</a></li>
+          <li><a href="#recibo">Cambios y garantía</a></li>
+          <li><a href="#">Cuidado de tus joyas</a></li>
+          <li><a href="producto.html">Guía de tallas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-whatsapp>WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© 2026 Valientte Joyería</span>
+      <span>Boceto · fotos temporales de Unsplash</span>
+    </div>
+  </div>
+  <div class="footer__gigante" aria-hidden="true">VALIENTTE</div>
+</footer>
+
+<!-- ============ ASISTENTE DE WHATSAPP (atajos con mensaje listo) ============ -->
+<div class="asistente" data-asistente>
+  <div class="asistente__panel" id="asistente-panel" role="dialog" aria-label="Asesoría por WhatsApp">
+    <div class="asistente__cabeza">
+      <span class="asistente__avatar" aria-hidden="true">VL</span>
+      <div><b>Asesoría Valientte</b><span>Te respondemos por WhatsApp</span></div>
+      <button class="asistente__cerrar" type="button" aria-label="Cerrar" data-cerrar-asistente><svg width="18" height="18" aria-hidden="true"><use href="#i-cerrar"/></svg></button>
+    </div>
+    <div class="asistente__cuerpo">
+      <p class="asistente__saludo">¡Hola! ✨ ¿En qué te ayudamos hoy?</p>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Quiero dar un regalo, ¿me ayudas a escoger?"><span aria-hidden="true">🎁</span><span>Quiero dar un regalo</span><span aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Necesito ayuda para saber mi talla de anillo."><span aria-hidden="true">💍</span><span>Ayuda con mi talla</span><span aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me compartes el catálogo completo?"><span aria-hidden="true">📖</span><span>Ver el catálogo completo</span><span aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Tengo una pregunta:"><span aria-hidden="true">💬</span><span>Tengo otra pregunta</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <button class="asistente__boton" type="button" aria-expanded="false" aria-controls="asistente-panel" data-abrir-asistente>
+    <span class="asistente__icono"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
+    <span class="asistente__texto">¿Te ayudamos?</span>
+    <span class="sr-only">Abrir asesoría por WhatsApp</span>
+  </button>
+</div>
+
+<!-- ============ BOLSA (carrito) ============ -->
+<div class="velo" data-velo></div>
+<aside class="carrito" id="carrito" role="dialog" aria-modal="true" aria-labelledby="carrito-titulo">
+  <div class="carrito__top">
+    <h2 id="carrito-titulo">Tu <i>bolsa</i></h2>
+    <button class="header__btn" type="button" data-cerrar-carrito><svg width="18" height="18" aria-hidden="true"><use href="#i-cerrar"/></svg> Cerrar</button>
+  </div>
+  <div class="envio">
+    <span data-envio-texto>Te faltan $150.000 para el envío gratis</span>
+    <div class="envio__barra"><span data-envio-barra></span></div>
+  </div>
+  <ul class="carrito__items" data-carrito-items></ul>
+  <div class="carrito__vacio" data-carrito-vacio>
+    <div class="tag"><span class="rotulo">Tu bolsa</span><span class="tag__nombre">Está vacía</span></div>
+    <p>Encuentra la joya que va contigo.</p>
+    <a class="boton" href="index.html#vitrina" data-cerrar-carrito><span>Ir a la vitrina</span><span class="flecha" aria-hidden="true">→</span></a>
+  </div>
+  <div class="carrito__pie" data-carrito-pie>
+    <div class="carrito__total"><span class="rotulo">Subtotal</span><span data-carrito-total>$0</span></div>
+    <a class="boton boton--whatsapp boton--ancho" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-finalizar>
+      <svg aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Finalizar pedido</span>
+    </a>
+    <p class="carrito__nota">Te enviamos el resumen por WhatsApp para confirmar envío y pago.</p>
+  </div>
+</aside>
+
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
