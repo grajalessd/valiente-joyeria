@@ -7,7 +7,7 @@ Página web para la joyería **Valientte** (Manizales, Caldas, Colombia). Leer e
 - **Lema oficial:** *"El lujo de ser tú."* Campaña: **#MujerValiente**. Línea hombre: *"Ellos también llevan la elegancia."*
 - **Vende:** joyas en **plata 925** y **esmeraldas colombianas**; accesorios de moda en **rodio** y **acero**. +6 años. Productos reales vistos en su IG: Collar Aurora, Anillo Vintage, Anillo Pavé.
 - **Posicionamiento:** precios accesibles, pero la web debe verse premium, atrevida y cercana.
-- **Canales:** Instagram [@joyeria.valientte](https://www.instagram.com/joyeria.valientte/) · WhatsApp `https://wa.link/c60ecp` · TikTok: **pendiente**.
+- **Canales:** Instagram [@joyeria.valientte](https://www.instagram.com/joyeria.valientte/) · WhatsApp `https://wa.link/c60ecp` · **No tienen TikTok** (se quitó de todas las páginas; solo Instagram).
 - **Tono:** español de Colombia, tuteo, cálido. **Poco texto**: el cliente es perezoso, darle lo que busca rápido.
 
 ## Lo que el cliente pidió (no repetir errores)
@@ -33,7 +33,11 @@ Recorrido del inicio y de qué referencia sale cada idea (ver REFERENCIAS.md):
 7. **Chats**: reseñas como conversación (marcadas **EJEMPLO**).
 8. **Redes** + **footer** verde con "VALIENTTE" gigante.
 - **Menú**: telón verde que se abre en curva, opciones grandes **a la izquierda, sin números**. Al acercar el mouse a una opción, su foto entra desde la derecha con un **corte en diagonal que barre** la pantalla (variable `--corte`), cubre casi todo y queda **debajo de los textos** con un velo verde para que se lean. Las demás opciones se atenúan. En celular las fotos rotan solas cada 3 s.
+- **Instagram siempre presente** (la clienta quiere que nadie lo pase por alto): burbuja `.ig-flota` tipo historia (anillo con degradado de IG que gira + "VL") abajo a la izquierda en TODAS las páginas; la crea `main.js` (sección 2b), aparece después de la portada, se esconde sobre `#redes` y el footer, y cada ~22 s dice una frase corta. Además: enlace "Míralas puestas en @joyeria.valientte" en la vitrina y la sección Instagram (historias destacadas + collage + botón "Seguir") va justo después de la vitrina.
+- **Inicio resumido**: ventana → metales → Ella/Él → vitrina → Instagram → esmeralda (corta: gema, lupa con leyenda en 1 frase, significados en fila, regalo) → recibo (5 líneas) → chats (4) → footer.
 - **Asistente de WhatsApp**: botón flotante que saluda y se despliega con atajos (regalo, talla, catálogo, otra pregunta), cada uno con mensaje listo.
+- **coleccion.html** (`?para=ella` | `?para=el` | sin parámetro = catálogo completo): portada que cambia color/palabra/foto despacio (naranja Ella, tinta Él, bosque Todo), filtros por **momento** (mamá, aniversario, grado…), tipo y material, y piezas en estante escalonado. Los productos están en `js/coleccion.js` (`PIEZAS`), que se carga ANTES de `main.js`. Ella/Él y "Ver catálogo completo" del inicio llevan aquí.
+- **Celular**: Bodoni en tamaños gigantes usa `font-variation-settings: "opsz" 10` para que las líneas finas no desaparezcan. El `.asistente` tiene `pointer-events:none` (su panel cerrado tapaba los toques de media pantalla); solo el botón y el panel abierto los reciben.
 - **nosotros.html**: historia, valores y CTA. **producto.html**: galería, certificado de pieza, variantes, notas.
 
 ### Paleta (`css/styles.css`, sección 1)
@@ -69,13 +73,14 @@ valiente-joyeria/
 ├── index.html        Inicio
 ├── producto.html     Ficha de ejemplo (Anillo Muzo)
 ├── nosotros.html     Quiénes somos
+├── coleccion.html    Ella / Él / catálogo completo (+ js/coleccion.js)
 ├── css/styles.css    Estilos (19 secciones numeradas)
 ├── js/main.js        Config, WhatsApp/asistente, menú, ventana, gema, lupa, vitrina, bolsa
 ├── js/producto.js    Galería, variantes, barra fija, guía de tallas
 ├── img/              Fotos reales (ver img/LEEME.md)
 ├── REFERENCIAS.md · PROPUESTAS.md (historial) · CLAUDE.md
 ```
-El header, el menú, el asistente y la bolsa están repetidos en las 3 páginas: **si se cambia uno, cambiarlo en las tres**.
+El header, el menú, el asistente y la bolsa están repetidos en las 4 páginas: **si se cambia uno, cambiarlo en todas**.
 
 ## Cómo funciona
 - `CONFIG` en `js/main.js`: `whatsappNumero` (solo dígitos con 57), enlace corto, envío gratis. Con número, todos los botones precargan su mensaje (`data-wa-msg` en el HTML).
@@ -94,7 +99,7 @@ El header, el menú, el asistente y la bolsa están repetidos en las 3 páginas:
 8. Lo temporal está marcado `TEMPORAL` / `PENDIENTE` en comentarios.
 
 ## Pendientes (confirmar con la clienta)
-- [ ] Número de WhatsApp y enlace de TikTok.
+- [ ] Número de WhatsApp.
 - [ ] Logo en SVG/PNG → `img/logo.svg`.
 - [ ] Fotos reales (lista en `img/LEEME.md`), incluida una macro de esmeralda real para la lupa.
 - [ ] Precios, nombres, tallas, medidas y "desde $X" reales.

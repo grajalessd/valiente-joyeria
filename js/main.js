@@ -63,6 +63,62 @@ if (asistente) {
   window.Asistente = { cerrar: () => abrir(false) };
 }
 
+/* ---------- 2b. INSTAGRAM SIEMPRE A LA MANO ----------
+   Burbuja tipo "historia" abajo a la izquierda en todas las páginas.
+   Aparece después de la portada, se esconde donde ya está la sección de Instagram
+   y el footer, y de vez en cuando dice algo para que no pase desapercibida. */
+const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
+(() => {
+  const ig = document.createElement('a');
+  ig.className = 'ig-flota';
+  ig.href = IG_URL;
+  ig.target = '_blank';
+  ig.rel = 'noopener';
+  ig.setAttribute('aria-label', 'Síguenos en Instagram: @joyeria.valientte');
+  ig.innerHTML = `
+    <span class="ig-flota__anillo" aria-hidden="true">
+      <span class="ig-flota__cara">VL</span>
+      <span class="ig-flota__insignia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+    </span>
+    <span class="ig-flota__texto" aria-hidden="true"><b>@joyeria.valientte</b><span data-ig-frase>Lo nuevo sale aquí primero</span></span>`;
+  document.body.appendChild(ig);
+
+  // PENDIENTE: ajustar frases con la clienta (p. ej. si hacen sorteos o lives)
+  const frases = ['Lo nuevo sale aquí primero', 'Míralas puestas', 'Somos de Manizales 💚', 'Ideas para regalar ✨'];
+  const frase = $('[data-ig-frase]', ig);
+  let n = 0, tHabla;
+  const hablar = () => {
+    if (!ig.classList.contains('visible')) return;
+    if (asistente && (asistente.classList.contains('saluda') || asistente.classList.contains('abierto'))) return;
+    frase.textContent = frases[n++ % frases.length];
+    ig.classList.add('habla');
+    clearTimeout(tHabla);
+    tHabla = setTimeout(() => ig.classList.remove('habla'), 4200);
+  };
+
+  // dónde NO mostrarla: sobre la sección de Instagram y el footer
+  const tapan = $$('#redes, .footer');
+  const visibles = new Set();
+  let yaVista = false;
+  const conVentana = !!$('[data-ventana]');
+  const decidir = () => {
+    const pasoPortada = window.scrollY > window.innerHeight * (conVentana ? 1.6 : 0.5);
+    const mostrar = pasoPortada && visibles.size === 0;
+    ig.classList.toggle('visible', mostrar);
+    if (mostrar && !yaVista) { yaVista = true; setTimeout(hablar, 900); }
+  };
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((es) => {
+      es.forEach((e) => (e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target)));
+      decidir();
+    }, { threshold: 0.15 });
+    tapan.forEach((el) => obs.observe(el));
+  }
+  window.addEventListener('scroll', decidir, { passive: true });
+  decidir();
+  setInterval(hablar, 22000);
+})();
+
 /* ---------- 3. HEADER + MENÚ ---------- */
 const header = $('#header');
 const ventana = $('[data-ventana]');
@@ -278,8 +334,28 @@ if (pista) {
     const ancho = pz ? pz.getBoundingClientRect().width + 18 : 300;
     return window.innerWidth >= 900 ? ancho * 2 : ancho;
   };
-  anterior.addEventListener('click', () => pista.scrollBy({ left: -paso(), behavior: 'smooth' }));
-  siguiente.addEventListener('click', () => pista.scrollBy({ left: paso(), behavior: 'smooth' }));
+  // desplazamiento animado propio (el "smooth" nativo falla en algunos celulares con scroll-snap)
+  let animacion;
+  const irA = (destino) => {
+    cancelAnimationFrame(animacion);
+    cancelAnimationFrame(inercia);
+    const desde = pista.scrollLeft;
+    const hasta = limitar(destino, 0, maximo());
+    const t0 = performance.now();
+    const dur = sinMovimiento ? 1 : 650;
+    pista.classList.add('arrastrando');
+    const paso_ = (t) => {
+      const k = limitar((t - t0) / dur);
+      pista.scrollLeft = mezclar(desde, hasta, suave(k));
+      if (k < 1) animacion = requestAnimationFrame(paso_);
+      else pista.classList.remove('arrastrando');
+    };
+    animacion = requestAnimationFrame(paso_);
+  };
+  pista.irA = irA;
+  anterior.addEventListener('click', () => irA(pista.scrollLeft - paso()));
+  siguiente.addEventListener('click', () => irA(pista.scrollLeft + paso()));
+  pista.addEventListener('touchstart', () => { cancelAnimationFrame(animacion); pista.classList.remove('arrastrando'); }, { passive: true });
 
   // Arrastrar la pista con el mouse (con inercia suave)
   let x0 = 0, s0 = 0, ultimoX = 0, vel = 0, arrastrado = false, presionado = false, inercia;
@@ -363,7 +439,7 @@ function pintarVitrina() {
   }
   if (vitrinaVacia) vitrinaVacia.hidden = visibles > 0;
   if (pista) {
-    pista.scrollTo({ left: 0, behavior: 'smooth' });
+    if (pista.irA) pista.irA(0); else pista.scrollLeft = 0;
     $('.carrete__mandos') && ($('.carrete__mandos').hidden = visibles === 0);
     requestAnimationFrame(pintarCarrete);
   }

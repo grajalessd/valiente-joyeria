@@ -205,6 +205,11 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
   opacity: calc(1 - (var(--p, 0) - .3) * 2.4);
   will-change: transform, opacity;
 }
+/* en celular las líneas finas de Bodoni casi desaparecen: tamaño óptico de texto (trazos más gruesos) */
+@media (max-width: 899px) {
+  .ventana__marca { font-weight: 600; font-variation-settings: "opsz" 10; letter-spacing: -.035em; font-size: 15.6vw; }
+  .ventana__sub, .dos__palabra, .col-hero__palabra { font-variation-settings: "opsz" 10; }
+}
 .ventana__sub {
   position: absolute; left: 0; right: 0; top: 50%; margin-top: 9vw;
   padding-inline: var(--gutter);
@@ -214,6 +219,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
   opacity: calc(1 - var(--p, 0) * 5);
 }
 .ventana__sub span { font-style: normal; color: var(--tinta); opacity: .55; margin-inline: .35em; }
+.ventana__sub .amp { font-style: italic; opacity: 1; margin-inline: .08em; font-size: 1.12em; }
 .ventana__vidrio {
   position: absolute; inset: 0;
   --it: 50vh; --ib: 50vh; --ix: 50vw; --c: 0px; /* sin JS: cerrada */
@@ -552,7 +558,9 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 @media (min-width: 768px) { .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
 
 /* ---------- 15. ASISTENTE DE WHATSAPP ---------- */
-.asistente { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 90; display: grid; justify-items: end; gap: .8rem; transition: bottom .4s var(--ease); }
+.asistente { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 90; display: grid; justify-items: end; gap: .8rem; transition: bottom .4s var(--ease); pointer-events: none; }
+/* el panel cerrado es invisible pero ocupa espacio: solo el botón y el panel abierto reciben toques */
+.asistente__boton, .asistente.abierto .asistente__panel { pointer-events: auto; }
 body.con-barra .asistente { bottom: calc(5.4rem + env(safe-area-inset-bottom)); }
 .asistente__boton {
   display: inline-flex; align-items: center; gap: .6rem;
@@ -727,3 +735,158 @@ dialog.modal::backdrop { background: rgba(6, 26, 18, .55); }
   .ventana__lema { opacity: 1; transform: none; pointer-events: auto; }
   .js .aparecer, .js .revelar { opacity: 1; transform: none; clip-path: none; }
 }
+
+/* ---------- 20. COLECCIÓN (coleccion.html: Ella / Él / Todo) ---------- */
+/* Portada: el color, la palabra y la foto cambian despacio según para quién */
+.col-hero {
+  --fondo: var(--bosque); --letra: var(--marfil);
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: 92vh; min-height: 92svh;
+  padding: calc(var(--alto-header) + 1rem) var(--gutter) 2.2rem;
+  display: grid; align-content: end; gap: .9rem;
+  background: var(--fondo); color: var(--letra);
+  transition: background-color 1.2s var(--ease-suave), color 1.2s var(--ease-suave);
+}
+.col-hero[data-para="ella"] { --fondo: var(--naranja); --letra: var(--tinta); }
+.col-hero[data-para="el"]   { --fondo: var(--tinta);   --letra: var(--marfil); }
+/* foto: en celular arriba, fundida en línea recta hacia abajo */
+.col-hero__fotos {
+  position: absolute; inset: 0 0 34% 0; z-index: -1;
+  /* se funde abajo con el color y arriba un poco, para que el menú se lea */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.35) 0%, #000 22%, #000 55%, transparent 100%);
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,.35) 0%, #000 22%, #000 55%, transparent 100%);
+}
+.col-hero__fotos img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.08);
+  transition: opacity 1.4s var(--ease-suave), transform 2.4s var(--ease-suave);
+}
+.col-hero__fotos img.activa { opacity: 1; transform: none; }
+.col-hero__palabra {
+  font-family: var(--f-display); font-style: italic; font-weight: 400;
+  font-size: clamp(7rem, 38vw, 19rem); line-height: .8; letter-spacing: -.05em;
+  transition: opacity .45s var(--ease), transform .9s var(--ease-suave);
+}
+.col-hero__frase { max-width: 26ch; font-size: 1.05rem; transition: opacity .45s var(--ease); }
+.col-hero > .rotulo { transition: opacity .45s var(--ease); }
+.col-hero.cambiando .col-hero__palabra { opacity: 0; transform: translateX(-1.2rem); }
+.col-hero.cambiando .col-hero__frase, .col-hero.cambiando > .rotulo { opacity: 0; }
+.col-hero__cambio { display: flex; gap: .4rem; margin-top: .6rem; border-top: 1px solid currentColor; padding-top: .8rem; }
+.col-hero__cambio a {
+  min-height: 44px; display: inline-flex; align-items: center; padding: 0 1rem;
+  font-family: var(--f-display); font-size: 1.3rem; opacity: .55; position: relative;
+  transition: opacity .5s var(--ease);
+}
+.col-hero__cambio a::after { content: ""; position: absolute; left: 1rem; right: 1rem; bottom: 4px; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease-suave); }
+.col-hero__cambio a:first-child { padding-left: 0; }
+.col-hero__cambio a:first-child::after { left: 0; }
+.col-hero__cambio a[aria-current="true"], .col-hero__cambio a:hover { opacity: 1; }
+.col-hero__cambio a[aria-current="true"]::after { transform: scaleX(1); }
+@media (min-width: 900px) {
+  .col-hero { min-height: 86vh; padding-inline: clamp(2rem, 5vw, 5rem); padding-bottom: 3rem; }
+  .col-hero__fotos { inset: 0 0 0 38%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 42%); }
+  .col-hero__cambio { max-width: 520px; }
+}
+
+/* Estante: filtros + piezas escalonadas */
+.col-estante { padding-top: clamp(2.5rem, 7vw, 4.5rem); }
+.momentos { margin-bottom: 1.6rem; }
+.momentos > .rotulo { display: block; color: rgba(247, 243, 236, .7); margin-bottom: .7rem; }
+.momentos__lista, .metales { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+.momentos__lista::-webkit-scrollbar, .metales::-webkit-scrollbar { display: none; }
+.momento, .metal {
+  flex: none; min-height: 44px; padding: 0 1.1rem; border-radius: 999px;
+  border: 1px solid rgba(247, 243, 236, .35); color: var(--marfil); font-size: .9rem; font-weight: 500;
+  transition: background .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease);
+}
+.momento:hover, .metal:hover { border-color: var(--marfil); }
+.momento[aria-pressed="true"] { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); }
+.metal { min-height: 40px; font-size: .82rem; }
+.metal[aria-pressed="true"] { background: var(--marfil); border-color: var(--marfil); color: var(--bosque); }
+.metales { margin-top: .4rem; }
+.estante__cuenta { margin: 1.6rem 0 1.2rem; color: rgba(247, 243, 236, .65); }
+.estante { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.4rem .8rem; align-items: start; }
+.estante .pieza.baja { margin-top: 2.6rem; }
+.estante .pieza .tag { margin: -1.3rem 0 0 .35rem; padding-block: .5rem; }
+.estante .tag__nombre { font-size: .98rem; }
+.estante .pieza__agregar { right: .6rem; bottom: .6rem; width: 44px; height: 44px; }
+.estante .pieza__sello { top: .7rem; left: .7rem; font-size: .55rem; }
+.js .estante .pieza.aparecer { transition-delay: calc(var(--orden, 0) % 4 * 70ms); }
+@media (min-width: 700px) { .estante { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem 1.2rem; } .estante .pieza.baja { margin-top: 3.4rem; } }
+@media (min-width: 1100px) { .estante { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3.6rem 1.6rem; } }
+
+/* Ayuda final */
+.col-ayuda { background: var(--marfil); padding: clamp(4rem, 10vw, 7rem) 0; }
+.col-ayuda__caja { display: grid; gap: 1rem; justify-items: start; }
+.col-ayuda h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(2.6rem, 9vw, 5rem); line-height: .95; }
+.col-ayuda h2 i { color: var(--naranja); }
+.col-ayuda p { max-width: 34ch; color: var(--gris); }
+@media (min-width: 900px) { .col-ayuda__caja { grid-template-columns: 1fr auto; align-items: end; } .col-ayuda p { grid-column: 1; } .col-ayuda .boton { grid-column: 2; grid-row: 1 / span 2; } }
+
+/* ---------- 21. INSTAGRAM SIEMPRE PRESENTE ---------- */
+/* Anillo de historia de Instagram (degradado reconocible) */
+:root { --ig: conic-gradient(from 210deg, #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5, #D62976, #FEDA75); }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Burbuja flotante (la crea main.js en todas las páginas): abajo a la izquierda, frente al WhatsApp */
+.ig-flota {
+  position: fixed; left: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); z-index: 89;
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: 0; border-radius: 999px; color: var(--tinta);
+  opacity: 0; transform: translateY(18px) scale(.9); pointer-events: none;
+  transition: opacity .8s var(--ease-suave), transform .8s var(--ease-suave), bottom .4s var(--ease);
+}
+.ig-flota.visible { opacity: 1; transform: none; pointer-events: auto; }
+body.con-barra .ig-flota { bottom: calc(5.4rem + env(safe-area-inset-bottom)); }
+.ig-flota__anillo { position: relative; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; flex: none; box-shadow: 0 14px 30px -14px rgba(150, 47, 191, .7); }
+.ig-flota__anillo::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--ig); animation: girar 6s linear infinite; }
+.ig-flota__cara {
+  position: relative; width: 50px; height: 50px; border-radius: 50%;
+  border: 3px solid var(--hueso); background: var(--naranja);
+  display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; letter-spacing: -.08em;
+}
+.ig-flota__insignia { position: absolute; right: -2px; bottom: -2px; width: 22px; height: 22px; border-radius: 50%; background: var(--hueso); color: #D62976; display: grid; place-items: center; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+.ig-flota__insignia svg { width: 14px; height: 14px; }
+.ig-flota__texto {
+  display: grid; max-width: 0; overflow: hidden; white-space: nowrap;
+  background: var(--hueso); border-radius: 999px; line-height: 1.15;
+  box-shadow: 0 12px 28px -14px rgba(0,0,0,.45);
+  padding-block: .5rem; opacity: 0;
+  transition: max-width .9s var(--ease-suave), padding .9s var(--ease-suave), opacity .5s var(--ease);
+}
+.ig-flota__texto b { font-size: .8rem; font-weight: 600; }
+.ig-flota__texto span { font-size: .72rem; color: var(--gris); }
+.ig-flota.habla .ig-flota__texto, .ig-flota:hover .ig-flota__texto { max-width: 185px; padding-inline: 1rem; opacity: 1; }
+@media (min-width: 900px) { .ig-flota { left: 1.6rem; bottom: 1.6rem; } body.con-barra .ig-flota { bottom: 1.6rem; } }
+body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-events: none; }
+
+/* Enlace en la vitrina: "Míralas puestas en @joyeria.valientte" */
+.vitrina__pie { flex-wrap: wrap; gap: 1.4rem 2rem; align-items: center; }
+.ig-enlace { display: inline-flex; align-items: center; gap: .8rem; min-height: 48px; color: var(--marfil); font-size: .95rem; }
+.ig-enlace b { font-weight: 600; border-bottom: 1px solid rgba(247, 243, 236, .4); transition: border-color .5s var(--ease); }
+.ig-enlace:hover b { border-color: var(--marfil); }
+.ig-enlace__icono { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--ig); color: #fff; flex: none; }
+.ig-enlace__icono svg { width: 20px; height: 20px; }
+
+/* Sección Instagram: historias destacadas + collage */
+.redes__cabeza { text-align: center; }
+.redes__cabeza .rotulo { color: var(--gris); }
+.destacadas { list-style: none; margin: 2.4rem 0 0; padding: 0 var(--gutter); display: flex; gap: 1.1rem; overflow-x: auto; scrollbar-width: none; justify-content: flex-start; }
+.destacadas::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) { .destacadas { justify-content: center; gap: 2rem; } }
+.destacadas a { display: grid; justify-items: center; gap: .5rem; font-size: .78rem; font-weight: 500; width: 76px; text-align: center; }
+.anillo-ig { position: relative; width: 74px; height: 74px; border-radius: 50%; padding: 3px; background: var(--ig); display: block; transition: transform .6s var(--ease-suave); }
+.anillo-ig img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--arena); }
+.destacadas a:hover .anillo-ig { transform: scale(1.08) rotate(-4deg); }
+.boton--ig { background: linear-gradient(100deg, #FA7E1E, #D62976 45%, #962FBF); border-color: transparent; color: #fff; }
+.boton--ig::before { background: var(--tinta); }
+.boton--ig:hover { color: var(--hueso); border-color: var(--tinta); }
+
+/* Significados en una sola fila (versión corta de la esmeralda) */
+.significados--fila { grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: 14px; }
+.significados--fila li { padding: 1rem .6rem; text-align: center; }
+.significados--fila b { font-size: clamp(1.15rem, 4.6vw, 1.9rem); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) { .ig-flota__anillo::before { animation: none; } }
