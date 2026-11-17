@@ -767,6 +767,7 @@ dialog.modal::backdrop { background: rgba(6, 26, 18, .55); }
 .col-hero__palabra {
   font-family: var(--f-display); font-style: italic; font-weight: 400;
   font-size: clamp(7rem, 38vw, 19rem); line-height: .8; letter-spacing: -.05em;
+  padding-top: .2em;   /* espacio para la tilde de "Él": no toca el rótulo de arriba */
   transition: opacity .45s var(--ease), transform .9s var(--ease-suave);
 }
 .col-hero__frase { max-width: 26ch; font-size: 1.05rem; transition: opacity .45s var(--ease); }

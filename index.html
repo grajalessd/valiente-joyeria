@@ -17,7 +17,18 @@
   <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.classList.add('js', 'con-intro');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // Pantalla de carga SOLO en el inicio y solo al llegar a la página (desde afuera o recargando).
+    // Si la persona vuelve al inicio desde otra sección de la página, no sale.
+    (function () {
+      var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+      var recarga = nav && nav.type === 'reload';
+      var desdeAdentro = false;
+      try { desdeAdentro = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+      if (recarga || !desdeAdentro) document.documentElement.classList.add('con-intro');
+    })();
+  </script>
 </head>
 <body>
 <!-- ============ PANTALLA DE CARGA: sale cada vez que se entra o se recarga ============ -->

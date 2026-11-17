@@ -11,40 +11,9 @@
   <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.classList.add('js', 'con-intro');</script>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-<!-- ============ PANTALLA DE CARGA: sale cada vez que se entra o se recarga ============ -->
-<div class="intro" aria-hidden="true">
-  <div class="intro__fondo"></div>
-  <div class="intro__panel">
-    <span class="logo-vl">
-      <span class="logo-vl__monograma">
-        <span class="logo-vl__mitad logo-vl__mitad--arriba"><span>VL</span></span>
-        <span class="logo-vl__mitad logo-vl__mitad--abajo"><span>VL</span></span>
-        <span class="logo-vl__nombre"><i>V</i><i>A</i><i>L</i><i>I</i><i>E</i><i>N</i><i>T</i><i>T</i><i>E</i></span>
-      </span>
-      <span class="logo-vl__joyeria">JOYERÍA</span>
-    </span>
-    <div class="intro__barra"><span></span></div>
-  </div>
-</div>
-<script>
-  // Arranca cuando la tipografía del logo está lista (o a los 1,5 s, lo que pase primero) y siempre se quita.
-  (function () {
-    var html = document.documentElement, listo = false;
-    function arrancar() {
-      if (listo) return; listo = true;
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        html.classList.add('intro-arranca');
-        setTimeout(function () { html.classList.add('intro-lista'); }, 3100);
-      }); });
-    }
-    if (document.fonts && document.fonts.load) document.fonts.load('800 100px "Bodoni Moda"').then(arrancar, arrancar);
-    setTimeout(arrancar, 1500);
-    setTimeout(function () { html.classList.add('intro-lista'); }, 5000);   // seguro por si algo falla
-  })();
-</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></symbol>
