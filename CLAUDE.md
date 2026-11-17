@@ -34,6 +34,9 @@ Recorrido del inicio y de qué referencia sale cada idea (ver REFERENCIAS.md):
 8. **Redes** + **footer** verde con "VALIENTTE" gigante.
 - **Menú**: telón verde que se abre en curva, opciones grandes **a la izquierda, sin números**. Al acercar el mouse a una opción, su foto entra desde la derecha con un **corte en diagonal que barre** la pantalla (variable `--corte`), cubre casi todo y queda **debajo de los textos** con un velo verde para que se lean. Las demás opciones se atenúan. En celular las fotos rotan solas cada 3 s.
 - **Instagram siempre presente** (la clienta quiere que nadie lo pase por alto): burbuja `.ig-flota` tipo historia (anillo con degradado de IG que gira + "VL") abajo a la izquierda en TODAS las páginas; la crea `main.js` (sección 2b), aparece después de la portada, se esconde sobre `#redes` y el footer, y cada ~22 s dice una frase corta. Además: enlace "Míralas puestas en @joyeria.valientte" en la vitrina y la sección Instagram (historias destacadas + collage + botón "Seguir") va justo después de la vitrina.
+- **instagram.html** (apartado exclusivo, `js/instagram.js`): perfil con avatar de anillo IG que gira, bio y botones Seguir / Mensaje (`ig.me/m/joyeria.valientte`); **historias** tipo Instagram (barras de progreso 5 s, toque izq./der., se pausa al presionar); feed 3×3 con marca de reel; bloque naranja **#MujerValiente** que se copia al tocarlo. Se llega desde el **ícono de Instagram del header** (`.header__ig`, en las 5 páginas), la opción "Instagram" del menú (7ª, con su foto) y "Ver historias" en la sección del inicio. En esta página no sale la burbuja flotante.
+- **Logo** (`.logo-vl`, sección 23 del CSS): recreado en código como su logo real — monograma VL en Bodoni Moda 800 (`opsz` 16) partido por una ranura con VALIENTTE (letras repartidas con flex) y JOYERÍA debajo. Todo en `em`: se escala con `font-size`. La portada del inicio lo usa en vez de la palabra VALIENTTE, sobre un naranja con luz cálida (oscuro arriba, claro abajo) como sus historias. Bodoni se carga hasta peso 900.
+- **Pantalla de carga** (`.intro`, en las 5 páginas, justo después de `<body>`): sale SIEMPRE al entrar o recargar (~2,9 s). Las dos mitades del VL encajan desde su ranura, VALIENTTE aparece letra por letra, barra fina, y luego suben dos cortinas (naranja y verde). Espera a que cargue Bodoni (máx. 1,5 s) y tiene un seguro que la quita a los 5 s. `pointer-events:none`: nunca bloquea.
 - **Inicio resumido**: ventana → metales → Ella/Él → vitrina → Instagram → esmeralda (corta: gema, lupa con leyenda en 1 frase, significados en fila, regalo) → recibo (5 líneas) → chats (4) → footer.
 - **Asistente de WhatsApp**: botón flotante que saluda y se despliega con atajos (regalo, talla, catálogo, otra pregunta), cada uno con mensaje listo.
 - **coleccion.html** (`?para=ella` | `?para=el` | sin parámetro = catálogo completo): portada que cambia color/palabra/foto despacio (naranja Ella, tinta Él, bosque Todo), filtros por **momento** (mamá, aniversario, grado…), tipo y material, y piezas en estante escalonado. Los productos están en `js/coleccion.js` (`PIEZAS`), que se carga ANTES de `main.js`. Ella/Él y "Ver catálogo completo" del inicio llevan aquí.
@@ -74,13 +77,14 @@ valiente-joyeria/
 ├── producto.html     Ficha de ejemplo (Anillo Muzo)
 ├── nosotros.html     Quiénes somos
 ├── coleccion.html    Ella / Él / catálogo completo (+ js/coleccion.js)
+├── instagram.html    Apartado de Instagram (+ js/instagram.js)
 ├── css/styles.css    Estilos (19 secciones numeradas)
 ├── js/main.js        Config, WhatsApp/asistente, menú, ventana, gema, lupa, vitrina, bolsa
 ├── js/producto.js    Galería, variantes, barra fija, guía de tallas
 ├── img/              Fotos reales (ver img/LEEME.md)
 ├── REFERENCIAS.md · PROPUESTAS.md (historial) · CLAUDE.md
 ```
-El header, el menú, el asistente y la bolsa están repetidos en las 4 páginas: **si se cambia uno, cambiarlo en todas**.
+El header, el menú, el asistente y la bolsa están repetidos en las 5 páginas: **si se cambia uno, cambiarlo en todas**.
 
 ## Cómo funciona
 - `CONFIG` en `js/main.js`: `whatsappNumero` (solo dígitos con 57), enlace corto, envío gratis. Con número, todos los botones precargan su mensaje (`data-wa-msg` en el HTML).

@@ -9,11 +9,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>document.documentElement.classList.add('js', 'con-intro');</script>
 </head>
 <body class="pagina-coleccion">
+<!-- ============ PANTALLA DE CARGA: sale cada vez que se entra o se recarga ============ -->
+<div class="intro" aria-hidden="true">
+  <div class="intro__fondo"></div>
+  <div class="intro__panel">
+    <span class="logo-vl">
+      <span class="logo-vl__monograma">
+        <span class="logo-vl__mitad logo-vl__mitad--arriba"><span>VL</span></span>
+        <span class="logo-vl__mitad logo-vl__mitad--abajo"><span>VL</span></span>
+        <span class="logo-vl__nombre"><i>V</i><i>A</i><i>L</i><i>I</i><i>E</i><i>N</i><i>T</i><i>T</i><i>E</i></span>
+      </span>
+      <span class="logo-vl__joyeria">JOYERÍA</span>
+    </span>
+    <div class="intro__barra"><span></span></div>
+  </div>
+</div>
+<script>
+  // Arranca cuando la tipografía del logo está lista (o a los 1,5 s, lo que pase primero) y siempre se quita.
+  (function () {
+    var html = document.documentElement, listo = false;
+    function arrancar() {
+      if (listo) return; listo = true;
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        html.classList.add('intro-arranca');
+        setTimeout(function () { html.classList.add('intro-lista'); }, 3100);
+      }); });
+    }
+    if (document.fonts && document.fonts.load) document.fonts.load('800 100px "Bodoni Moda"').then(arrancar, arrancar);
+    setTimeout(arrancar, 1500);
+    setTimeout(function () { html.classList.add('intro-lista'); }, 5000);   // seguro por si algo falla
+  })();
+</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></symbol>
@@ -33,9 +64,12 @@
   <a href="index.html" class="logo" aria-label="Valientte Joyería, inicio">
     <span class="logo__vl">VL</span><span class="logo__nombre">VALIENTTE</span>
   </a>
+  <div class="header__der">
+    <a class="header__ig" href="instagram.html" aria-label="Instagram de Valientte"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span></a>
   <button class="header__btn header__btn--der" type="button" data-abrir-carrito aria-label="Abrir bolsa">
     Bolsa <span class="burbuja" data-contador>0</span>
   </button>
+  </div>
 </header>
 
 <!-- ============ MENÚ ============ -->
@@ -52,6 +86,7 @@
     <img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
     <img src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
     <img src="https://images.unsplash.com/photo-1761735489573-15b2d60280f5?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="https://images.unsplash.com/photo-1612239396116-4da3087f8f79?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
   </div>
   <nav class="menu__nav" aria-label="Principal">
     <ul class="menu__lista">
@@ -61,6 +96,7 @@
       <li style="--i:3"><a class="opcion-menu" href="index.html#piedra">La esmeralda</a></li>
       <li style="--i:4"><a class="opcion-menu" href="nosotros.html">Quiénes somos</a></li>
       <li style="--i:5"><a class="opcion-menu" href="index.html#recibo">Envíos y pagos</a></li>
+      <li style="--i:6"><a class="opcion-menu" href="instagram.html">Instagram</a></li>
     </ul>
   </nav>
   <div class="menu__pie">

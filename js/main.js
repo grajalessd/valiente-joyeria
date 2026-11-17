@@ -69,6 +69,7 @@ if (asistente) {
    y el footer, y de vez en cuando dice algo para que no pase desapercibida. */
 const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
 (() => {
+  if (document.body.classList.contains('pagina-ig')) return;   // en la página de Instagram sobra
   const ig = document.createElement('a');
   ig.className = 'ig-flota';
   ig.href = IG_URL;
