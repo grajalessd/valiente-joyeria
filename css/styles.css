@@ -1102,3 +1102,28 @@ html.saliendo-pagina body { opacity: 0; transition: opacity .38s var(--ease); an
 /* las fotos reales tienen distintas proporciones: todas se recortan al centro en 4:5 */
 .pieza__foto img, .mini__foto img { object-position: 50% 50%; }
 
+
+/* ---------- 27. FOTOS SIEMPRE NÍTIDAS ----------
+   Las fotos del catálogo solo existen a 800 px de ancho: ninguna zona debe mostrarlas
+   mucho más grandes que eso (si no, se pixelan). */
+/* Portada: tres fotos lado a lado en computador; una sola en celular */
+.ventana__fotos { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr; transform: scale(calc(1.3 - var(--p, 0) * .3)); will-change: transform; }
+.ventana__vidrio .ventana__fotos img { transform: none; will-change: auto; width: 100%; height: 100%; object-fit: cover; }
+.ventana__fotos img:not(:first-child) { display: none; }
+@media (min-width: 900px) {
+  .ventana__fotos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; background: var(--noche); }
+  .ventana__fotos img:not(:first-child) { display: block; }
+}
+/* Ficha de producto: la foto a su tamaño real como máximo */
+@media (min-width: 900px) {
+  .ficha { grid-template-columns: minmax(0, 600px) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); max-width: 1320px; margin-inline: auto; padding-inline: var(--gutter); }
+  .galeria { position: sticky; top: calc(var(--alto-header) + 1.5rem); margin-top: 1.5rem; }
+  .galeria__fotos figure { clip-path: var(--faceta); }
+}
+/* Quiénes somos: foto a su tamaño, centrada */
+.nos-foto { max-width: 600px; margin-inline: auto; }
+@media (max-width: 660px) { .nos-foto { margin-inline: var(--gutter); } }
+/* Menú en computador: la foto ocupa la mitad derecha (no toda la pantalla) */
+@media (min-width: 900px) { .menu__fondos img { left: auto; width: min(58%, 800px); } }
+/* Colección: la foto de la portada a su tamaño real */
+@media (min-width: 900px) { .col-hero__fotos { inset: 0 0 0 auto; width: min(56%, 820px); } }

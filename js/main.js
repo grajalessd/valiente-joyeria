@@ -235,17 +235,23 @@ const lupa = $('[data-lupa]');
 if (lupa) {
   const img = $('img', lupa);
   const lente = $('[data-lente]', lupa);
-  const ZOOM = 2.6;
   const mover = (x, y) => {
     const r = lupa.getBoundingClientRect();
     const lx = x - r.left;
     const ly = y - r.top;
     const t = lente.offsetWidth / 2;
+    // la foto está recortada (cover): se calcula su tamaño real en pantalla
+    const nw = img.naturalWidth || r.width, nh = img.naturalHeight || r.height;
+    const escala = Math.max(r.width / nw, r.height / nh);
+    const rw = nw * escala, rh = nh * escala;
+    const x0 = (r.width - rw) / 2, y0 = (r.height - rh) / 2;
+    // aumento: lo justo para ver la foto a su resolución real (nunca más), así no se pixela
+    const z = Math.min(2.4, Math.max(1.2, (1 / escala) / (window.devicePixelRatio > 1 ? 1.4 : 1)));
     lente.style.setProperty('--x', (lx - t) + 'px');
     lente.style.setProperty('--y', (ly - t) + 'px');
     lente.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
-    lente.style.backgroundSize = `${r.width * ZOOM}px ${r.height * ZOOM}px`;
-    lente.style.backgroundPosition = `${-(lx * ZOOM - t)}px ${-(ly * ZOOM - t)}px`;
+    lente.style.backgroundSize = `${rw * z}px ${rh * z}px`;
+    lente.style.backgroundPosition = `${-((lx - x0) * z - t)}px ${-((ly - y0) * z - t)}px`;
   };
   lupa.addEventListener('pointerdown', (e) => { lupa.classList.add('activa'); mover(e.clientX, e.clientY); });
   lupa.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') lupa.classList.add('activa'); });
