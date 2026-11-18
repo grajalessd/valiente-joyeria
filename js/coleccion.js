@@ -1,5 +1,5 @@
 /* =========================================================
-   VALIENTTE — Página de colección (Para ti / Para regalar / Todo) — sin género
+   VALIENTTE — Página de colección: el catálogo completo (sin división por género ni "para regalar")
    - Pinta todas las piezas una sola vez (main.js les conecta "agregar").
    - Filtros: para quién (portada), momento, tipo de joya y material.
    - Se carga ANTES de main.js.
@@ -9,23 +9,10 @@
   // Catálogo REAL: viene de js/catalogo.js (se carga antes)
   const { CATALOGO: PIEZAS, pieza } = window.Catalogo;
 
-  // Sin género: la colección se recorre por intención (para ti / para regalar / todo)
-  const REGALO = ['mama', 'amor', 'grado', 'cumple'];
+  // Un solo catálogo (la clienta no quiere división por género ni por regalo)
   const PARA = {
-    ti: {
-      rotulo: 'El lujo de ser tú', palabra: 'Tú', titulo: 'Para ti', frase: 'Porque no necesitas una ocasión para brillar.', color: '#E0662E',
-      ayuda: 'Cuéntanos tu estilo y te proponemos tres piezas pensadas para ti.',
-      msg: 'Hola Valientte ✨ Busco una joya para mí, ¿me ayudan a escoger?',
-      grupo: (p) => p.momentos.includes('ti')
-    },
-    regalo: {
-      rotulo: 'Para regalar', palabra: 'Regalo', titulo: 'Para regalar', frase: 'Una joya dice lo que las palabras no alcanzan.', color: '#1A1714',
-      ayuda: 'Cuéntanos para quién es y te proponemos tres piezas pensadas para esa persona. El empaque de regalo va por nuestra cuenta.',
-      msg: 'Hola Valientte ✨ Quiero dar un regalo, ¿me ayudan a escoger?',
-      grupo: (p) => p.momentos.some((m) => REGALO.includes(m))
-    },
     todo: {
-      rotulo: 'Catálogo completo', palabra: 'Todo', titulo: 'Catálogo', frase: 'Toda nuestra colección, en un solo lugar.', color: '#0D3B2C',
+      rotulo: 'Catálogo completo', palabra: 'Colección', titulo: 'Colección', frase: 'Toda nuestra colección, en un solo lugar.', color: '#0D3B2C',
       ayuda: 'Si no encuentras lo que buscas, lo conseguimos por encargo.',
       msg: 'Hola Valientte ✨ ¿Me comparten el catálogo completo?',
       grupo: () => true
@@ -33,8 +20,6 @@
   };
 
   const MOMENTOS = {
-    ti: [],
-    regalo: [['', 'Todo'], ['mama', 'Para mamá'], ['amor', 'Aniversario'], ['grado', 'Grado'], ['cumple', 'Cumpleaños']],
     todo: []
   };
 
@@ -181,6 +166,6 @@
   pintarMomentos();
   pintarPiezas();
   pintarHeader();
-  // al cambiar Para ti / Para regalar el header debe cambiar de color también
+  // (sin selector de portada: estos enlaces ya no existen, se deja por si vuelve)
   $$('[data-ir-para]').forEach((a) => a.addEventListener('click', () => setTimeout(pintarHeader, 460)));
 })();

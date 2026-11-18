@@ -85,7 +85,7 @@ const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
   document.body.appendChild(ig);
 
   // PENDIENTE: ajustar frases con la clienta (p. ej. si hacen sorteos o lives)
-  const frases = ['Las novedades, aquí primero', 'Cada pieza, en quien la luce', 'Desde Manizales, con orgullo', 'Inspiración para regalar ✨'];
+  const frases = ['Las novedades, aquí primero', 'Cada pieza, en quien la luce', 'Desde Manizales, con orgullo', 'Plata 925 & esmeraldas ✨'];
   const frase = $('[data-ig-frase]', ig);
   let n = 0, tHabla;
   const hablar = () => {

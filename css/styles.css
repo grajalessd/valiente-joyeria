@@ -766,7 +766,7 @@ dialog.modal::backdrop { background: rgba(6, 26, 18, .55); }
 .col-hero__fotos img.activa { opacity: 1; transform: none; }
 .col-hero__palabra {
   font-family: var(--f-display); font-style: italic; font-weight: 400;
-  font-size: clamp(5.5rem, 29vw, 17rem); line-height: .8; letter-spacing: -.05em;
+  font-size: clamp(4rem, 19vw, 12rem); line-height: .8; letter-spacing: -.05em;
   padding-top: .2em;   /* espacio para la tilde de "Él": no toca el rótulo de arriba */
   transition: opacity .45s var(--ease), transform .9s var(--ease-suave);
 }
