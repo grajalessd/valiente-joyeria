@@ -32,19 +32,23 @@
   </script>
 </head>
 <body>
-<!-- ============ PANTALLA DE CARGA: sale cada vez que se entra o se recarga ============ -->
+<!-- ============ PANTALLA DE CARGA: "EL ESTUCHE" ============
+     Un estuche de terciopelo oscuro: el VL en plata encaja desde su ranura, un brillo recorre
+     el metal, se enciende una línea de luz en la ranura y el estuche se abre en dos
+     (tapa arriba, base abajo) dejando ver la portada naranja. -->
 <div class="intro" aria-hidden="true">
-  <div class="intro__fondo"></div>
-  <div class="intro__panel">
+  <div class="intro__tapa intro__tapa--arriba"></div>
+  <div class="intro__tapa intro__tapa--abajo"></div>
+  <div class="intro__logo">
     <span class="logo-vl">
       <span class="logo-vl__monograma">
         <span class="logo-vl__mitad logo-vl__mitad--arriba"><span>VL</span></span>
         <span class="logo-vl__mitad logo-vl__mitad--abajo"><span>VL</span></span>
+        <span class="intro__luz"></span>
         <span class="logo-vl__nombre"><i>V</i><i>A</i><i>L</i><i>I</i><i>E</i><i>N</i><i>T</i><i>T</i><i>E</i></span>
       </span>
       <span class="logo-vl__joyeria">JOYERÍA</span>
     </span>
-    <div class="intro__barra"><span></span></div>
   </div>
 </div>
 <script>
@@ -55,7 +59,7 @@
       if (listo) return; listo = true;
       requestAnimationFrame(function () { requestAnimationFrame(function () {
         html.classList.add('intro-arranca');
-        setTimeout(function () { html.classList.add('intro-lista'); }, 3100);
+        setTimeout(function () { html.classList.add('intro-lista'); }, 3400);
       }); });
     }
     if (document.fonts && document.fonts.load) document.fonts.load('800 100px "Bodoni Moda"').then(arrancar, arrancar);

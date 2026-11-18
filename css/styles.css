@@ -1025,25 +1025,51 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 /* fondo con la misma luz cálida de su Instagram: más oscuro arriba, más claro abajo */
 .ventana__pegado { background: radial-gradient(120% 80% at 70% 100%, #EE8A55 0%, rgba(238, 138, 85, 0) 60%), linear-gradient(170deg, #A9481C 0%, #D45F29 38%, #E0662E 70%); }
 
-/* Pantalla de carga: sale cada vez que se entra o se recarga */
+/* Pantalla de carga "EL ESTUCHE": terciopelo oscuro, VL en plata que brilla, luz en la ranura y el estuche se abre */
 .intro { display: none; }
-.con-intro .intro { display: block; position: fixed; inset: 0; z-index: 500; pointer-events: none; animation: intro-fin 0s linear 2.9s forwards; }
+.con-intro .intro { display: block; position: fixed; inset: 0; z-index: 500; pointer-events: none; overflow: hidden; animation: intro-fin 0s linear 3.25s forwards;
+  --t: min(48vw, 36vh); }   /* mismo tamaño que el logo de la portada */
+@media (min-width: 900px) { .con-intro .intro { --t: min(26vw, 44vh); } }
 .intro-lista .intro { display: none; }
 @keyframes intro-fin { to { visibility: hidden; } }
-.intro__fondo, .intro__panel { position: absolute; inset: 0; clip-path: inset(0 0 0 0); animation: cortina .85s cubic-bezier(.75, 0, .2, 1) forwards; }
-.intro__fondo { background: var(--bosque); animation-delay: 2.02s; }                 /* segunda cortina, verde */
-.intro__panel {
-  background: radial-gradient(120% 80% at 70% 100%, #EE8A55 0%, rgba(238, 138, 85, 0) 60%), linear-gradient(170deg, #A9481C 0%, #D45F29 38%, #E0662E 70%);
-  display: grid; place-content: center; justify-items: center; gap: 2.4rem;
-  animation-delay: 1.85s;
+/* las dos tapas del estuche (arriba y abajo), con una luz suave que nace del centro */
+.intro__tapa { position: absolute; left: 0; right: 0; animation: 0.95s cubic-bezier(.76, 0, .24, 1) 2.25s forwards; }
+.intro__tapa--arriba { top: 0; height: calc(50% - var(--t) * .047 + 1px); animation-name: tapa-sube;
+  background: radial-gradient(70% 90% at 50% 100%, #2B2521 0%, #171412 55%, #0C0B0A 100%); }
+.intro__tapa--abajo { top: calc(50% - var(--t) * .047); bottom: 0; animation-name: tapa-baja;
+  background: radial-gradient(70% 90% at 50% 0%, #2B2521 0%, #171412 55%, #0C0B0A 100%); }
+@keyframes tapa-sube { to { transform: translateY(-101%); } }
+@keyframes tapa-baja { to { transform: translateY(101%); } }
+/* línea de luz en la ranura: se enciende de centro a lados y se apaga al abrir */
+.intro__luz {
+  position: absolute; left: -60vw; right: -60vw; top: 57.4%; height: 1px; margin-top: -.5px; z-index: 2;
+  background: linear-gradient(90deg, rgba(255, 244, 222, 0), #FFF4DE 30%, #FFFFFF 50%, #FFF4DE 70%, rgba(255, 244, 222, 0));
+  box-shadow: 0 0 14px 2px rgba(255, 236, 200, .55), 0 0 40px 6px rgba(240, 160, 110, .25);
+  transform: scaleX(0); opacity: 0;
+  animation: luz-enciende .6s cubic-bezier(.6, 0, .2, 1) 1.8s forwards, luz-apaga .5s ease 2.35s forwards;
 }
-@keyframes cortina { to { clip-path: inset(0 0 100% 0); } }
-.intro .logo-vl { font-size: min(44vw, 30vh); }
-/* las dos mitades del VL entran desde su ranura, una baja y otra sube */
-.intro .logo-vl__mitad--arriba > span { transform: translateY(-92%); animation: encajar 1s cubic-bezier(.7, 0, .2, 1) .15s forwards; }
-.intro .logo-vl__mitad--abajo > span { transform: translateY(92%); animation: encajar 1s cubic-bezier(.7, 0, .2, 1) .15s forwards; }
+@keyframes luz-enciende { to { transform: scaleX(1); opacity: 1; } }
+@keyframes luz-apaga { to { opacity: 0; transform: scaleX(1) scaleY(6); } }
+/* el logo, en plata */
+.intro__logo { position: absolute; inset: 0; display: grid; place-items: center; }
+.intro .logo-vl { font-size: var(--t); color: #E9E5DF; transform: translateY(-8%); }   /* misma altura que en la portada */
+.intro .logo-vl__mitad > span {
+  background: linear-gradient(105deg, #8E8A85 0%, #D9D5CF 30%, #FFFFFF 45%, #F4F1EC 50%, #A9A5A0 60%, #E4E0DA 80%, #8E8A85 100%);
+  background-size: 300% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* las dos mitades del VL entran desde su ranura y luego un brillo recorre el metal */
+.intro .logo-vl__mitad--arriba > span { transform: translateY(-92%); animation: encajar 1s cubic-bezier(.7, 0, .2, 1) .15s forwards, brillo 1.1s cubic-bezier(.4, 0, .2, 1) 1.05s forwards; }
+.intro .logo-vl__mitad--abajo > span { transform: translateY(92%); animation: encajar 1s cubic-bezier(.7, 0, .2, 1) .15s forwards, brillo 1.1s cubic-bezier(.4, 0, .2, 1) 1.15s forwards; }
 @keyframes encajar { to { transform: none; } }
-/* VALIENTTE aparece letra por letra en la ranura */
+@keyframes brillo { to { background-position: 0 0; } }
+/* al abrir: la mitad de arriba se va con la tapa de arriba y la de abajo con la de abajo */
+.intro .logo-vl__mitad--arriba { animation: tapa-mitad-sube .95s cubic-bezier(.76, 0, .24, 1) 2.25s forwards; }
+.intro .logo-vl__mitad--abajo { animation: tapa-mitad-baja .95s cubic-bezier(.76, 0, .24, 1) 2.25s forwards; }
+@keyframes tapa-mitad-sube { to { transform: translateY(-52vh); } }
+@keyframes tapa-mitad-baja { to { transform: translateY(52vh); } }
+/* VALIENTTE aparece letra por letra en la ranura y se desvanece cuando se enciende la luz */
+.intro .logo-vl__nombre { color: #E9E5DF; animation: nombre-sale .35s ease 1.85s forwards; }
 .intro .logo-vl__nombre i { opacity: 0; transform: translateY(.5em); animation: letra .6s var(--ease-suave) forwards; }
 .intro .logo-vl__nombre i:nth-child(1) { animation-delay: .85s; } .intro .logo-vl__nombre i:nth-child(2) { animation-delay: .9s; }
 .intro .logo-vl__nombre i:nth-child(3) { animation-delay: .95s; } .intro .logo-vl__nombre i:nth-child(4) { animation-delay: 1s; }
@@ -1051,12 +1077,8 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 .intro .logo-vl__nombre i:nth-child(7) { animation-delay: 1.15s; } .intro .logo-vl__nombre i:nth-child(8) { animation-delay: 1.2s; }
 .intro .logo-vl__nombre i:nth-child(9) { animation-delay: 1.25s; }
 @keyframes letra { to { opacity: 1; transform: none; } }
-.intro .logo-vl__joyeria { opacity: 0; animation: letra .7s var(--ease-suave) 1.3s forwards; }
-/* barra de carga fina */
-.intro__barra { width: min(200px, 50vw); height: 2px; border-radius: 2px; background: rgba(26, 23, 20, .18); overflow: hidden; }
-.intro__barra span { display: block; height: 100%; background: var(--tinta); transform: scaleX(0); transform-origin: left; animation: barra 1.6s cubic-bezier(.6, 0, .3, 1) .1s forwards; }
-@keyframes barra { to { transform: none; } }
-/* todo espera quieto hasta que la tipografía está lista (clase intro-arranca) */
+@keyframes nombre-sale { to { opacity: 0; letter-spacing: .4em; } }
+.intro .logo-vl__joyeria { color: #BDB8B0; opacity: 0; animation: letra .7s var(--ease-suave) 1.3s forwards, nombre-sale .4s ease 2.15s forwards; }/* todo espera quieto hasta que la tipografía está lista (clase intro-arranca) */
 .con-intro:not(.intro-arranca) .intro,
 .con-intro:not(.intro-arranca) .intro * { animation-play-state: paused !important; }
 /* en la portada el logo grande ya está: el VL pequeño del header aparece al bajar */
