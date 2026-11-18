@@ -1,35 +1,89 @@
 /* =========================================================
    VALIENTTE — Página de Instagram
-   - Historias: avanzan solas (5 s), se tocan a la izquierda/derecha,
-     se pausan al dejar el dedo presionado o cuando no se ven.
+   - Historias DESTACADAS (como las de su perfil, sin horas):
+     círculos con nombre; al tocar uno se ve en el visor. Avanzan solas (5 s),
+     se tocan a la izquierda/derecha, se pausan al dejar el dedo presionado
+     y al terminar una destacada pasa a la siguiente.
+     Se puede abrir una directo con instagram.html#esmeraldas (lo usa el inicio).
    - Hashtag #MujerValiente: se copia al tocarlo.
    ========================================================= */
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const foto = (id, w, h) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=70`;
 
-  /* ---------- Historias ---------- */
+  // TEMPORAL: fotos de Unsplash. Cambiar por las destacadas reales de su Instagram.
+  const DESTACADAS = [
+    { id: 'novedades', nombre: 'Novedades', portada: 'photo-1573408301185-9146fe634ad0', historias: [
+      { f: 'photo-1573408301185-9146fe634ad0', t: 'Las novedades,<br><i>aquí primero</i>' },
+      { f: 'photo-1588444968576-f8fe92ce56fd', t: 'Recién llegadas<br>a la <i>vitrina</i>' } ] },
+    { id: 'esmeraldas', nombre: 'Esmeraldas', portada: 'photo-1685970732254-d2d1f43ddc7c', historias: [
+      { f: 'photo-1685970732254-d2d1f43ddc7c', t: 'La piedra de<br>los <i>valientes</i>' },
+      { f: 'photo-1685970730959-eb22c7b2bcd9', t: 'Esmeralda<br><i>colombiana</i> 💚' } ] },
+    { id: 'mujervaliente', nombre: '#MujerValiente', portada: 'photo-1475179593777-bd12fd56b85d', historias: [
+      { f: 'photo-1475179593777-bd12fd56b85d', t: '<i>#MujerValiente</i><br>tu historia, en la nuestra' },
+      { f: 'photo-1611653842967-39eb011b2ca3', t: 'Cada pieza,<br><i>en quien la luce</i>' } ] },
+    { id: 'ellos', nombre: 'Ellos', portada: 'photo-1639065643006-e217c4fee12e', historias: [
+      { f: 'photo-1639065643006-e217c4fee12e', t: 'Ellos también llevan<br>la <i>elegancia</i>' },
+      { f: 'photo-1605884878538-6468614df578', t: 'Acero para<br>el <i>día a día</i>' } ] },
+    { id: 'clientas', nombre: 'Clientas', portada: 'photo-1608613381851-6a058de0dc11', historias: [
+      { f: 'photo-1608613381851-6a058de0dc11', t: 'Nuestras <i>clientas</i>,<br>nuestro orgullo' } ] }
+  ];
+
+  const lista = $('[data-destacadas]');
   const caja = $('[data-historia]');
-  if (caja) {
-    const slides = $$('.ig-historia__slide', caja);
-    const barras = $$('.ig-historia__barras i', caja);
-    const hora = $('[data-historia-hora]', caja);
-    let actual = 0;
+  if (lista && caja) {
+    const barrasCaja = $('[data-historia-barras]', caja);
+    const slidesCaja = $('[data-historia-slides]', caja);
+    const nombre = $('[data-historia-nombre]', caja);
+    let d = 0, actual = 0, barras = [], slides = [];
 
-    const mostrar = (n) => {
-      actual = (n + slides.length) % slides.length;
+    // círculos de las destacadas
+    lista.innerHTML = DESTACADAS.map((x, i) => `
+      <li><button type="button" data-destacada="${i}" aria-label="Ver la destacada ${x.nombre}">
+        <span class="anillo-ig"><img src="${foto(x.portada, 200, 200)}" width="100" height="100" alt=""></span>${x.nombre}
+      </button></li>`).join('');
+    const botones = $$('[data-destacada]', lista);
+
+    function abrir(n, desdeElFinal = false) {
+      d = (n + DESTACADAS.length) % DESTACADAS.length;
+      const x = DESTACADAS[d];
+      slidesCaja.innerHTML = x.historias.map((h, i) => `
+        <figure class="ig-historia__slide">
+          <img src="${foto(h.f, 700, 1240)}" width="700" height="1240" ${i ? 'loading="lazy"' : ''} alt="">
+          <figcaption>${h.t}</figcaption>
+        </figure>`).join('');
+      barrasCaja.innerHTML = x.historias.map(() => '<span><i></i></span>').join('');
+      slides = $$('.ig-historia__slide', slidesCaja);
+      barras = $$('i', barrasCaja);
+      barras.forEach((b) => b.addEventListener('animationend', () => mostrar(actual + 1)));
+      nombre.textContent = x.nombre;
+      botones.forEach((b, i) => b.setAttribute('aria-current', i === d ? 'true' : 'false'));
+      // la destacada elegida queda centrada en la fila (en celular se desliza)
+      const li = botones[d].parentElement;
+      lista.scrollTo({ left: li.offsetLeft - (lista.clientWidth - li.offsetWidth) / 2, behavior: quieto ? 'auto' : 'smooth' });
+      mostrar(desdeElFinal ? slides.length - 1 : 0);
+    }
+
+    function mostrar(n) {
+      if (n >= slides.length) return abrir(d + 1);               // terminó: pasa a la siguiente destacada
+      if (n < 0) return abrir(d - 1, true);                      // antes de la primera: vuelve a la anterior
+      actual = n;
       slides.forEach((s, i) => s.classList.toggle('activa', i === actual));
       barras.forEach((b, i) => {
         b.classList.remove('corre');
         b.classList.toggle('llena', i < actual);
-        void b.offsetWidth;                 // reinicia la animación
+        void b.offsetWidth;                                       // reinicia la animación
         if (i === actual) b.classList.add('corre');
       });
-      if (hora) hora.textContent = slides[actual].dataset.hora || '';
-    };
+    }
 
-    barras.forEach((b) => b.addEventListener('animationend', () => mostrar(actual + 1)));
+    botones.forEach((b, i) => b.addEventListener('click', () => {
+      abrir(i);
+      // en celular el visor queda debajo: se baja hasta él
+      if (caja.getBoundingClientRect().top > window.innerHeight * .5) caja.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'center' });
+    }));
     $('[data-historia-sigue]', caja).addEventListener('click', () => mostrar(actual + 1));
     $('[data-historia-atras]', caja).addEventListener('click', () => mostrar(actual - 1));
 
@@ -43,7 +97,11 @@
       new IntersectionObserver(([e]) => caja.classList.toggle('fuera', !e.isIntersecting), { threshold: 0.3 }).observe(caja);
     }
     if (quieto) caja.classList.add('quieta');
-    mostrar(0);
+
+    // abrir la destacada que pide el enlace (instagram.html#esmeraldas)
+    const pedida = DESTACADAS.findIndex((x) => x.id === location.hash.slice(1));
+    abrir(pedida >= 0 ? pedida : 0);
+    if (pedida >= 0) setTimeout(() => caja.scrollIntoView({ behavior: 'auto', block: 'center' }), 60);
   }
 
   /* ---------- Copiar el hashtag ---------- */

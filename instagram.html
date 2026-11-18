@@ -76,7 +76,7 @@
 
 <main id="contenido">
 
-  <!-- ============ 1. PERFIL + HISTORIAS ============ -->
+  <!-- ============ 1. PERFIL + HISTORIAS DESTACADAS ============ -->
   <!-- Bio de EJEMPLO basada en su Instagram: confirmar con la clienta -->
   <section class="ig-portada">
     <div class="contenedor ig-portada__grid">
@@ -91,31 +91,18 @@
           <a class="boton boton--ig" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>Seguir</span></a>
           <a class="boton boton--hueco" href="https://ig.me/m/joyeria.valientte" target="_blank" rel="noopener"><span>Escribirnos</span></a>
         </div>
+        <!-- Historias DESTACADAS (como en su perfil): los círculos y su contenido salen de js/instagram.js (DESTACADAS) -->
+        <ul class="destacadas ig-destacadas aparecer" data-destacadas aria-label="Historias destacadas"></ul>
       </div>
 
-      <!-- Historias: se tocan a la izquierda/derecha como en Instagram y avanzan solas -->
-      <!-- TEMPORAL: fotos de Unsplash → usar sus historias reales (img/historia-*.jpg, vertical 1080x1920) -->
-      <div class="ig-historia aparecer" data-historia aria-roledescription="Historias" aria-label="Historias de Valientte">
-        <div class="ig-historia__barras" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+      <!-- Visor de la destacada elegida: se toca a la izquierda/derecha y avanza solo -->
+      <!-- TEMPORAL: fotos de Unsplash → sus destacadas reales (img/destacada-*.jpg, vertical 1080x1920) -->
+      <div class="ig-historia aparecer" data-historia aria-roledescription="Historias destacadas" aria-label="Historia destacada de Valientte">
+        <div class="ig-historia__barras" aria-hidden="true" data-historia-barras></div>
         <div class="ig-historia__cabeza">
-          <span class="ig-historia__mini">VL</span><b>joyeria.valientte</b><span class="ig-historia__hora" data-historia-hora>2 h</span>
+          <span class="ig-historia__mini">VL</span><b>joyeria.valientte</b><span class="ig-historia__hora" data-historia-nombre></span>
         </div>
-        <figure class="ig-historia__slide activa" data-hora="2 h">
-          <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=700&h=1240&q=70" width="700" height="1240" alt="Collar Aurora en plata 925">
-          <figcaption>Las novedades,<br><i>aquí primero</i></figcaption>
-        </figure>
-        <figure class="ig-historia__slide" data-hora="5 h">
-          <img src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=700&h=1240&q=70" width="700" height="1240" loading="lazy" alt="Mujer con aretes de plata">
-          <figcaption>Cada pieza,<br><i>en quien la luce</i></figcaption>
-        </figure>
-        <figure class="ig-historia__slide" data-hora="1 d">
-          <img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=700&h=1240&q=70" width="700" height="1240" loading="lazy" alt="Anillo con esmeralda en la mano">
-          <figcaption>Inspiración<br>para <i>regalar</i> 💚</figcaption>
-        </figure>
-        <figure class="ig-historia__slide" data-hora="2 d">
-          <img src="https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&w=700&h=1240&q=70" width="700" height="1240" loading="lazy" alt="Mujer con aretes colgantes">
-          <figcaption><i>#MujerValiente</i><br>tu historia, en la nuestra</figcaption>
-        </figure>
+        <div data-historia-slides></div>
         <button class="ig-historia__toque ig-historia__toque--atras" type="button" aria-label="Historia anterior" data-historia-atras></button>
         <button class="ig-historia__toque ig-historia__toque--sigue" type="button" aria-label="Historia siguiente" data-historia-sigue></button>
         <a class="ig-historia__responder" href="https://ig.me/m/joyeria.valientte" target="_blank" rel="noopener"><span>Enviar mensaje</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4 18-7z"/></svg></a>

@@ -1062,3 +1062,18 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 /* en la portada el logo grande ya está: el VL pequeño del header aparece al bajar */
 .header .logo { transition: opacity .8s var(--ease-suave); }
 body:has(.ventana) .header:not(.solido):not(.sobre-foto) .logo { opacity: 0; }
+
+/* ---------- 24. HISTORIAS DESTACADAS (instagram.html) ---------- */
+/* Botones de las destacadas: mismo aspecto que los círculos del inicio */
+.destacadas button { display: grid; justify-items: center; gap: .5rem; font-size: .78rem; font-weight: 500; width: 76px; text-align: center; color: inherit; }
+.destacadas button:hover .anillo-ig { transform: scale(1.08) rotate(-4deg); }
+/* En el perfil: como en Instagram, las destacadas llevan un anillo sobrio; la que se está viendo, el de colores */
+.ig-destacadas { margin: 1.6rem calc(var(--gutter) * -1) 0; padding-bottom: .4rem; scroll-behavior: smooth; }
+.ig-destacadas .anillo-ig { background: var(--arena-2); transition: transform .6s var(--ease-suave), background .8s var(--ease-suave); }
+.ig-destacadas .anillo-ig img { border-color: var(--marfil); }
+.ig-destacadas [aria-current="true"] .anillo-ig { background: var(--ig); }
+.ig-destacadas [aria-current="true"] { font-weight: 600; }
+@media (min-width: 960px) { .ig-destacadas { margin-inline: 0; padding-inline: 0; justify-content: flex-start; } }
+/* en el visor, el nombre de la destacada en lugar de la hora */
+.ig-historia__hora { opacity: .8; }
+.ig-historia__hora::before { content: "·"; margin-right: .45rem; opacity: .7; }
