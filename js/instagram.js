@@ -58,6 +58,6 @@
     }
     b.classList.add('copiado');
     setTimeout(() => b.classList.remove('copiado'), 1600);
-    if (window.Valientte) window.Valientte.toast(`${texto} copiado: pégalo en tu foto ✨`);
+    if (window.Valientte) window.Valientte.toast(`${texto} copiado ✨ Úsalo en tu publicación`);
   }));
 })();

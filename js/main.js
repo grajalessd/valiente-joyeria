@@ -85,7 +85,7 @@ const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
   document.body.appendChild(ig);
 
   // PENDIENTE: ajustar frases con la clienta (p. ej. si hacen sorteos o lives)
-  const frases = ['Lo nuevo sale aquí primero', 'Míralas puestas', 'Somos de Manizales 💚', 'Ideas para regalar ✨'];
+  const frases = ['Las novedades, aquí primero', 'Cada pieza, en quien la luce', 'Desde Manizales, con orgullo', 'Inspiración para regalar ✨'];
   const frase = $('[data-ig-frase]', ig);
   let n = 0, tHabla;
   const hablar = () => {
@@ -203,7 +203,7 @@ if (escenario && !sinMovimiento) {
   const gema3d = $('[data-gema3d]', escenario);
   const destello = $('[data-destello]', escenario);
   const pista = $('.escenario__pista', escenario);
-  if (pista) pista.textContent = conMouse ? 'Pasa el mouse sobre ella' : 'Desliza y mírala brillar';
+  if (pista) pista.textContent = conMouse ? 'Acércate y mírala brillar' : 'Desliza y mírala brillar';
   const mover = (x, y) => {
     const r = escenario.getBoundingClientRect();
     const px = limitar((x - r.left) / r.width);
@@ -525,7 +525,7 @@ const Carrito = (() => {
     total.textContent = pesos(subtotal());
     const falta = CONFIG.envioGratisDesde - subtotal();
     envioBarra.style.width = Math.min(100, (subtotal() / CONFIG.envioGratisDesde) * 100) + '%';
-    envioTexto.innerHTML = falta > 0 ? `Te faltan <strong>${pesos(falta)}</strong> para el envío gratis` : '<strong>¡Tienes envío gratis!</strong> 🎉';
+    envioTexto.innerHTML = falta > 0 ? `A <strong>${pesos(falta)}</strong> de tu envío sin costo` : '<strong>Tu envío es cortesía de la casa</strong> ✨';
     finalizar.href = urlWhatsApp(mensajePedido());
   }
 
@@ -539,7 +539,7 @@ const Carrito = (() => {
     contador.classList.remove('salto');
     void contador.offsetWidth;
     contador.classList.add('salto');
-    toast(`${nombre} se agregó a tu bolsa`);
+    toast(`${nombre} ya está en tu bolsa`);
   }
 
   function cambiar(clave, accion) {

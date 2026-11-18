@@ -870,6 +870,14 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 .ig-enlace { display: inline-flex; align-items: center; gap: .8rem; min-height: 48px; color: var(--marfil); font-size: .95rem; }
 .ig-enlace b { font-weight: 600; border-bottom: 1px solid rgba(247, 243, 236, .4); transition: border-color .5s var(--ease); }
 .ig-enlace:hover b { border-color: var(--marfil); }
+/* dos líneas: rótulo pequeño + frase en Bodoni cursiva, con presencia */
+.ig-enlace__texto { display: grid; gap: .15rem; line-height: 1.15; }
+.ig-enlace__texto .rotulo { color: rgba(247, 243, 236, .6); font-size: .62rem; }
+.ig-enlace__texto { font-family: var(--f-display); font-style: italic; font-size: 1.25rem; }
+.ig-enlace__texto .rotulo { font-family: var(--f-texto); font-style: normal; }
+.ig-enlace__texto::after { content: ""; display: block; height: 1px; background: currentColor; opacity: .35; transform: scaleX(.3); transform-origin: left; transition: transform 1.2s var(--ease-suave), opacity 1.2s var(--ease-suave); }
+.ig-enlace:hover .ig-enlace__texto::after { transform: none; opacity: .8; }
+.ig-enlace__icono { width: 46px; height: 46px; }
 .ig-enlace__icono { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--ig); color: #fff; flex: none; }
 .ig-enlace__icono svg { width: 20px; height: 20px; }
 
