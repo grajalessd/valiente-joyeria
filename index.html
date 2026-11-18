@@ -19,14 +19,15 @@
   <link rel="stylesheet" href="css/styles.css">
   <script>
     document.documentElement.classList.add('js');
-    // Pantalla de carga SOLO en el inicio y solo al llegar a la página (desde afuera o recargando).
-    // Si la persona vuelve al inicio desde otra sección de la página, no sale.
+    // Pantalla de carga SOLO al ENTRAR al inicio (abrir el enlace o recargar).
+    // NO sale al devolverse con "atrás" ni al volver al inicio desde otra sección de la página.
     (function () {
       var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
-      var recarga = nav && nav.type === 'reload';
+      var tipo = nav ? nav.type : 'navigate';
+      if (tipo === 'back_forward') return;                       // se devolvió: entra directo
       var desdeAdentro = false;
       try { desdeAdentro = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
-      if (recarga || !desdeAdentro) document.documentElement.classList.add('con-intro');
+      if (tipo === 'reload' || !desdeAdentro) document.documentElement.classList.add('con-intro');
     })();
   </script>
 </head>
