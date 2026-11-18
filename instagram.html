@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#E0662E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -64,7 +63,7 @@
       <li style="--i:2"><a class="opcion-menu" href="coleccion.html">La colección</a></li>
       <li style="--i:3"><a class="opcion-menu" href="index.html#piedra">La esmeralda</a></li>
       <li style="--i:4"><a class="opcion-menu" href="nosotros.html">Quiénes somos</a></li>
-      <li style="--i:5"><a class="opcion-menu" href="index.html#recibo">Envíos y pagos</a></li>
+      <li style="--i:5"><a class="opcion-menu" href="index.html#pedir">Cómo pedir</a></li>
       <li style="--i:6"><a class="opcion-menu" href="instagram.html">Instagram</a></li>
     </ul>
   </nav>
@@ -81,7 +80,6 @@
   <section class="ig-portada">
     <div class="contenedor ig-portada__grid">
       <div class="ig-perfil">
-        <p class="rotulo aparecer">Nuestra comunidad en Instagram</p>
         <a class="ig-perfil__avatar aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Abrir @joyeria.valientte en Instagram">
           <span class="ig-perfil__anillo"><span class="ig-perfil__cara">VL</span></span>
         </a>
@@ -96,7 +94,7 @@
       </div>
 
       <!-- Visor de la destacada elegida: se toca a la izquierda/derecha y avanza solo -->
-      <!-- TEMPORAL: fotos de Unsplash → sus destacadas reales (img/destacada-*.jpg, vertical 1080x1920) -->
+      <!-- Las fotos salen de js/instagram.js (DESTACADAS). PENDIENTE: sus destacadas reales, verticales 1080x1920 -->
       <div class="ig-historia aparecer" data-historia aria-roledescription="Historias destacadas" aria-label="Historia destacada de Valientte">
         <div class="ig-historia__barras" aria-hidden="true" data-historia-barras></div>
         <div class="ig-historia__cabeza">
@@ -111,23 +109,23 @@
   </section>
 
   <!-- ============ 2. EL FEED ============ -->
-  <!-- TEMPORAL: reemplazar por sus publicaciones reales (img/instagram-1.jpg ... -9.jpg) -->
+  <!-- Fotos reales del catálogo. PENDIENTE: reemplazar por sus publicaciones reales -->
   <section class="ig-feed" aria-labelledby="titulo-feed">
     <div class="contenedor">
       <div class="titulo-seccion">
-        <h2 id="titulo-feed" class="aparecer">Lo <i>último</i></h2>
+        <h2 id="titulo-feed" class="aparecer">Lo último</h2>
         <p class="aparecer">Cada imagen te lleva a la publicación original.</p>
       </div>
       <div class="ig-feed__grid">
-        <a class="aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" style="--retraso:60ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" style="--retraso:120ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram" data-reel><img src="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="https://images.unsplash.com/photo-1605884878538-6468614df578?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" style="--retraso:60ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram" data-reel><img src="https://images.unsplash.com/photo-1731929315875-3ab60c006577?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" style="--retraso:120ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="https://images.unsplash.com/photo-1573717008136-5a9f0820e8bf?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="https://images.unsplash.com/photo-1639065643006-e217c4fee12e?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" style="--retraso:60ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="https://images.unsplash.com/photo-1550368566-f9cc32d7392d?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
-        <a class="aparecer" style="--retraso:120ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram" data-reel><img src="https://images.unsplash.com/photo-1762505464779-17f78cbfa8b4?auto=format&fit=crop&w=500&h=500&q=65" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="img/productos/28.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" style="--retraso:60ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="img/productos/07.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" style="--retraso:120ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram" data-reel><img src="img/productos/25.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="img/productos/10.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" style="--retraso:60ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram" data-reel><img src="img/productos/30.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" style="--retraso:120ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="img/productos/02.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="img/productos/17.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" style="--retraso:60ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver publicación en Instagram"><img src="img/productos/26.jpg" width="500" height="500" loading="lazy" alt=""></a>
+        <a class="aparecer" style="--retraso:120ms" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram" data-reel><img src="img/productos/43.jpg" width="500" height="500" loading="lazy" alt=""></a>
       </div>
     </div>
   </section>
@@ -136,7 +134,6 @@
   <!-- PENDIENTE: confirmar con la clienta que comparten las fotos de clientes en historias -->
   <section class="ig-etiqueta">
     <div class="contenedor">
-      <p class="rotulo aparecer">Tu historia puede ser parte de la nuestra</p>
       <button class="ig-etiqueta__hashtag aparecer" type="button" data-copiar="#MujerValiente" aria-label="Copiar el hashtag #MujerValiente">#Mujer<i>Valiente</i></button>
       <p class="aparecer">Luce tu joya, compártela y etiquétanos.<br><span class="ig-etiqueta__ayuda">Toca el hashtag para copiarlo.</span></p>
       <a class="boton aparecer" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>Visitar Instagram</span></a>
@@ -162,9 +159,9 @@
       <div>
         <h3>Ayuda</h3>
         <ul>
-          <li><a href="index.html#recibo">Envíos y pagos</a></li>
-          <li><a href="index.html#recibo">Cambios y garantía</a></li>
-          <li><a href="producto.html">Guía de tallas</a></li>
+          <li><a href="index.html#pedir">Cómo pedir</a></li>
+          <li><a href="index.html#recibo">Garantía</a></li>
+          <li><a href="producto.html?id=anillo-de-esmeralda-con-halo#tallas">Guía de tallas</a></li>
         </ul>
       </div>
       <div>
@@ -177,7 +174,7 @@
     </div>
     <div class="footer__legal">
       <span>© 2026 Valientte Joyería</span>
-      <span>Boceto · algunas fotos son de referencia</span>
+      <span>Plata 925 y esmeraldas · Manizales, Caldas</span>
     </div>
   </div>
   <div class="footer__gigante" aria-hidden="true">VALIENTTE</div>
@@ -193,10 +190,10 @@
     </div>
     <div class="asistente__cuerpo">
       <p class="asistente__saludo">Hola ✨ ¿En qué podemos acompañarte hoy?</p>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Busco un regalo especial, ¿me ayudan a elegirlo?"><span aria-hidden="true">🎁</span><span>Busco un regalo especial</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Necesito ayuda para saber mi talla de anillo."><span aria-hidden="true">💍</span><span>Encontrar mi talla</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me comparten el catálogo completo?"><span aria-hidden="true">📖</span><span>Recibir el catálogo</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Tengo una pregunta:"><span aria-hidden="true">💬</span><span>Hablar con una asesora</span><span aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Quiero conocer las joyas con esmeralda natural."><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M8 3h8l4 4v10l-4 4H8l-4-4V7z"/><path d="M9.5 7h5l2 2v6l-2 2h-5l-2-2V9z"/></svg></span><span>Ver las esmeraldas</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Necesito ayuda para saber mi talla de anillo."><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9.5 5.5 12 3l2.5 2.5L12 8z"/></svg></span><span>Encontrar mi talla</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me comparten el catálogo completo?"><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/></svg></span><span>Recibir el catálogo</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Tengo una pregunta:"><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span>Hablar con una asesora</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
     </div>
   </div>
   <button class="asistente__boton" type="button" aria-expanded="false" aria-controls="asistente-panel" data-abrir-asistente>
@@ -210,10 +207,10 @@
 <div class="velo" data-velo></div>
 <aside class="carrito" id="carrito" role="dialog" aria-modal="true" aria-labelledby="carrito-titulo">
   <div class="carrito__top">
-    <h2 id="carrito-titulo">Tu <i>bolsa</i></h2>
+    <h2 id="carrito-titulo">Tu bolsa</h2>
     <button class="header__btn" type="button" data-cerrar-carrito><svg width="18" height="18" aria-hidden="true"><use href="#i-cerrar"/></svg> Cerrar</button>
   </div>
-  <div class="envio">
+  <div class="envio" hidden>
     <span data-envio-texto>A $150.000 de tu envío sin costo</span>
     <div class="envio__barra"><span data-envio-barra></span></div>
   </div>

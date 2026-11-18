@@ -84,7 +84,7 @@
   const nombre = ficha.dataset.nombre;
   $$('[data-wa-pieza]').forEach((a) => {
     a.href = urlWhatsApp(a.dataset.waPieza === 'regalo'
-      ? `Hola Valientte ✨ Quiero ${nombre} para regalo, ¿me la envuelven?`
+      ? `Hola Valientte ✨ Quiero ver ${nombre} en persona, ¿me mandan más fotos o un video?`
       : `Hola Valientte ✨ ¿${nombre} está disponible?`);
   });
 
@@ -120,6 +120,9 @@
       $('[data-agregar-barra]', barra).tabIndex = visible ? 0 : -1;
     }).observe(botonPrincipal);
     $('[data-agregar-barra]', barra).addEventListener('click', () => form.requestSubmit());
+    // en celular, mientras se ven los botones de compra, el WhatsApp flotante se aparta (los tapaba)
+    const compra = $('.compra');
+    if (compra) new IntersectionObserver(([e]) => document.body.classList.toggle('compra-visible', e.isIntersecting)).observe(compra);
   }
 
   /* ---------- Guía de tallas ---------- */
@@ -129,6 +132,8 @@
     if (dialogo.showModal) dialogo.showModal();
   }));
   $('[data-cerrar-dialogo]', dialogo).addEventListener('click', () => dialogo.close());
+  // "Guía de tallas" del footer de otras páginas llega con #tallas: se abre sola
+  if (location.hash === '#tallas' && dialogo.showModal) setTimeout(() => dialogo.showModal(), 600);
   // Clic fuera de la ventana la cierra
   dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close(); });
 })();

@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#E0662E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -64,7 +63,7 @@
       <li style="--i:2"><a class="opcion-menu" href="coleccion.html">La colección</a></li>
       <li style="--i:3"><a class="opcion-menu" href="index.html#piedra">La esmeralda</a></li>
       <li style="--i:4"><a class="opcion-menu" href="nosotros.html">Quiénes somos</a></li>
-      <li style="--i:5"><a class="opcion-menu" href="index.html#recibo">Envíos y pagos</a></li>
+      <li style="--i:5"><a class="opcion-menu" href="index.html#pedir">Cómo pedir</a></li>
       <li style="--i:6"><a class="opcion-menu" href="instagram.html">Instagram</a></li>
     </ul>
   </nav>
@@ -82,14 +81,15 @@
       <!-- Fotos reales del catálogo -->
       <img data-foto="todo" class="activa" src="img/productos/09.jpg" width="800" height="853" alt="">
     </div>
-    <p class="rotulo" data-col-rotulo>Catálogo completo</p>
+    <p class="rotulo" data-col-rotulo hidden>Catálogo completo</p>
     <h1 id="col-titulo" class="col-hero__palabra" data-col-palabra>Colección</h1>
     <p class="col-hero__frase" data-col-frase>Toda nuestra colección, en un solo lugar.</p>
   </section>
 
   <!-- ============ 2. EL ESTANTE: piezas filtrables ============ -->
   <!-- Catálogo REAL (js/catalogo.js); filtros y momentos en js/coleccion.js -->
-  <section class="vitrina col-estante" id="piezas" aria-label="Piezas de la colección">
+  <section class="vitrina col-estante" id="piezas" aria-labelledby="titulo-piezas">
+    <h2 class="sr-only" id="titulo-piezas">Piezas de la colección</h2>
     <div class="contenedor">
 
       <div class="momentos" data-momentos aria-label="¿Para qué momento?"></div>
@@ -123,7 +123,7 @@
   <!-- ============ 3. AYUDA ============ -->
   <section class="col-ayuda">
     <div class="contenedor col-ayuda__caja">
-      <h2 class="aparecer">¿Aún no <i>decides</i>?</h2>
+      <h2 class="aparecer">¿Aún no decides?</h2>
       <p class="aparecer" data-col-ayuda-texto>Cuéntanos para quién es y te proponemos tres piezas pensadas para esa persona.</p>
       <a class="boton boton--whatsapp aparecer" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-col-ayuda data-wa-msg="Hola Valientte ✨ ¿Me ayudan a escoger una joya?"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg><span>Asesoría personal</span></a>
     </div>
@@ -148,9 +148,9 @@
       <div>
         <h3>Ayuda</h3>
         <ul>
-          <li><a href="index.html#recibo">Envíos y pagos</a></li>
-          <li><a href="index.html#recibo">Cambios y garantía</a></li>
-          <li><a href="producto.html">Guía de tallas</a></li>
+          <li><a href="index.html#pedir">Cómo pedir</a></li>
+          <li><a href="index.html#recibo">Garantía</a></li>
+          <li><a href="producto.html?id=anillo-de-esmeralda-con-halo#tallas">Guía de tallas</a></li>
         </ul>
       </div>
       <div>
@@ -163,7 +163,7 @@
     </div>
     <div class="footer__legal">
       <span>© 2026 Valientte Joyería</span>
-      <span>Boceto · algunas fotos son de referencia</span>
+      <span>Plata 925 y esmeraldas · Manizales, Caldas</span>
     </div>
   </div>
   <div class="footer__gigante" aria-hidden="true">VALIENTTE</div>
@@ -179,10 +179,10 @@
     </div>
     <div class="asistente__cuerpo">
       <p class="asistente__saludo">Hola ✨ ¿En qué podemos acompañarte hoy?</p>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Busco un regalo especial, ¿me ayudan a elegirlo?"><span aria-hidden="true">🎁</span><span>Busco un regalo especial</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Necesito ayuda para saber mi talla de anillo."><span aria-hidden="true">💍</span><span>Encontrar mi talla</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me comparten el catálogo completo?"><span aria-hidden="true">📖</span><span>Recibir el catálogo</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Tengo una pregunta:"><span aria-hidden="true">💬</span><span>Hablar con una asesora</span><span aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Quiero conocer las joyas con esmeralda natural."><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M8 3h8l4 4v10l-4 4H8l-4-4V7z"/><path d="M9.5 7h5l2 2v6l-2 2h-5l-2-2V9z"/></svg></span><span>Ver las esmeraldas</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Necesito ayuda para saber mi talla de anillo."><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M9.5 5.5 12 3l2.5 2.5L12 8z"/></svg></span><span>Encontrar mi talla</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Me comparten el catálogo completo?"><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/></svg></span><span>Recibir el catálogo</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Tengo una pregunta:"><span class="atajo__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span>Hablar con una asesora</span><span class="atajo__flecha" aria-hidden="true">→</span></a>
     </div>
   </div>
   <button class="asistente__boton" type="button" aria-expanded="false" aria-controls="asistente-panel" data-abrir-asistente>
@@ -196,10 +196,10 @@
 <div class="velo" data-velo></div>
 <aside class="carrito" id="carrito" role="dialog" aria-modal="true" aria-labelledby="carrito-titulo">
   <div class="carrito__top">
-    <h2 id="carrito-titulo">Tu <i>bolsa</i></h2>
+    <h2 id="carrito-titulo">Tu bolsa</h2>
     <button class="header__btn" type="button" data-cerrar-carrito><svg width="18" height="18" aria-hidden="true"><use href="#i-cerrar"/></svg> Cerrar</button>
   </div>
-  <div class="envio">
+  <div class="envio" hidden>
     <span data-envio-texto>A $150.000 de tu envío sin costo</span>
     <div class="envio__barra"><span data-envio-barra></span></div>
   </div>

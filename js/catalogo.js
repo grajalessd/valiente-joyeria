@@ -109,6 +109,19 @@
     const html = ORDEN_INICIO.map((n, i) => pieza(CATALOGO[n - 1], i, i < 3 ? 'eager' : 'lazy')).join('');
     if (mandos) mandos.insertAdjacentHTML('beforebegin', html); else pista.insertAdjacentHTML('afterbegin', html);
   }
+  /* ---------- El estuche: las seis esmeraldas del catálogo (inicio) ---------- */
+  const estuche = document.querySelector('[data-estuche]');
+  if (estuche) {
+    estuche.innerHTML = CATALOGO.filter((p) => p.material === 'esmeraldas').map((p, i) => `
+      <li class="hueco aparecer" style="--retraso:${i * 90}ms">
+        <a class="hueco__enlace" href="producto.html?id=${p.id}">
+          <span class="hueco__cama"><img src="${p.foto}" srcset="${p.foto} 800w, ${p.foto2x} 1600w" sizes="(min-width: 900px) 360px, 46vw" width="800" height="1000" loading="lazy" alt="${p.nombre}, ${p.rotulo.toLowerCase()}"></span>
+          <span class="hueco__placa"><b>${p.nombre}</b><span>${pesos(p.precio)}</span></span>
+        </a>
+        <button class="hueco__agregar" type="button" aria-label="Agregar ${p.nombre} a la bolsa" data-agregar data-id="${p.id}" data-nombre="${p.nombre}" data-precio="${p.precio}" data-variante="${p.variante}" data-img="${p.foto}"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
+      </li>`).join('');
+  }
+
   // precios "desde" de los paneles de colecciones (se calculan del catálogo)
   document.querySelectorAll('[data-desde-material]').forEach((el) => { el.textContent = 'Desde ' + pesos(desde((p) => p.material === el.dataset.desdeMaterial)); });
   document.querySelectorAll('[data-desde-tipo]').forEach((el) => { el.textContent = 'Desde ' + pesos(desde((p) => p.tipo === el.dataset.desdeTipo)); });
@@ -122,12 +135,11 @@
     Object.assign(ficha.dataset, { id: p.id, nombre: p.nombre, precio: p.precio, img: p.foto, variante: p.variante, tipo: p.tipo });
     document.title = `${p.nombre} · ${esm ? 'Plata 925 con esmeralda natural' : 'Plata 925'} · Valientte Joyería`;
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.content = `${p.nombre} en ${p.variante.toLowerCase()}. ${p.desc} Envíos a toda Colombia.`;
+    if (meta) meta.content = `${p.nombre} en ${p.variante.toLowerCase()}. ${p.desc} Pídela por WhatsApp.`;
     const poner = (sel, v, attr) => document.querySelectorAll(sel).forEach((el) => { if (attr) el.setAttribute(attr, v); else el.innerHTML = v; });
     const partes = p.nombre.split(' ');
-    // primera palabra recta y el resto en cursiva: "Anillo / de esmeralda con halo"
-    const titulo = partes.length > 1 ? `${partes[0]}<br><i>${partes.slice(1).join(' ')}</i>` : `<i>${p.nombre}</i>`;
-    poner('[data-ficha-titulo]', titulo);
+    // el nombre tal cual, recto: el precio y el botón deben verse sin bajar
+    poner('[data-ficha-titulo]', p.nombre);
     poner('[data-ficha-nombre]', p.nombre);
     poner('[data-precio-mostrado]', pesos(p.precio));
     poner('[data-precio-barra]', pesos(p.precio));

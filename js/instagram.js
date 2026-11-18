@@ -11,24 +11,24 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const foto = (id, w, h) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=70`;
+  // Fotos reales del catálogo (número de img/productos). PENDIENTE: cambiar por sus destacadas reales (verticales 1080x1920).
+  const foto = (n, w) => `img/productos/${String(n).padStart(2, '0')}${w > 300 ? '-2x' : ''}.jpg`;
 
-  // TEMPORAL: fotos de Unsplash. Cambiar por las destacadas reales de su Instagram.
   const DESTACADAS = [
-    { id: 'novedades', nombre: 'Novedades', portada: 'photo-1573408301185-9146fe634ad0', historias: [
-      { f: 'photo-1573408301185-9146fe634ad0', t: 'Las novedades,<br><i>aquí primero</i>' },
-      { f: 'photo-1588444968576-f8fe92ce56fd', t: 'Recién llegadas<br>a la <i>vitrina</i>' } ] },
-    { id: 'esmeraldas', nombre: 'Esmeraldas', portada: 'photo-1685970732254-d2d1f43ddc7c', historias: [
-      { f: 'photo-1685970732254-d2d1f43ddc7c', t: 'La piedra de<br>los <i>valientes</i>' },
-      { f: 'photo-1685970730959-eb22c7b2bcd9', t: 'Esmeralda<br><i>colombiana</i> 💚' } ] },
-    { id: 'mujervaliente', nombre: '#MujerValiente', portada: 'photo-1475179593777-bd12fd56b85d', historias: [
-      { f: 'photo-1475179593777-bd12fd56b85d', t: '<i>#MujerValiente</i><br>tu historia, en la nuestra' },
-      { f: 'photo-1611653842967-39eb011b2ca3', t: 'Cada pieza,<br><i>en quien la luce</i>' } ] },
-    { id: 'plata', nombre: 'Plata 925', portada: 'photo-1639065643006-e217c4fee12e', historias: [
-      { f: 'photo-1639065643006-e217c4fee12e', t: 'Plata 925,<br><i>para siempre</i>' },
-      { f: 'photo-1605884878538-6468614df578', t: 'Brillo que se queda<br><i>contigo</i>' } ] },
-    { id: 'clientes', nombre: 'Clientes', portada: 'photo-1608613381851-6a058de0dc11', historias: [
-      { f: 'photo-1608613381851-6a058de0dc11', t: 'Nuestros <i>clientes</i>,<br>nuestro orgullo' } ] }
+    { id: 'novedades', nombre: 'Novedades', portada: 2, historias: [
+      { f: 2, t: 'Las novedades,<br><i>aquí primero</i>' },
+      { f: 21, t: 'Recién llegadas<br>a la <i>vitrina</i>' } ] },
+    { id: 'esmeraldas', nombre: 'Esmeraldas', portada: 26, historias: [
+      { f: 26, t: 'La piedra de<br>los <i>valientes</i>' },
+      { f: 29, t: 'Esmeralda<br><i>colombiana</i>' } ] },
+    { id: 'mujervaliente', nombre: '#MujerValiente', portada: 25, historias: [
+      { f: 25, t: '<i>#MujerValiente</i><br>tu historia, en la nuestra' },
+      { f: 9, t: 'Cada pieza,<br><i>en quien la luce</i>' } ] },
+    { id: 'plata', nombre: 'Plata 925', portada: 36, historias: [
+      { f: 36, t: 'Plata 925,<br><i>para siempre</i>' },
+      { f: 14, t: 'Brillo que se queda<br><i>contigo</i>' } ] },
+    { id: 'clientes', nombre: 'Clientes', portada: 8, historias: [
+      { f: 8, t: 'Nuestros <i>clientes</i>,<br>nuestro orgullo' } ] }
   ];
 
   const lista = $('[data-destacadas]');
@@ -42,7 +42,7 @@
     // círculos de las destacadas
     lista.innerHTML = DESTACADAS.map((x, i) => `
       <li><button type="button" data-destacada="${i}" aria-label="Ver la destacada ${x.nombre}">
-        <span class="anillo-ig"><img src="${foto(x.portada, 200, 200)}" width="100" height="100" alt=""></span>${x.nombre}
+        <span class="anillo-ig"><img src="${foto(x.portada, 200)}" width="100" height="100" alt=""></span>${x.nombre}
       </button></li>`).join('');
     const botones = $$('[data-destacada]', lista);
 
@@ -51,7 +51,7 @@
       const x = DESTACADAS[d];
       slidesCaja.innerHTML = x.historias.map((h, i) => `
         <figure class="ig-historia__slide">
-          <img src="${foto(h.f, 700, 1240)}" width="700" height="1240" ${i ? 'loading="lazy"' : ''} alt="">
+          <img src="${foto(h.f, 700)}" width="700" height="1240" ${i ? 'loading="lazy"' : ''} alt="">
           <figcaption>${h.t}</figcaption>
         </figure>`).join('');
       barrasCaja.innerHTML = x.historias.map(() => '<span><i></i></span>').join('');

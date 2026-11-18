@@ -14,7 +14,7 @@ const CONFIG = {
   // Vacío = se usa el enlace corto de la bio de Instagram (no precarga el mensaje).
   whatsappNumero: '573106990102',   // número de su catálogo (vitrinapp)
   whatsappEnlace: 'https://wa.link/c60ecp',
-  envioGratisDesde: 150000,           // PENDIENTE confirmar con la clienta
+  envioGratisDesde: 0,                // PENDIENTE confirmar con la clienta (ej. 150000). En 0 no se promete envío gratis
   claveCarrito: 'valientte-carrito'
 };
 
@@ -57,9 +57,12 @@ if (asistente) {
   boton.addEventListener('click', () => abrir(!asistente.classList.contains('abierto')));
   $('[data-cerrar-asistente]', asistente).addEventListener('click', () => abrir(false));
   document.addEventListener('click', (e) => { if (!asistente.contains(e.target)) abrir(false); });
-  // Saluda una vez a los pocos segundos y vuelve a su forma compacta
-  setTimeout(() => asistente.classList.add('saluda'), 2500);
-  setTimeout(() => asistente.classList.remove('saluda'), 7500);
+  // Saluda una vez a los pocos segundos y vuelve a su forma compacta.
+  // En celular no: el texto desplegado tapaba títulos y precios.
+  if (window.matchMedia('(min-width: 900px)').matches && !document.body.classList.contains('con-barra')) {
+    setTimeout(() => asistente.classList.add('saluda'), 2500);
+    setTimeout(() => asistente.classList.remove('saluda'), 7500);
+  }
   window.Asistente = { cerrar: () => abrir(false) };
 }
 
@@ -98,7 +101,7 @@ const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
   };
 
   // dónde NO mostrarla: sobre la sección de Instagram y el footer
-  const tapan = $$('#redes, .footer');
+  const tapan = $$('#redes, #pedir, .footer');
   const visibles = new Set();
   let yaVista = false;
   const conVentana = !!$('[data-ventana]');
@@ -117,7 +120,8 @@ const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
   }
   window.addEventListener('scroll', decidir, { passive: true });
   decidir();
-  setInterval(hablar, 22000);
+  // Habla al aparecer y una sola vez más (antes era cada 22 s y competía con las piezas)
+  setTimeout(hablar, 45000);
 })();
 
 /* ---------- 3. HEADER + MENÚ ---------- */
@@ -572,10 +576,33 @@ const Carrito = (() => {
     pie.hidden = n === 0;
     lista.hidden = n === 0;
     total.textContent = pesos(subtotal());
-    const falta = CONFIG.envioGratisDesde - subtotal();
-    envioBarra.style.width = Math.min(100, (subtotal() / CONFIG.envioGratisDesde) * 100) + '%';
-    envioTexto.innerHTML = falta > 0 ? `A <strong>${pesos(falta)}</strong> de tu envío sin costo` : '<strong>Tu envío es cortesía de la casa</strong> ✨';
+    // Barra de envío gratis: solo si la clienta confirma un monto (CONFIG.envioGratisDesde > 0)
+    const cajaEnvio = envioTexto && envioTexto.closest('.envio');
+    if (cajaEnvio) cajaEnvio.hidden = !CONFIG.envioGratisDesde;
+    if (CONFIG.envioGratisDesde) {
+      const falta = CONFIG.envioGratisDesde - subtotal();
+      envioBarra.style.width = Math.min(100, (subtotal() / CONFIG.envioGratisDesde) * 100) + '%';
+      envioTexto.innerHTML = falta > 0 ? `A <strong>${pesos(falta)}</strong> de tu envío sin costo` : '<strong>Tu envío es cortesía de la casa</strong>';
+    }
     finalizar.href = urlWhatsApp(mensajePedido());
+    pintarChat();
+  }
+
+  // "Así se pide" (inicio): el teléfono muestra el mensaje REAL de la bolsa, o el ejemplo si está vacía
+  const chatPedido = $('[data-chat-pedido]');
+  const chatEtiqueta = $('[data-chat-etiqueta]');
+  const chatEnviar = $('[data-chat-enviar]');
+  const chatEjemplo = chatPedido ? chatPedido.innerHTML : '';
+  const escapar = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function pintarChat() {
+    if (!chatPedido) return;
+    const hay = items.length > 0;
+    chatPedido.innerHTML = hay ? escapar(mensajePedido()).replace(/\n/g, '<br>') : chatEjemplo;
+    if (chatEtiqueta) chatEtiqueta.textContent = hay ? 'Tu pedido, listo para enviar' : 'Así se ve tu mensaje';
+    if (chatEnviar) {
+      chatEnviar.href = hay ? urlWhatsApp(mensajePedido()) : urlWhatsApp('Hola Valientte ✨ Quiero asesoría para escoger una joya.');
+      chatEnviar.querySelector('span').textContent = hay ? 'Enviar mi pedido' : 'Escribirnos ahora';
+    }
   }
 
   function agregar({ id, nombre, variante, precio, img, cant = 1 }) {
