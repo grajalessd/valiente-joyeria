@@ -56,15 +56,16 @@
   const pedirWhatsApp = $('[data-pedir-whatsapp]');
   let cantidad = 1;
 
+  const esAnillo = ficha.dataset.tipo === 'anillos';
   function seleccion() {
     const material = $('input[name="material"]:checked', form);
-    const talla = $('input[name="talla"]:checked', form);
+    const talla = esAnillo ? $('input[name="talla"]:checked', form) : null;
     const precio = precioBase + Number(material.dataset.extra || 0);
     return {
       material: material.value,
       talla: talla ? talla.value : '',
       precio,
-      variante: `${material.value} · Talla ${talla ? talla.value : '—'}`
+      variante: ficha.dataset.variante + (talla ? ` · Talla ${talla.value}` : '')
     };
   }
 
@@ -75,9 +76,17 @@
     materialElegido.textContent = s.material;
     salidaCantidad.textContent = cantidad;
     pedirWhatsApp.href = urlWhatsApp(
-      `Hola Valientte ✨ Quiero pedir:\n\n• ${cantidad} x ${ficha.dataset.nombre}\n• ${s.material}\n• Talla ${s.talla}\n• Precio: ${pesos(s.precio * cantidad)}\n\n¿Está disponible?`
+      `Hola Valientte ✨ Quiero pedir:\n\n• ${cantidad} x ${ficha.dataset.nombre}\n• ${ficha.dataset.variante}${s.talla ? `\n• Talla ${s.talla}` : ''}\n• Precio: ${pesos(s.precio * cantidad)}\n\n¿Está disponible?`
     );
   }
+
+  // atajos del asistente con el nombre de la pieza
+  const nombre = ficha.dataset.nombre;
+  $$('[data-wa-pieza]').forEach((a) => {
+    a.href = urlWhatsApp(a.dataset.waPieza === 'regalo'
+      ? `Hola Valientte ✨ Quiero ${nombre} para regalo, ¿me la envuelven?`
+      : `Hola Valientte ✨ ¿${nombre} está disponible?`);
+  });
 
   form.addEventListener('change', actualizar);
   $('[data-mas]', form).addEventListener('click', () => { cantidad = Math.min(10, cantidad + 1); actualizar(); });

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Anillo Muzo · Plata 925 con esmeralda colombiana · Valientte Joyería</title>
-  <meta name="description" content="Anillo Muzo en plata 925 con esmeralda colombiana. Envíos a toda Colombia, garantía y pago contraentrega en Manizales.">
+  <title>Pieza · Valientte Joyería</title>
+  <meta name="description" content="Joyas en plata 925 y esmeraldas naturales colombianas. Envíos a toda Colombia.">
   <meta name="theme-color" content="#F7F3EC">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,13 +53,13 @@
     <span class="logo"><span class="logo__vl">VL</span></span><span></span>
   </div>
   <div class="menu__fondos" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1761735489573-15b2d60280f5?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1612239396116-4da3087f8f79?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="img/productos/04.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/14.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/12.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/28.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/09.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/20.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/26.jpg" width="800" height="1000" loading="lazy" alt="">
   </div>
   <nav class="menu__nav" aria-label="Principal">
     <ul class="menu__lista">
@@ -79,40 +79,28 @@
 </div>
 
 <main id="contenido">
-  <!-- Datos de EJEMPLO: precio, tallas, medidas y textos se reemplazan por los reales -->
-  <div class="ficha" data-ficha data-id="anillo-muzo" data-nombre="Anillo Muzo" data-precio="189900"
-    data-img="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=200&q=60">
+  <!-- Ficha de producto REAL: todo se llena desde js/catalogo.js según ?id= (ej. producto.html?id=anillo-de-esmeralda) -->
+  <div class="ficha" data-ficha data-id="" data-nombre="" data-precio="0" data-img="">
 
-    <section class="galeria" aria-label="Fotos del producto">
-      <div class="galeria__fotos" data-galeria tabindex="0" aria-label="Galería: desliza o usa las flechas">
-        <!-- TEMPORAL: img/productos/anillo-muzo-1.jpg ... -4.jpg (1200x1500) -->
-        <figure><img src="https://images.unsplash.com/photo-1685970730959-eb22c7b2bcd9?auto=format&fit=crop&w=1100&q=72" width="1100" height="1375" alt="Anillo Muzo en plata 925 con esmeralda, vista frontal" fetchpriority="high"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=1100&q=72" width="1100" height="1375" loading="lazy" alt="Anillo Muzo sostenido en la mano"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1623449567043-e0cad8ee793a?auto=format&fit=crop&w=1100&q=72" width="1100" height="1375" loading="lazy" alt="Detalle de la esmeralda del Anillo Muzo"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1612239396116-4da3087f8f79?auto=format&fit=crop&w=1100&q=72" width="1100" height="1375" loading="lazy" alt="Anillo puesto en la mano"></figure>
+    <section class="galeria" aria-label="Foto del producto">
+      <div class="galeria__fotos" data-galeria tabindex="0" aria-label="Foto del producto">
+        <figure><img data-ficha-foto src="img/productos/28.jpg" width="800" height="1000" alt="" fetchpriority="high"></figure>
       </div>
-      <p class="galeria__contador" aria-hidden="true"><span data-foto-actual>01</span> / 04</p>
-      <div class="galeria__hilo" aria-hidden="true" data-puntos><span class="activo"></span><span></span><span></span><span></span></div>
     </section>
 
     <section class="panel" aria-labelledby="titulo-producto">
-      <p class="panel__volver rotulo"><a href="index.html#vitrina">← Vitrina · Anillos</a><span>Colección Esmeraldas</span></p>
-      <h1 class="panel__titulo" id="titulo-producto">Anillo<br><i>Muzo</i></h1>
+      <p class="panel__volver rotulo"><a data-ficha-volver href="coleccion.html#piezas">← Colección</a><span data-ficha-coleccion>Colección</span></p>
+      <h1 class="panel__titulo" id="titulo-producto" data-ficha-titulo>Pieza</h1>
       <div class="panel__precio">
-        <span class="precio" data-precio-mostrado>$189.900</span>
+        <span class="precio" data-precio-mostrado></span>
         <span>Contraentrega en Manizales</span>
       </div>
-      <p class="panel__desc">Una esmeralda colombiana de verde intenso sobre un aro delgado de plata 925. Lleva el nombre de la mina más famosa del mundo, para recordarte de dónde viene tu brillo.</p>
+      <p class="panel__desc" data-ficha-desc></p>
 
       <form data-form-producto style="display:grid;gap:1.6rem">
-        <fieldset class="opcion">
-          <legend class="rotulo">Metal</legend>
-          <div class="opciones">
-            <input type="radio" name="material" id="m-plata" value="Plata 925" data-extra="0" checked><label for="m-plata">Plata 925</label>
-            <input type="radio" name="material" id="m-rodio" value="Plata 925 con baño de rodio" data-extra="20000"><label for="m-rodio">Baño de rodio +$20.000</label>
-          </div>
-        </fieldset>
-        <fieldset class="opcion">
+        <!-- Solo plata 925 (no hay otras opciones de metal en su catálogo) -->
+        <input type="radio" name="material" value="Plata 925" data-extra="0" checked hidden>
+        <fieldset class="opcion" data-solo-anillo hidden>
           <legend class="rotulo"><span>Talla</span><button type="button" class="boton-texto" data-abrir-tallas>¿Cuál es mi talla?</button></legend>
           <div class="opciones">
             <input type="radio" name="talla" id="t5" value="5"><label for="t5">5</label>
@@ -121,6 +109,7 @@
             <input type="radio" name="talla" id="t8" value="8"><label for="t8">8</label>
             <input type="radio" name="talla" id="t9" value="9"><label for="t9">9</label>
           </div>
+          <p class="opcion__nota">Te confirmamos la disponibilidad de tu talla por WhatsApp.</p>
         </fieldset>
         <div class="compra">
           <div class="cantidad" role="group" aria-label="Cantidad">
@@ -134,28 +123,26 @@
       </form>
 
       <div class="certificado">
-        <div class="certificado__cabeza rotulo"><span>Certificado de pieza</span><span>VL-014</span></div>
+        <div class="certificado__cabeza rotulo"><span>Certificado de pieza</span><span data-ficha-ref>VL</span></div>
         <dl>
           <dt>Metal</dt><dd data-material-elegido>Plata 925</dd>
-          <dt>Piedra</dt><dd>Esmeralda natural</dd>
-          <dt>Origen</dt><dd>Boyacá, Colombia</dd>
-          <dt>Talla</dt><dd>Esmeralda · aprox. 6 × 4 mm</dd>
-          <dt>Aro</dt><dd>1,8 mm de ancho</dd>
+          <dt>Piedra</dt><dd data-ficha-piedra>Circones</dd>
+          <dt data-solo-esmeralda hidden>Garantía</dt><dd data-solo-esmeralda hidden>De por vida</dd>
         </dl>
       </div>
 
-      <div class="jardin">
+      <div class="jardin" data-solo-esmeralda hidden>
         <svg viewBox="0 0 200 260" aria-hidden="true"><use href="#i-gema"/></svg>
         <p><b>¿Ves marcas dentro de la piedra?</b>Se llaman "jardín" y prueban que tu esmeralda es natural. Ninguna es igual a otra.</p>
       </div>
 
       <div class="notas">
+        <!-- PENDIENTE: confirmar tiempos, envío gratis, medios de pago y cambios con la clienta -->
         <details><summary>Envíos y pagos</summary><div class="texto">
           <p>Despachamos en 1 a 2 días hábiles a toda Colombia. Envío gratis desde $150.000. En Manizales, el mismo día o el siguiente.</p>
           <p>Nequi, Daviplata, Bancolombia, PSE, tarjetas o contraentrega en Manizales.</p></div></details>
         <details><summary>Cambios y garantía</summary><div class="texto">
-          <p>Si la talla no es la indicada, la cambiamos en los primeros 5 días (sin uso). Garantía en el material y el engaste.</p>
-          <!-- PENDIENTE: confirmar políticas reales con la clienta --></div></details>
+          <p>Si la talla no es la indicada, la cambiamos en los primeros 5 días (sin uso). Garantía en el material y el engaste.</p></div></details>
         <details><summary>Cuidado de tu joya</summary><div class="texto">
           <p>Quítatela para bañarte, ir a la piscina o usar cremas y perfumes. Guárdala sola en su bolsita.</p>
           <p>Límpiala con un paño suave y seco. La plata se oscurece con el tiempo de forma natural: un paño para plata le devuelve el brillo.</p></div></details>
@@ -167,42 +154,9 @@
     <div class="contenedor">
       <div class="titulo-seccion">
         <h2 id="titulo-look" class="aparecer">Combínalo <i style="color:var(--esmeralda-viva)">con</i></h2>
-        <a class="rotulo aparecer" href="index.html#vitrina">Ver la vitrina →</a>
+        <a class="rotulo aparecer" href="coleccion.html">Ver toda la colección →</a>
       </div>
-      <div class="vitrina__grid">
-        <article class="pieza aparecer">
-          <div class="pieza__foto">
-            <img src="https://images.unsplash.com/photo-1731929315875-3ab60c006577?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Aretes Gota Verde con esmeraldas">
-            <img class="alterna" src="https://images.unsplash.com/photo-1655328723829-3140909b335b?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
-            <button class="pieza__agregar" type="button" aria-label="Agregar Aretes Gota Verde a la bolsa" data-agregar data-id="aretes-gota-verde" data-nombre="Aretes Gota Verde" data-precio="159900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1731929315875-3ab60c006577?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
-          </div>
-          <div class="tag"><span class="rotulo">Plata 925 · Esmeralda</span><h3 class="tag__nombre"><a href="producto.html">Aretes Gota Verde</a></h3><span class="tag__precio">$159.900</span></div>
-        </article>
-        <article class="pieza aparecer" style="--retraso:80ms">
-          <div class="pieza__foto">
-            <span class="pieza__sello pieza__sello--naranja rotulo">Favorito</span>
-            <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Collar Aurora en plata 925">
-            <img class="alterna" src="https://images.unsplash.com/photo-1608613381851-6a058de0dc11?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
-            <button class="pieza__agregar" type="button" aria-label="Agregar Collar Aurora a la bolsa" data-agregar data-id="collar-aurora" data-nombre="Collar Aurora" data-precio="139900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
-          </div>
-          <div class="tag" style="--giro:2deg"><span class="rotulo">Plata 925 · Circones</span><h3 class="tag__nombre"><a href="producto.html">Collar Aurora</a></h3><span class="tag__precio">$139.900</span></div>
-        </article>
-        <article class="pieza aparecer" style="--retraso:160ms">
-          <div class="pieza__foto">
-            <img src="https://images.unsplash.com/photo-1676329945867-01c9975aa9d1?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Collar de plata con piedras verdes">
-            <button class="pieza__agregar" type="button" aria-label="Agregar Collar Jardín a la bolsa" data-agregar data-id="collar-jardin" data-nombre="Collar Jardín" data-precio="119900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1676329945867-01c9975aa9d1?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
-          </div>
-          <div class="tag" style="--giro:-2deg"><span class="rotulo">Plata 925 · Piedras verdes</span><h3 class="tag__nombre"><a href="producto.html">Collar Jardín</a></h3><span class="tag__precio">$119.900</span></div>
-        </article>
-        <article class="pieza aparecer" style="--retraso:240ms">
-          <div class="pieza__foto">
-            <img src="https://images.unsplash.com/photo-1573717008136-5a9f0820e8bf?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="Aretes Luna en plata 925">
-            <img class="alterna" src="https://images.unsplash.com/photo-1553018561-d068dedd80b0?auto=format&fit=crop&w=600&q=70" width="480" height="600" loading="lazy" alt="">
-            <button class="pieza__agregar" type="button" aria-label="Agregar Aretes Luna a la bolsa" data-agregar data-id="aretes-luna" data-nombre="Aretes Luna" data-precio="89900" data-variante="Plata 925" data-img="https://images.unsplash.com/photo-1573717008136-5a9f0820e8bf?auto=format&fit=crop&w=200&q=60"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
-          </div>
-          <div class="tag" style="--giro:2deg"><span class="rotulo">Plata 925</span><h3 class="tag__nombre"><a href="producto.html">Aretes Luna</a></h3><span class="tag__precio">$89.900</span></div>
-        </article>
-      </div>
+      <div class="vitrina__grid" data-relacionadas></div>
     </div>
   </section>
 </main>
@@ -210,18 +164,18 @@
 <footer class="footer">
   <div class="contenedor">
     <div class="footer__grid">
-      <div><p class="footer__lema">El lujo<br>de ser tú.</p><p style="margin-top:1rem;max-width:32ch">Joyas en plata 925 y esmeraldas colombianas. Accesorios en rodio y acero. Manizales, Caldas.</p></div>
-      <div><h3>Tienda</h3><ul><li><a href="index.html#materiales">Materiales</a></li><li><a href="index.html#vitrina">La vitrina</a></li><li><a href="index.html#piedra">La esmeralda</a></li><li><a href="nosotros.html">Quiénes somos</a></li></ul></div>
+      <div><p class="footer__lema">El lujo<br>de ser tú.</p><p style="margin-top:1rem;max-width:32ch">Joyas en plata 925 y esmeraldas colombianas. Manizales, Caldas.</p></div>
+      <div><h3>Tienda</h3><ul><li><a href="coleccion.html?para=ella">Para ella</a></li><li><a href="coleccion.html?para=el">Para él</a></li><li><a href="coleccion.html">Catálogo completo</a></li><li><a href="index.html#piedra">La esmeralda</a></li><li><a href="nosotros.html">Quiénes somos</a></li></ul></div>
       <div><h3>Ayuda</h3><ul><li><a href="index.html#recibo">Envíos y pagos</a></li><li><a href="index.html#recibo">Cambios y garantía</a></li><li><a href="#" data-abrir-tallas>Guía de tallas</a></li></ul></div>
       <div><h3>Contacto</h3><ul><li><a href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-whatsapp>WhatsApp</a></li><li><a href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
     </div>
-    <div class="footer__legal"><span>© 2026 Valientte Joyería</span><span>Boceto · fotos temporales de Unsplash</span></div>
+    <div class="footer__legal"><span>© 2026 Valientte Joyería</span><span>Boceto · algunas fotos son de referencia</span></div>
   </div>
   <div class="footer__gigante" aria-hidden="true">VALIENTTE</div>
 </footer>
 
 <div class="barra-compra" data-barra-compra aria-hidden="true">
-  <div class="barra-compra__info"><b>Anillo Muzo</b><span data-precio-barra>$189.900</span></div>
+  <div class="barra-compra__info"><b data-ficha-nombre></b><span data-precio-barra>$189.900</span></div>
   <button class="boton" type="button" data-agregar-barra tabindex="-1"><span>Agregar</span></button>
 </div>
 
@@ -233,10 +187,10 @@
       <button class="asistente__cerrar" type="button" aria-label="Cerrar" data-cerrar-asistente><svg width="18" height="18" aria-hidden="true"><use href="#i-cerrar"/></svg></button>
     </div>
     <div class="asistente__cuerpo">
-      <p class="asistente__saludo">Hola ✨ ¿Te asesoramos con el Anillo Muzo?</p>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿El Anillo Muzo está disponible?"><span aria-hidden="true">💚</span><span>¿Está disponible?</span><span aria-hidden="true">→</span></a>
+      <p class="asistente__saludo">Hola ✨ ¿Te asesoramos con esta pieza?</p>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ ¿Esta pieza está disponible?" data-wa-pieza="disponible"><span aria-hidden="true">💚</span><span>¿Está disponible?</span><span aria-hidden="true">→</span></a>
       <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Necesito ayuda para saber mi talla de anillo."><span aria-hidden="true">💍</span><span>Encontrar mi talla</span><span aria-hidden="true">→</span></a>
-      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Quiero el Anillo Muzo para regalo, ¿me lo envuelven?"><span aria-hidden="true">🎁</span><span>Es para regalo</span><span aria-hidden="true">→</span></a>
+      <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Quiero esta pieza para regalo, ¿me la envuelven?" data-wa-pieza="regalo"><span aria-hidden="true">🎁</span><span>Es para regalo</span><span aria-hidden="true">→</span></a>
       <a class="atajo" href="https://wa.link/c60ecp" target="_blank" rel="noopener" data-wa-msg="Hola Valientte ✨ Tengo una pregunta:"><span aria-hidden="true">💬</span><span>Hablar con una asesora</span><span aria-hidden="true">→</span></a>
     </div>
   </div>
@@ -284,6 +238,7 @@
 
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 
+<script src="js/catalogo.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="js/producto.js" defer></script>
 </body>

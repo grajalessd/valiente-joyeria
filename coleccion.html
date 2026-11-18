@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Colección · Valientte Joyería</title>
-  <meta name="description" content="Joyas para ella y para él en plata 925, esmeraldas colombianas, rodio y acero. Valientte, Manizales.">
+  <meta name="description" content="Joyas para ella y para él en plata 925 y esmeraldas naturales colombianas. Valientte, Manizales.">
   <meta name="theme-color" content="#E0662E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,13 +49,13 @@
     <span></span>
   </div>
   <div class="menu__fondos" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1685970732254-d2d1f43ddc7c?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1761735489573-15b2d60280f5?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
-    <img src="https://images.unsplash.com/photo-1612239396116-4da3087f8f79?auto=format&fit=crop&w=1400&q=65" width="1400" height="1000" loading="lazy" alt="">
+    <img src="img/productos/04.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/14.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/12.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/28.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/09.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/20.jpg" width="800" height="1000" loading="lazy" alt="">
+    <img src="img/productos/26.jpg" width="800" height="1000" loading="lazy" alt="">
   </div>
   <nav class="menu__nav" aria-label="Principal">
     <ul class="menu__lista">
@@ -79,10 +79,10 @@
   <!-- ============ 1. PORTADA: cambia de color y de palabra según Ella / Él / Todo ============ -->
   <section class="col-hero" data-col-hero data-para="ella" aria-labelledby="col-titulo">
     <div class="col-hero__fotos" aria-hidden="true">
-      <!-- TEMPORAL: img/coleccion-ella.jpg, img/coleccion-el.jpg, img/coleccion-todo.jpg -->
-      <img data-foto="ella" class="activa" src="https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&w=1200&q=70" width="1200" height="1500" alt="">
-      <img data-foto="el" src="https://images.unsplash.com/photo-1639065643006-e217c4fee12e?auto=format&fit=crop&w=1200&q=70" width="1200" height="1500" alt="">
-      <img data-foto="todo" src="https://images.unsplash.com/photo-1611653842967-39eb011b2ca3?auto=format&fit=crop&w=1200&q=70" width="1200" height="1500" alt="">
+      <!-- Fotos reales del catálogo -->
+      <img data-foto="ella" class="activa" src="img/productos/25.jpg" width="800" height="1067" alt="">
+      <img data-foto="el" src="img/productos/42.jpg" width="800" height="1068" alt="">
+      <img data-foto="todo" src="img/productos/09.jpg" width="800" height="853" alt="">
     </div>
     <p class="rotulo" data-col-rotulo>#MujerValiente</p>
     <h1 id="col-titulo" class="col-hero__palabra" data-col-palabra>Ella</h1>
@@ -95,7 +95,7 @@
   </section>
 
   <!-- ============ 2. EL ESTANTE: piezas filtrables ============ -->
-  <!-- Productos, precios y momentos de EJEMPLO: se generan desde js/coleccion.js -->
+  <!-- Catálogo REAL (js/catalogo.js); filtros y momentos en js/coleccion.js -->
   <section class="vitrina col-estante" id="piezas" aria-label="Piezas de la colección">
     <div class="contenedor">
 
@@ -104,17 +104,16 @@
       <div class="pestanas" role="tablist" aria-label="Tipo de joya" data-col-tipos>
         <button class="pestana" type="button" role="tab" aria-selected="true" data-tipo="todo">Todo<sup data-cuenta-col="todo"></sup></button>
         <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="anillos">Anillos<sup data-cuenta-col="anillos"></sup></button>
-        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="collares">Collares<sup data-cuenta-col="collares"></sup></button>
+        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="cadenas">Cadenas y dijes<sup data-cuenta-col="cadenas"></sup></button>
         <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="aretes">Aretes<sup data-cuenta-col="aretes"></sup></button>
         <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="pulseras">Pulseras<sup data-cuenta-col="pulseras"></sup></button>
+        <button class="pestana" type="button" role="tab" aria-selected="false" data-tipo="juegos">Juegos<sup data-cuenta-col="juegos"></sup></button>
       </div>
 
       <div class="metales" data-col-metales aria-label="Material">
         <button type="button" class="metal" aria-pressed="true" data-metal="">Todos</button>
         <button type="button" class="metal" aria-pressed="false" data-metal="plata">Plata 925</button>
         <button type="button" class="metal" aria-pressed="false" data-metal="esmeraldas">Esmeraldas</button>
-        <button type="button" class="metal" aria-pressed="false" data-metal="rodio">Rodio</button>
-        <button type="button" class="metal" aria-pressed="false" data-metal="acero">Acero</button>
       </div>
 
       <p class="estante__cuenta rotulo" aria-live="polite" data-col-cuenta></p>
@@ -144,7 +143,7 @@
     <div class="footer__grid">
       <div>
         <p class="footer__lema">El lujo<br>de ser tú.</p>
-        <p style="margin-top:1rem;max-width:32ch">Joyas en plata 925 y esmeraldas colombianas. Accesorios en rodio y acero. Manizales, Caldas.</p>
+        <p style="margin-top:1rem;max-width:32ch">Joyas en plata 925 y esmeraldas colombianas. Manizales, Caldas.</p>
       </div>
       <div>
         <h3>Tienda</h3>
@@ -173,7 +172,7 @@
     </div>
     <div class="footer__legal">
       <span>© 2026 Valientte Joyería</span>
-      <span>Boceto · fotos temporales de Unsplash</span>
+      <span>Boceto · algunas fotos son de referencia</span>
     </div>
   </div>
   <div class="footer__gigante" aria-hidden="true">VALIENTTE</div>
@@ -231,6 +230,7 @@
 <div class="toast" role="status" aria-live="polite" data-toast></div>
 
 <!-- coleccion.js va ANTES de main.js: pinta las piezas y main.js les conecta "agregar" y las animaciones -->
+<script src="js/catalogo.js" defer></script>
 <script src="js/coleccion.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>

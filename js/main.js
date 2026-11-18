@@ -12,7 +12,7 @@
 const CONFIG = {
   // Número de WhatsApp con indicativo, solo dígitos (ej: '573001234567').
   // Vacío = se usa el enlace corto de la bio de Instagram (no precarga el mensaje).
-  whatsappNumero: '',
+  whatsappNumero: '573106990102',   // número de su catálogo (vitrinapp)
   whatsappEnlace: 'https://wa.link/c60ecp',
   envioGratisDesde: 150000,           // PENDIENTE confirmar con la clienta
   claveCarrito: 'valientte-carrito'
@@ -417,7 +417,7 @@ const piezas = $$('[data-grid-productos] .pieza');
 const pestanas = $$('[data-pestanas] [data-tipo]');
 const filtroActivo = $('[data-filtro-activo]');
 const vitrinaVacia = $('[data-vitrina-vacia]');
-const nombresMaterial = { plata: 'Plata 925', esmeraldas: 'Esmeraldas', rodio: 'Rodio', acero: 'Acero', accesorios: 'Accesorios' };
+const nombresMaterial = { plata: 'Plata 925', esmeraldas: 'Esmeraldas' };
 const estado = { tipo: 'todo', material: null };
 
 function pintarVitrina() {
@@ -473,9 +473,9 @@ if (piezas.length) {
   filtroActivo && filtroActivo.addEventListener('click', (e) => {
     if (e.target.closest('[data-quitar-material]')) { estado.material = null; cambioSuave(cajaVitrina, pintarVitrina); }
   });
-  $$('[data-ir-material]').forEach((a) => a.addEventListener('click', () => {
-    estado.material = a.dataset.irMaterial;
-    estado.tipo = 'todo';
+  $$('[data-ir-material], [data-ir-tipo]').forEach((a) => a.addEventListener('click', () => {
+    estado.material = a.dataset.irMaterial || null;
+    estado.tipo = a.dataset.irTipo || 'todo';
     marcarPestanas();
     // si la vitrina está lejos, primero se baja con suavidad y al llegar cambian las piezas
     const lejos = Math.abs(cajaVitrina.getBoundingClientRect().top) > window.innerHeight * .6;

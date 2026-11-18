@@ -1096,3 +1096,9 @@ html.saliendo-pagina body { opacity: 0; transition: opacity .38s var(--ease); an
   html { scroll-behavior: auto; }
   html.js body { animation: none; }
 }
+
+/* ---------- 26. CATÁLOGO REAL ---------- */
+.opcion__nota { font-size: .82rem; color: var(--gris); margin-top: .6rem; }
+/* las fotos reales tienen distintas proporciones: todas se recortan al centro en 4:5 */
+.pieza__foto img, .mini__foto img { object-position: 50% 50%; }
+

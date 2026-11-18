@@ -3,45 +3,22 @@
    - Pinta todas las piezas una sola vez (main.js les conecta "agregar").
    - Filtros: para quién (portada), momento, tipo de joya y material.
    - Se carga ANTES de main.js.
-   PENDIENTE: productos, fotos y precios reales de la clienta.
+   Las piezas son las del catálogo real (js/catalogo.js).
    ========================================================= */
 (() => {
-  const foto = (id, w = 600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
-
-  // para: ella | el (una pieza puede servir para los dos)
-  // momentos: ver MOMENTOS más abajo
-  const PIEZAS = [
-    { id: 'collar-aurora', nombre: 'Collar Aurora', tipo: 'collares', material: 'plata', rotulo: 'Plata 925 · Circones', precio: 139900, variante: 'Plata 925', f1: 'photo-1573408301185-9146fe634ad0', f2: 'photo-1608613381851-6a058de0dc11', para: ['ella'], momentos: ['mama', 'ti'], sello: 'Favorito' },
-    { id: 'anillo-muzo', nombre: 'Anillo Muzo', tipo: 'anillos', material: 'esmeraldas', rotulo: 'Plata 925 · Esmeralda', precio: 189900, variante: 'Plata 925 · Talla 7', f1: 'photo-1685970730959-eb22c7b2bcd9', f2: 'photo-1685970732254-d2d1f43ddc7c', para: ['ella'], momentos: ['amor', 'mama'], sello: 'Novedad', verde: true },
-    { id: 'aretes-gota-verde', nombre: 'Aretes Gota Verde', tipo: 'aretes', material: 'esmeraldas', rotulo: 'Plata 925 · Esmeralda', precio: 159900, variante: 'Plata 925', f1: 'photo-1731929315875-3ab60c006577', f2: 'photo-1655328723829-3140909b335b', para: ['ella'], momentos: ['mama', 'grado'] },
-    { id: 'anillo-vintage', nombre: 'Anillo Vintage', tipo: 'anillos', material: 'rodio', rotulo: 'Rodio · Circones', precio: 69900, variante: 'Rodio · Talla 7', f1: 'photo-1591209608777-fb022eac7112', f2: 'photo-1612239396116-4da3087f8f79', para: ['ella'], momentos: ['ti'] },
-    { id: 'anillo-pave', nombre: 'Anillo Pavé', tipo: 'anillos', material: 'rodio', rotulo: 'Rodio · Circones', precio: 79900, variante: 'Rodio · Talla 7', f1: 'photo-1550368566-f9cc32d7392d', f2: 'photo-1762505464529-1a37df13674f', para: ['ella'], momentos: ['amor', 'ti'], sello: '−15%' },
-    { id: 'collar-corazon', nombre: 'Collar Corazón', tipo: 'collares', material: 'plata', rotulo: 'Plata 925', precio: 99900, variante: 'Plata 925', f1: 'photo-1588444968576-f8fe92ce56fd', f2: 'photo-1621939745912-aad97fd3a34d', para: ['ella'], momentos: ['amor', 'mama'] },
-    { id: 'aretes-luna', nombre: 'Aretes Luna', tipo: 'aretes', material: 'plata', rotulo: 'Plata 925', precio: 89900, variante: 'Plata 925', f1: 'photo-1573717008136-5a9f0820e8bf', f2: 'photo-1553018561-d068dedd80b0', para: ['ella'], momentos: ['ti', 'grado'] },
-    { id: 'pulsera-riviera', nombre: 'Pulsera Riviera', tipo: 'pulseras', material: 'rodio', rotulo: 'Rodio · Circones', precio: 99900, variante: 'Rodio', f1: 'photo-1763029513623-37d488cb97b1', f2: 'photo-1762505464779-17f78cbfa8b4', para: ['ella'], momentos: ['grado', 'amor'] },
-    { id: 'collar-jardin', nombre: 'Collar Jardín', tipo: 'collares', material: 'esmeraldas', rotulo: 'Plata 925 · Esmeralda', precio: 119900, variante: 'Plata 925', f1: 'photo-1676329945867-01c9975aa9d1', f2: 'photo-1685970732254-d2d1f43ddc7c', para: ['ella'], momentos: ['mama', 'grado'], sello: 'Piedra de mayo', verde: true },
-    { id: 'aretes-argolla', nombre: 'Argollas Finas', tipo: 'aretes', material: 'acero', rotulo: 'Acero inoxidable', precio: 39900, variante: 'Acero', f1: 'photo-1553018561-d068dedd80b0', f2: 'photo-1573717008136-5a9f0820e8bf', para: ['ella'], momentos: ['ti'] },
-    // Línea hombre (y piezas que sirven para los dos)
-    { id: 'pulsera-eslabon', nombre: 'Pulsera Eslabón', tipo: 'pulseras', material: 'acero', rotulo: 'Acero inoxidable', precio: 59900, variante: 'Acero', f1: 'photo-1605884878538-6468614df578', f2: 'photo-1761222101900-9c9e34fac2ce', para: ['el', 'ella'], momentos: ['diario', 'cumple'], sello: 'Favorito' },
-    { id: 'collar-arbol', nombre: 'Collar Árbol de la Vida', tipo: 'collares', material: 'acero', rotulo: 'Acero inoxidable', precio: 54900, variante: 'Acero', f1: 'photo-1636103952204-0b738c225264', f2: 'photo-1585053736987-f817dc225fc5', para: ['el', 'ella'], momentos: ['primera', 'ti'] },
-    { id: 'pulsera-noche', nombre: 'Pulsera Noche', tipo: 'pulseras', material: 'acero', rotulo: 'Acero · Cuero', precio: 49900, variante: 'Acero negro', f1: 'photo-1639065643006-e217c4fee12e', f2: 'photo-1605884878538-6468614df578', para: ['el'], momentos: ['diario', 'primera'], sello: 'Novedad', verde: true },
-    { id: 'cadena-barbada', nombre: 'Cadena Barbada', tipo: 'collares', material: 'plata', rotulo: 'Plata 925 · 60 cm', precio: 169900, variante: 'Plata 925', f1: 'photo-1761222101900-9c9e34fac2ce', f2: 'photo-1636103952204-0b738c225264', para: ['el'], momentos: ['cumple', 'amor'] },
-    { id: 'anillo-sello-muzo', nombre: 'Sello Muzo', tipo: 'anillos', material: 'esmeraldas', rotulo: 'Plata 925 · Esmeralda', precio: 229900, variante: 'Plata 925 · Talla 10', f1: 'photo-1685970732254-d2d1f43ddc7c', f2: 'photo-1685970730959-eb22c7b2bcd9', para: ['el'], momentos: ['amor', 'cumple'], verde: true },
-    { id: 'anillo-banda', nombre: 'Anillo Banda', tipo: 'anillos', material: 'acero', rotulo: 'Acero inoxidable', precio: 44900, variante: 'Acero · Talla 10', f1: 'photo-1612239396116-4da3087f8f79', f2: 'photo-1591209608777-fb022eac7112', para: ['el'], momentos: ['diario', 'primera'] },
-    { id: 'collar-placa', nombre: 'Collar Placa', tipo: 'collares', material: 'acero', rotulo: 'Acero · Grabado gratis', precio: 64900, variante: 'Acero', f1: 'photo-1585053736987-f817dc225fc5', f2: 'photo-1636103952204-0b738c225264', para: ['el'], momentos: ['cumple', 'primera'] },
-    { id: 'topos-plata', nombre: 'Topos Punto', tipo: 'aretes', material: 'plata', rotulo: 'Plata 925', precio: 49900, variante: 'Plata 925', f1: 'photo-1621939745912-aad97fd3a34d', f2: 'photo-1553018561-d068dedd80b0', para: ['el', 'ella'], momentos: ['diario', 'ti'] }
-  ];
+  // Catálogo REAL: viene de js/catalogo.js (se carga antes)
+  const { CATALOGO: PIEZAS, pieza } = window.Catalogo;
 
   const PARA = {
     ella: {
       rotulo: '#MujerValiente', palabra: 'Ella', frase: 'Para la que se atreve a brillar sin pedir permiso.', color: '#E0662E',
       ayuda: 'Cuéntanos para quién es y te proponemos tres piezas pensadas para esa persona.',
-      msg: 'Hola Valientte ✨ Busco una joya para ella, ¿me ayudas a escoger?'
+      msg: 'Hola Valientte ✨ Busco una joya para ella, ¿me ayudan a escoger?'
     },
     el: {
       rotulo: 'Línea hombre', palabra: 'Él', frase: 'Porque ellos también llevan la elegancia.', color: '#1A1714',
       ayuda: '¿Su primera joya? Te guiamos con la medida de la pulsera o del anillo.',
-      msg: 'Hola Valientte ✨ Busco una joya para él, ¿me ayudas a escoger?'
+      msg: 'Hola Valientte ✨ Busco una joya para él, ¿me ayudan a escoger?'
     },
     todo: {
       rotulo: 'Catálogo completo', palabra: 'Todo', frase: 'Toda nuestra colección, en un solo lugar.', color: '#0D3B2C',
@@ -64,16 +41,7 @@
   if (!estante) return;
 
   // ---------- pintar piezas (una sola vez) ----------
-  estante.innerHTML = PIEZAS.map((p, i) => `
-    <article class="pieza aparecer" data-id="${p.id}" data-tipo="${p.tipo}" data-material="${p.material}">
-      <div class="pieza__foto">
-        ${p.sello ? `<span class="pieza__sello ${p.verde ? 'pieza__sello--verde' : 'pieza__sello--naranja'} rotulo">${p.sello}</span>` : ''}
-        <img src="${foto(p.f1)}" width="480" height="600" loading="${i < 4 ? 'eager' : 'lazy'}" alt="${p.nombre} en ${p.rotulo.toLowerCase()}">
-        <img class="alterna" src="${foto(p.f2)}" width="480" height="600" loading="lazy" alt="">
-        <button class="pieza__agregar" type="button" aria-label="Agregar ${p.nombre} a la bolsa" data-agregar data-id="${p.id}" data-nombre="${p.nombre}" data-precio="${p.precio}" data-variante="${p.variante}" data-img="${foto(p.f1, 200)}"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
-      </div>
-      <div class="tag" style="--giro:${i % 3 === 1 ? 2 : i % 3 === 2 ? -1.5 : -3}deg"><span class="rotulo">${p.rotulo}</span><h3 class="tag__nombre"><a href="producto.html">${p.nombre}</a></h3><span class="tag__precio">${pesos(p.precio)}</span></div>
-    </article>`).join('');
+  estante.innerHTML = PIEZAS.map((p, i) => pieza(p, i, i < 4 ? 'eager' : 'lazy')).join('');
 
   const fichas = $$('.pieza', estante);
   const datos = new Map(PIEZAS.map((p) => [p.id, p]));
