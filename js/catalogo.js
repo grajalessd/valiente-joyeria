@@ -74,7 +74,8 @@
       momentos: momentos.split(' '),
       desc: desc || 'Pieza en plata 925 con circones.',
       sello: esm ? 'Esmeralda natural' : '',
-      foto: `img/productos/${String(n).padStart(2, '0')}.jpg`
+      foto: `img/productos/${String(n).padStart(2, '0')}.jpg`,
+      foto2x: `img/productos/${String(n).padStart(2, '0')}-2x.jpg`  // versión 1600 px (limpiada con IA + original, ver CLAUDE.md)
     };
   });
 
@@ -93,7 +94,7 @@
     <article class="pieza aparecer" data-id="${p.id}" data-tipo="${p.tipo}" data-material="${p.material}">
       <div class="pieza__foto">
         ${p.sello ? `<span class="pieza__sello pieza__sello--verde rotulo">${p.sello}</span>` : ''}
-        <img src="${p.foto}" width="800" height="1000" loading="${carga}" alt="${p.nombre}, ${p.rotulo.toLowerCase()}">
+        <img src="${p.foto}" srcset="${p.foto} 800w, ${p.foto2x} 1600w" sizes="(min-width: 1100px) 330px, (min-width: 700px) 33vw, 70vw" width="800" height="1000" loading="${carga}" alt="${p.nombre}, ${p.rotulo.toLowerCase()}">
         <button class="pieza__agregar" type="button" aria-label="Agregar ${p.nombre} a la bolsa" data-agregar data-id="${p.id}" data-nombre="${p.nombre}" data-precio="${p.precio}" data-variante="${p.variante}" data-img="${p.foto}"><svg aria-hidden="true"><use href="#i-mas"/></svg></button>
       </div>
       <div class="tag" style="--giro:${[-3, 2, -1.5][i % 3]}deg"><span class="rotulo">${p.rotulo}</span><h3 class="tag__nombre"><a href="producto.html?id=${p.id}">${p.nombre}</a></h3><span class="tag__precio">${pesos(p.precio)}</span></div>
@@ -139,6 +140,8 @@
     poner('[data-ficha-piedra]', esm ? 'Esmeralda natural colombiana' : 'Circones');
     poner('[data-ficha-ref]', 'VL-' + String(p.n).padStart(3, '0'));
     poner('[data-ficha-foto]', p.foto, 'src');
+    poner('[data-ficha-foto]', `${p.foto} 800w, ${p.foto2x} 1600w`, 'srcset');
+    poner('[data-ficha-foto]', '(min-width: 900px) 600px, 100vw', 'sizes');
     poner('[data-ficha-foto]', `${p.nombre}, ${p.rotulo.toLowerCase()}`, 'alt');
     document.querySelectorAll('[data-solo-esmeralda]').forEach((el) => { el.hidden = !esm; });
     document.querySelectorAll('[data-solo-anillo]').forEach((el) => { el.hidden = p.tipo !== 'anillos'; });
