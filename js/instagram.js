@@ -27,8 +27,8 @@
     { id: 'ellos', nombre: 'Ellos', portada: 'photo-1639065643006-e217c4fee12e', historias: [
       { f: 'photo-1639065643006-e217c4fee12e', t: 'Ellos también llevan<br>la <i>elegancia</i>' },
       { f: 'photo-1605884878538-6468614df578', t: 'Acero para<br>el <i>día a día</i>' } ] },
-    { id: 'clientas', nombre: 'Clientas', portada: 'photo-1608613381851-6a058de0dc11', historias: [
-      { f: 'photo-1608613381851-6a058de0dc11', t: 'Nuestras <i>clientas</i>,<br>nuestro orgullo' } ] }
+    { id: 'clientes', nombre: 'Clientes', portada: 'photo-1608613381851-6a058de0dc11', historias: [
+      { f: 'photo-1608613381851-6a058de0dc11', t: 'Nuestros <i>clientes</i>,<br>nuestro orgullo' } ] }
   ];
 
   const lista = $('[data-destacadas]');

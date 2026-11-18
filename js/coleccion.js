@@ -124,9 +124,20 @@
       const t = s.dataset.cuentaCol;
       s.textContent = PIEZAS.filter((p) => cumple(p, { tipo: true }) && (t === 'todo' || p.tipo === t)).length;
     });
+    marcarBotones();
+  }
+
+  // los botones responden al instante; las piezas se van y vuelven a entrar con suavidad
+  function marcarBotones() {
     $$('[data-col-tipos] [data-tipo]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tipo === estado.tipo)));
     $$('[data-col-metales] [data-metal]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.metal === estado.metal)));
     $$('[data-momento]', momentosCaja).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.momento === estado.momento)));
+  }
+  const cajaEstante = $('.col-estante .contenedor');
+  function pintarSuave() {
+    marcarBotones();
+    if (window.Valientte && window.Valientte.cambioSuave) window.Valientte.cambioSuave(cajaEstante, pintarPiezas);
+    else pintarPiezas();
   }
 
   function pintarMomentos() {
@@ -171,16 +182,16 @@
     history.replaceState(null, '', nuevo === 'todo' ? 'coleccion.html' : `coleccion.html?para=${nuevo}`);
     pintarPortada(true);
     pintarMomentos();
-    pintarPiezas();
+    pintarSuave();
   }));
   momentosCaja.addEventListener('click', (e) => {
     const b = e.target.closest('[data-momento]');
     if (!b) return;
     estado.momento = b.dataset.momento;
-    pintarPiezas();
+    pintarSuave();
   });
-  $$('[data-col-tipos] [data-tipo]').forEach((b) => b.addEventListener('click', () => { estado.tipo = b.dataset.tipo; pintarPiezas(); }));
-  $$('[data-col-metales] [data-metal]').forEach((b) => b.addEventListener('click', () => { estado.metal = b.dataset.metal; pintarPiezas(); }));
+  $$('[data-col-tipos] [data-tipo]').forEach((b) => b.addEventListener('click', () => { estado.tipo = b.dataset.tipo; pintarSuave(); }));
+  $$('[data-col-metales] [data-metal]').forEach((b) => b.addEventListener('click', () => { estado.metal = b.dataset.metal; pintarSuave(); }));
 
   // Header: legible sobre la portada oscura y sólido al bajar
   const header = $('#header');

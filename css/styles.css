@@ -1077,3 +1077,22 @@ body:has(.ventana) .header:not(.solido):not(.sobre-foto) .logo { opacity: 0; }
 /* en el visor, el nombre de la destacada en lugar de la hora */
 .ig-historia__hora { opacity: .8; }
 .ig-historia__hora::before { content: "·"; margin-right: .45rem; opacity: .7; }
+
+/* ---------- 25. TRANSICIONES AL HACER CLIC (filtros, saltos y páginas) ---------- */
+/* Saltos dentro de la página (#vitrina, #recibo…): bajan con suavidad */
+html { scroll-behavior: smooth; }
+/* Al filtrar: lo de adentro se desvanece un poco, cambia y las piezas entran una tras otra */
+.carrete, .vitrina__vacia, .filtro-activo, .estante, .estante__cuenta { transition: opacity .42s var(--ease), transform .6s var(--ease-suave); }
+.saliendo .carrete, .saliendo .vitrina__vacia, .saliendo .filtro-activo,
+.saliendo .estante, .saliendo .estante__cuenta { opacity: 0; transform: translateY(12px); }
+.entrando .pieza:not([hidden]) { animation: pieza-entra 1.1s var(--ease-suave) both; animation-delay: calc(min(var(--orden, 0), 7) * 85ms); }
+.entrando .vitrina__vacia:not([hidden]) { animation: pieza-entra 1.1s var(--ease-suave) both; }
+@keyframes pieza-entra { from { opacity: 0; transform: translateY(28px); } }
+/* Entre páginas: aparece al entrar y se desvanece al salir */
+html.js body { animation: pagina-entra .7s var(--ease-suave) both; }
+@keyframes pagina-entra { from { opacity: 0; } }
+html.saliendo-pagina body { opacity: 0; transition: opacity .38s var(--ease); animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html.js body { animation: none; }
+}

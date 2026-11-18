@@ -445,17 +445,60 @@ function pintarVitrina() {
     requestAnimationFrame(pintarCarrete);
   }
 }
+/* Cambio suave: lo de adentro se desvanece, se cambia y las piezas vuelven a entrar
+   una tras otra. Lo usan la vitrina y la colección (window.Valientte.cambioSuave). */
+function cambioSuave(caja, aplicar, espera = 0) {
+  if (!caja || sinMovimiento) { aplicar(); return; }
+  clearTimeout(caja._t0); clearTimeout(caja._t1); clearTimeout(caja._t2);
+  caja._t0 = setTimeout(() => {
+    caja.classList.remove('entrando');
+    caja.classList.add('saliendo');
+    caja._t1 = setTimeout(() => {
+      aplicar();
+      let n = 0;
+      $$('.pieza:not([hidden])', caja).forEach((el) => el.style.setProperty('--orden', n++));
+      caja.classList.remove('saliendo');
+      void caja.offsetWidth;               // reinicia las animaciones de entrada
+      caja.classList.add('entrando');
+      caja._t2 = setTimeout(() => caja.classList.remove('entrando'), 1500);
+    }, 420);
+  }, espera);
+}
+
 if (piezas.length) {
-  pestanas.forEach((b) => b.addEventListener('click', () => { estado.tipo = b.dataset.tipo; pintarVitrina(); }));
+  const cajaVitrina = $('#vitrina .contenedor');
+  // la pestaña responde al instante; las piezas cambian con suavidad
+  const marcarPestanas = () => pestanas.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tipo === estado.tipo)));
+  pestanas.forEach((b) => b.addEventListener('click', () => { estado.tipo = b.dataset.tipo; marcarPestanas(); cambioSuave(cajaVitrina, pintarVitrina); }));
   filtroActivo && filtroActivo.addEventListener('click', (e) => {
-    if (e.target.closest('[data-quitar-material]')) { estado.material = null; pintarVitrina(); }
+    if (e.target.closest('[data-quitar-material]')) { estado.material = null; cambioSuave(cajaVitrina, pintarVitrina); }
   });
   $$('[data-ir-material]').forEach((a) => a.addEventListener('click', () => {
     estado.material = a.dataset.irMaterial;
     estado.tipo = 'todo';
-    pintarVitrina();
+    marcarPestanas();
+    // si la vitrina está lejos, primero se baja con suavidad y al llegar cambian las piezas
+    const lejos = Math.abs(cajaVitrina.getBoundingClientRect().top) > window.innerHeight * .6;
+    cambioSuave(cajaVitrina, pintarVitrina, lejos ? 550 : 0);
   }));
   pintarVitrina();
+}
+
+/* ---------- 8c. ENTRE PÁGINAS: la página se desvanece al salir y aparece al entrar ---------- */
+if (!sinMovimiento) {
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest('a[href]');
+    if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin) return;
+    if (url.pathname === location.pathname && url.search === location.search) return;   // mismo lugar: solo baja suave
+    e.preventDefault();
+    document.documentElement.classList.add('saliendo-pagina');
+    setTimeout(() => { location.href = url.href; }, 380);
+  });
+  // al volver con "atrás" el navegador puede mostrar la página guardada: que no quede en blanco
+  window.addEventListener('pageshow', () => document.documentElement.classList.remove('saliendo-pagina'));
 }
 
 // La foto de cada pieza también lleva a su ficha
@@ -607,4 +650,4 @@ document.addEventListener('keydown', (e) => {
   if (window.Asistente) window.Asistente.cerrar();
 });
 
-window.Valientte = { Carrito, CONFIG, pesos, urlWhatsApp, toast };
+window.Valientte = { Carrito, CONFIG, pesos, urlWhatsApp, toast, cambioSuave };
