@@ -1,5 +1,5 @@
 /* =========================================================
-   VALIENTTE — Página de colección (Ella / Él / Todo)
+   VALIENTTE — Página de colección (Para ti / Para regalar / Todo) — sin género
    - Pinta todas las piezas una sola vez (main.js les conecta "agregar").
    - Filtros: para quién (portada), momento, tipo de joya y material.
    - Se carga ANTES de main.js.
@@ -9,27 +9,32 @@
   // Catálogo REAL: viene de js/catalogo.js (se carga antes)
   const { CATALOGO: PIEZAS, pieza } = window.Catalogo;
 
+  // Sin género: la colección se recorre por intención (para ti / para regalar / todo)
+  const REGALO = ['mama', 'amor', 'grado', 'cumple'];
   const PARA = {
-    ella: {
-      rotulo: '#MujerValiente', palabra: 'Ella', frase: 'Para la que se atreve a brillar sin pedir permiso.', color: '#E0662E',
-      ayuda: 'Cuéntanos para quién es y te proponemos tres piezas pensadas para esa persona.',
-      msg: 'Hola Valientte ✨ Busco una joya para ella, ¿me ayudan a escoger?'
+    ti: {
+      rotulo: 'El lujo de ser tú', palabra: 'Tú', titulo: 'Para ti', frase: 'Porque no necesitas una ocasión para brillar.', color: '#E0662E',
+      ayuda: 'Cuéntanos tu estilo y te proponemos tres piezas pensadas para ti.',
+      msg: 'Hola Valientte ✨ Busco una joya para mí, ¿me ayudan a escoger?',
+      grupo: (p) => p.momentos.includes('ti')
     },
-    el: {
-      rotulo: 'Línea hombre', palabra: 'Él', frase: 'Porque ellos también llevan la elegancia.', color: '#1A1714',
-      ayuda: '¿Su primera joya? Te guiamos con la medida de la pulsera o del anillo.',
-      msg: 'Hola Valientte ✨ Busco una joya para él, ¿me ayudan a escoger?'
+    regalo: {
+      rotulo: 'Para regalar', palabra: 'Regalo', titulo: 'Para regalar', frase: 'Una joya dice lo que las palabras no alcanzan.', color: '#1A1714',
+      ayuda: 'Cuéntanos para quién es y te proponemos tres piezas pensadas para esa persona. El empaque de regalo va por nuestra cuenta.',
+      msg: 'Hola Valientte ✨ Quiero dar un regalo, ¿me ayudan a escoger?',
+      grupo: (p) => p.momentos.some((m) => REGALO.includes(m))
     },
     todo: {
-      rotulo: 'Catálogo completo', palabra: 'Todo', frase: 'Toda nuestra colección, en un solo lugar.', color: '#0D3B2C',
+      rotulo: 'Catálogo completo', palabra: 'Todo', titulo: 'Catálogo', frase: 'Toda nuestra colección, en un solo lugar.', color: '#0D3B2C',
       ayuda: 'Si no encuentras lo que buscas, lo conseguimos por encargo.',
-      msg: 'Hola Valientte ✨ ¿Me compartes el catálogo completo?'
+      msg: 'Hola Valientte ✨ ¿Me comparten el catálogo completo?',
+      grupo: () => true
     }
   };
 
   const MOMENTOS = {
-    ella: [['', 'Todo'], ['mama', 'Para mamá'], ['amor', 'Aniversario'], ['grado', 'Grado'], ['ti', 'Un gusto para mí']],
-    el: [['', 'Todo'], ['diario', 'Para el día a día'], ['primera', 'Su primera joya'], ['cumple', 'Cumpleaños'], ['amor', 'Aniversario']],
+    ti: [],
+    regalo: [['', 'Todo'], ['mama', 'Para mamá'], ['amor', 'Aniversario'], ['grado', 'Grado'], ['cumple', 'Cumpleaños']],
     todo: []
   };
 
@@ -62,7 +67,7 @@
   const meta = $('meta[name="theme-color"]');
 
   const cumple = (p, sin = {}) =>
-    (estado.para === 'todo' || p.para.includes(estado.para)) &&
+    PARA[estado.para].grupo(p) &&
     (sin.momento || !estado.momento || p.momentos.includes(estado.momento)) &&
     (sin.tipo || estado.tipo === 'todo' || p.tipo === estado.tipo) &&
     (sin.metal || !estado.metal || p.material === estado.metal);
@@ -125,7 +130,7 @@
       $('[data-col-frase]').textContent = d.frase;
       $$('[data-foto]', hero).forEach((img) => img.classList.toggle('activa', img.dataset.foto === estado.para));
       $$('[data-ir-para]').forEach((a) => a.setAttribute('aria-current', a.dataset.irPara === estado.para ? 'true' : 'false'));
-      document.title = `${estado.para === 'todo' ? 'Catálogo' : 'Para ' + d.palabra.toLowerCase()} · Valientte Joyería`;
+      document.title = `${d.titulo} · Valientte Joyería`;
       if (meta) meta.content = d.color;
       document.body.dataset.para = estado.para;
       // texto y mensaje de ayuda
@@ -167,7 +172,7 @@
   const pintarHeader = () => {
     const abajo = window.scrollY > alto();
     header.classList.toggle('solido', abajo);
-    header.classList.toggle('sobre-foto', !abajo && estado.para !== 'ella');
+    header.classList.toggle('sobre-foto', !abajo && estado.para !== 'ti');
   };
   window.addEventListener('scroll', pintarHeader, { passive: true });
   hero.addEventListener('transitionend', pintarHeader);
@@ -176,6 +181,6 @@
   pintarMomentos();
   pintarPiezas();
   pintarHeader();
-  // al cambiar Ella/Él el header debe cambiar de color también
+  // al cambiar Para ti / Para regalar el header debe cambiar de color también
   $$('[data-ir-para]').forEach((a) => a.addEventListener('click', () => setTimeout(pintarHeader, 460)));
 })();

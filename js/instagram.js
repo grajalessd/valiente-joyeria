@@ -24,9 +24,9 @@
     { id: 'mujervaliente', nombre: '#MujerValiente', portada: 'photo-1475179593777-bd12fd56b85d', historias: [
       { f: 'photo-1475179593777-bd12fd56b85d', t: '<i>#MujerValiente</i><br>tu historia, en la nuestra' },
       { f: 'photo-1611653842967-39eb011b2ca3', t: 'Cada pieza,<br><i>en quien la luce</i>' } ] },
-    { id: 'ellos', nombre: 'Ellos', portada: 'photo-1639065643006-e217c4fee12e', historias: [
-      { f: 'photo-1639065643006-e217c4fee12e', t: 'Ellos también llevan<br>la <i>elegancia</i>' },
-      { f: 'photo-1605884878538-6468614df578', t: 'Acero para<br>el <i>día a día</i>' } ] },
+    { id: 'regalos', nombre: 'Regalos', portada: 'photo-1639065643006-e217c4fee12e', historias: [
+      { f: 'photo-1639065643006-e217c4fee12e', t: 'Una joya dice lo que<br>las palabras <i>no alcanzan</i>' },
+      { f: 'photo-1605884878538-6468614df578', t: 'Empaque de regalo,<br><i>por nuestra cuenta</i>' } ] },
     { id: 'clientes', nombre: 'Clientes', portada: 'photo-1608613381851-6a058de0dc11', historias: [
       { f: 'photo-1608613381851-6a058de0dc11', t: 'Nuestros <i>clientes</i>,<br>nuestro orgullo' } ] }
   ];

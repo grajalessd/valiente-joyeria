@@ -3,7 +3,7 @@
    ---------------------------------------------------------
    1. Tokens          2. Base             3. Piezas comunes
    4. Header          5. Menú (cápsulas)  6. Ventana (hero)
-   7. Materiales (arcos)                  8. Ella / Él
+   7. Materiales (arcos)                  8. Para ti / Para regalar (clases .dos__mitad--ella/--el)
    9. Vitrina + pieza con etiqueta        10. La piedra de los valientes
    11. Recibo         12. Chats           13. Redes
    14. Footer         15. Asistente WhatsApp
@@ -296,7 +296,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 .dos__mitad { position: relative; overflow: hidden; isolation: isolate; min-height: 118vw; padding: 1.6rem var(--gutter); display: grid; align-content: space-between; }
 .dos__mitad--ella { background: var(--naranja); color: var(--tinta); }
 .dos__mitad--el { background: var(--tinta); color: var(--marfil); }
-.dos__palabra { display: inline-block; font-family: var(--f-display); font-style: italic; font-size: clamp(6rem, 34vw, 17rem); line-height: .8; letter-spacing: -.05em; transition: transform 1.6s var(--ease-suave), letter-spacing 1.6s var(--ease-suave); }
+.dos__palabra { display: inline-block; font-family: var(--f-display); font-style: italic; font-size: clamp(5rem, 28vw, 13rem); line-height: .8; letter-spacing: -.05em; transition: transform 1.6s var(--ease-suave), letter-spacing 1.6s var(--ease-suave); }
 .dos__mitad:hover .dos__palabra { transform: translateX(.6rem); letter-spacing: -.035em; }
 /* La foto ocupa todo el lado derecho hasta el borde (el corte entre Ella y Él se nota)
    y solo se difumina hacia el texto con un degradado recto, no circular. */
@@ -738,7 +738,7 @@ dialog.modal::backdrop { background: rgba(6, 26, 18, .55); }
   .js .aparecer, .js .revelar { opacity: 1; transform: none; clip-path: none; }
 }
 
-/* ---------- 20. COLECCIÓN (coleccion.html: Ella / Él / Todo) ---------- */
+/* ---------- 20. COLECCIÓN (coleccion.html: Para ti / Para regalar / Todo) ---------- */
 /* Portada: el color, la palabra y la foto cambian despacio según para quién */
 .col-hero {
   --fondo: var(--bosque); --letra: var(--marfil);
@@ -749,8 +749,8 @@ dialog.modal::backdrop { background: rgba(6, 26, 18, .55); }
   background: var(--fondo); color: var(--letra);
   transition: background-color 1.2s var(--ease-suave), color 1.2s var(--ease-suave);
 }
-.col-hero[data-para="ella"] { --fondo: var(--naranja); --letra: var(--tinta); }
-.col-hero[data-para="el"]   { --fondo: var(--tinta);   --letra: var(--marfil); }
+.col-hero[data-para="ti"]     { --fondo: var(--naranja); --letra: var(--tinta); }
+.col-hero[data-para="regalo"] { --fondo: var(--tinta);   --letra: var(--marfil); }
 /* foto: en celular arriba, fundida en línea recta hacia abajo */
 .col-hero__fotos {
   position: absolute; inset: 0 0 34% 0; z-index: -1;
@@ -766,7 +766,7 @@ dialog.modal::backdrop { background: rgba(6, 26, 18, .55); }
 .col-hero__fotos img.activa { opacity: 1; transform: none; }
 .col-hero__palabra {
   font-family: var(--f-display); font-style: italic; font-weight: 400;
-  font-size: clamp(7rem, 38vw, 19rem); line-height: .8; letter-spacing: -.05em;
+  font-size: clamp(5.5rem, 29vw, 17rem); line-height: .8; letter-spacing: -.05em;
   padding-top: .2em;   /* espacio para la tilde de "Él": no toca el rótulo de arriba */
   transition: opacity .45s var(--ease), transform .9s var(--ease-suave);
 }

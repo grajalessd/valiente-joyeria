@@ -4,8 +4,8 @@
    - Fotos: img/productos/NN.jpg (las de la tienda, con un retoque suave de luz y nitidez).
    - Precios, nombres y descripciones: los del catálogo. NO agregar piezas que no existan.
    - tipo: anillos | aretes | cadenas | pulseras | juegos
-   - material: plata | esmeraldas      para: ella | el
-   - momentos (sugerencias para regalar): mama, amor, grado, ti · diario, primera, cumple
+   - material: plata | esmeraldas
+   - momentos: ti (un gusto para ti) · mama, amor, grado, cumple (para regalar)
    Se carga ANTES de main.js: pinta las piezas y main.js les conecta "agregar".
    ========================================================= */
 (() => {
@@ -13,64 +13,63 @@
   const ESM = 'Plata 925 · Esmeralda natural';
   const DESC_ESM = 'Esmeralda natural colombiana. Se entrega con garantía de por vida.';
 
-  // [n foto, id, nombre, precio, tipo, para, momentos, descripción (opcional)]
+  // [n foto, id, nombre, precio, tipo, momentos, descripción (opcional)]  — sin género: la colección es para quien la quiera
   const DATOS = [
-    [1, 'dije-con-cadena', 'Dije con cadena', 90000, 'cadenas', 'ella', 'mama ti'],
-    [2, 'pulsera-treboles', 'Pulsera Tréboles', 139000, 'pulseras', 'ella', 'amor ti', 'Tejido tenis con circones y dijes de trébol.'],
-    [3, 'pulsera-espiga', 'Pulsera Espiga', 130000, 'pulseras', 'ella', 'grado ti'],
-    [4, 'argolla-de-colores', 'Argolla de colores', 160000, 'anillos', 'ella', 'ti amor'],
-    [5, 'topos-de-color', 'Topos de color', 100000, 'aretes', 'ella', 'ti grado', 'Disponibles en todos los colores.'],
-    [6, 'candongas-con-circones', 'Candongas con circones', 150000, 'aretes', 'ella', 'ti'],
-    [7, 'juego-verde-y-blanco', 'Juego verde y blanco', 200000, 'juegos', 'ella', 'mama grado', 'Juego en plata 925 con circones verdes y blancos.'],
-    [8, 'anillo-corazon-verde', 'Anillo Corazón verde', 75000, 'anillos', 'ella', 'amor', 'Circón verde en forma de corazón.'],
-    [9, 'topos-con-halo', 'Topos con halo', 104000, 'aretes', 'ella', 'mama ti'],
-    [10, 'anillo-circones-alargados', 'Anillo de circones alargados', 140000, 'anillos', 'ella', 'amor'],
-    [11, 'juego-con-circones', 'Juego con circones', 100000, 'juegos', 'ella', 'grado ti'],
-    [12, 'anillo-corazon', 'Anillo Corazón', 75000, 'anillos', 'ella', 'amor', 'Circón en forma de corazón.'],
-    [13, 'topos-con-circones', 'Topos con circones', 100000, 'aretes', 'ella', 'ti'],
-    [14, 'cadena-tejido-tenis', 'Cadena tejido tenis', 350000, 'cadenas', 'ella', 'amor grado'],
-    [15, 'juego-corazones', 'Juego Corazones', 139000, 'juegos', 'ella', 'amor', 'Circones en forma de corazón.'],
-    [16, 'topos-cuadrado-negro', 'Topos cuadrado negro', 75000, 'aretes', 'ella el', 'ti diario', 'Circón cuadrado negro.'],
-    [17, 'anillo-con-circon', 'Anillo con circón', 74997, 'anillos', 'ella', 'ti'],
-    [18, 'anillo-con-circones', 'Anillo con circones', 75000, 'anillos', 'ella', 'amor'],
-    [19, 'argolla-fina', 'Argolla fina con circones', 75000, 'anillos', 'ella', 'amor'],
-    [20, 'juego-cuadrado-verde', 'Juego cuadrado verde', 274000, 'juegos', 'ella', 'mama'],
-    [21, 'candongas-pave', 'Candongas pavé', 132000, 'aretes', 'ella', 'ti'],
-    [22, 'topos-flor-con-perla', 'Topos Flor con perla', 75000, 'aretes', 'ella', 'grado ti', 'En forma de flor, con perla y circones.'],
-    [23, 'candongas-melcocha', 'Candongas Melcocha', 100000, 'aretes', 'ella', 'ti', 'Candongas en plata 925 en forma de melcocha.'],
-    [24, 'topos-circon-cuadrado', 'Topos circón cuadrado', 75000, 'aretes', 'ella el', 'ti diario primera'],
-    [25, 'dije-de-esmeralda', 'Dije de esmeralda', 400000, 'cadenas', 'ella', 'mama amor', DESC_ESM],
-    [26, 'dije-de-esmeralda-con-halo', 'Dije de esmeralda con halo', 500000, 'cadenas', 'ella', 'mama', DESC_ESM],
-    [27, 'anillo-de-esmeralda', 'Anillo de esmeralda', 250000, 'anillos', 'ella', 'amor', DESC_ESM],
-    [28, 'anillo-de-esmeralda-con-halo', 'Anillo de esmeralda con halo', 250000, 'anillos', 'ella', 'amor mama', DESC_ESM],
-    [29, 'topos-de-esmeralda', 'Topos de esmeralda', 400000, 'aretes', 'ella', 'mama', DESC_ESM],
-    [30, 'cruz-de-esmeralda', 'Cruz de esmeralda', 500000, 'cadenas', 'ella el', 'mama cumple', DESC_ESM],
-    [31, 'anillo-cuadrado', 'Anillo cuadrado con circones', 96987, 'anillos', 'ella', 'amor'],
-    [32, 'pulsera-tejido-chino', 'Pulsera tejido chino', 227000, 'pulseras', 'ella el', 'ti diario cumple'],
-    [33, 'topos-nudo', 'Topos Nudo', 98986, 'aretes', 'ella', 'ti'],
-    [34, 'candongas-anchas', 'Candongas anchas con circones', 132000, 'aretes', 'ella', 'ti'],
-    [35, 'anillo-entrelazado', 'Anillo entrelazado', 96000, 'anillos', 'ella', 'amor'],
-    [36, 'pulsera-tejido-tenis', 'Pulsera tejido tenis', 224000, 'pulseras', 'ella', 'amor grado'],
-    [37, 'topos-corazon', 'Topos Corazón', 75000, 'aretes', 'ella', 'amor'],
-    [38, 'cruz-con-circones', 'Cruz con circones', 98000, 'cadenas', 'ella el', 'grado primera cumple', 'Incluye cadena.'],
-    [39, 'anillo-marquesa', 'Anillo Marquesa con halo', 104000, 'anillos', 'ella', 'amor'],
-    [40, 'topos-destello', 'Topos Destello', 80000, 'aretes', 'ella', 'ti'],
-    [41, 'juego-de-cruces', 'Juego de cruces', 134000, 'juegos', 'ella', 'mama grado'],
-    [42, 'pulsera-de-hombre', 'Pulsera de hombre', 266000, 'pulseras', 'el', 'diario primera cumple'],
-    [43, 'anillo-flor', 'Anillo Flor de circones', 112000, 'anillos', 'ella', 'amor'],
-    [44, 'anillo-circon-azul', 'Anillo circón azul', 150000, 'anillos', 'ella', 'mama amor'],
-    [45, 'argolla-eternidad', 'Argolla Eternidad', 75000, 'anillos', 'ella el', 'amor']
+    [1, 'dije-con-cadena', 'Dije con cadena', 90000, 'cadenas', 'mama ti'],
+    [2, 'pulsera-treboles', 'Pulsera Tréboles', 139000, 'pulseras', 'amor ti', 'Tejido tenis con circones y dijes de trébol.'],
+    [3, 'pulsera-espiga', 'Pulsera Espiga', 130000, 'pulseras', 'grado ti'],
+    [4, 'argolla-de-colores', 'Argolla de colores', 160000, 'anillos', 'ti amor'],
+    [5, 'topos-de-color', 'Topos de color', 100000, 'aretes', 'ti grado', 'Disponibles en todos los colores.'],
+    [6, 'candongas-con-circones', 'Candongas con circones', 150000, 'aretes', 'ti'],
+    [7, 'juego-verde-y-blanco', 'Juego verde y blanco', 200000, 'juegos', 'mama grado', 'Juego en plata 925 con circones verdes y blancos.'],
+    [8, 'anillo-corazon-verde', 'Anillo Corazón verde', 75000, 'anillos', 'amor', 'Circón verde en forma de corazón.'],
+    [9, 'topos-con-halo', 'Topos con halo', 104000, 'aretes', 'mama ti'],
+    [10, 'anillo-circones-alargados', 'Anillo de circones alargados', 140000, 'anillos', 'amor'],
+    [11, 'juego-con-circones', 'Juego con circones', 100000, 'juegos', 'grado ti'],
+    [12, 'anillo-corazon', 'Anillo Corazón', 75000, 'anillos', 'amor', 'Circón en forma de corazón.'],
+    [13, 'topos-con-circones', 'Topos con circones', 100000, 'aretes', 'ti'],
+    [14, 'cadena-tejido-tenis', 'Cadena tejido tenis', 350000, 'cadenas', 'amor grado'],
+    [15, 'juego-corazones', 'Juego Corazones', 139000, 'juegos', 'amor', 'Circones en forma de corazón.'],
+    [16, 'topos-cuadrado-negro', 'Topos cuadrado negro', 75000, 'aretes', 'ti', 'Circón cuadrado negro.'],
+    [17, 'anillo-con-circon', 'Anillo con circón', 74997, 'anillos', 'ti'],
+    [18, 'anillo-con-circones', 'Anillo con circones', 75000, 'anillos', 'amor'],
+    [19, 'argolla-fina', 'Argolla fina con circones', 75000, 'anillos', 'amor'],
+    [20, 'juego-cuadrado-verde', 'Juego cuadrado verde', 274000, 'juegos', 'mama'],
+    [21, 'candongas-pave', 'Candongas pavé', 132000, 'aretes', 'ti'],
+    [22, 'topos-flor-con-perla', 'Topos Flor con perla', 75000, 'aretes', 'grado ti', 'En forma de flor, con perla y circones.'],
+    [23, 'candongas-melcocha', 'Candongas Melcocha', 100000, 'aretes', 'ti', 'Candongas en plata 925 en forma de melcocha.'],
+    [24, 'topos-circon-cuadrado', 'Topos circón cuadrado', 75000, 'aretes', 'ti cumple'],
+    [25, 'dije-de-esmeralda', 'Dije de esmeralda', 400000, 'cadenas', 'mama amor', DESC_ESM],
+    [26, 'dije-de-esmeralda-con-halo', 'Dije de esmeralda con halo', 500000, 'cadenas', 'mama', DESC_ESM],
+    [27, 'anillo-de-esmeralda', 'Anillo de esmeralda', 250000, 'anillos', 'amor', DESC_ESM],
+    [28, 'anillo-de-esmeralda-con-halo', 'Anillo de esmeralda con halo', 250000, 'anillos', 'amor mama', DESC_ESM],
+    [29, 'topos-de-esmeralda', 'Topos de esmeralda', 400000, 'aretes', 'mama', DESC_ESM],
+    [30, 'cruz-de-esmeralda', 'Cruz de esmeralda', 500000, 'cadenas', 'mama cumple', DESC_ESM],
+    [31, 'anillo-cuadrado', 'Anillo cuadrado con circones', 96987, 'anillos', 'amor'],
+    [32, 'pulsera-tejido-chino', 'Pulsera tejido chino', 227000, 'pulseras', 'ti cumple'],
+    [33, 'topos-nudo', 'Topos Nudo', 98986, 'aretes', 'ti'],
+    [34, 'candongas-anchas', 'Candongas anchas con circones', 132000, 'aretes', 'ti'],
+    [35, 'anillo-entrelazado', 'Anillo entrelazado', 96000, 'anillos', 'amor'],
+    [36, 'pulsera-tejido-tenis', 'Pulsera tejido tenis', 224000, 'pulseras', 'amor grado'],
+    [37, 'topos-corazon', 'Topos Corazón', 75000, 'aretes', 'amor'],
+    [38, 'cruz-con-circones', 'Cruz con circones', 98000, 'cadenas', 'grado cumple', 'Incluye cadena.'],
+    [39, 'anillo-marquesa', 'Anillo Marquesa con halo', 104000, 'anillos', 'amor'],
+    [40, 'topos-destello', 'Topos Destello', 80000, 'aretes', 'ti'],
+    [41, 'juego-de-cruces', 'Juego de cruces', 134000, 'juegos', 'mama grado'],
+    [42, 'pulsera-de-hombre', 'Pulsera de hombre', 266000, 'pulseras', 'ti cumple'],
+    [43, 'anillo-flor', 'Anillo Flor de circones', 112000, 'anillos', 'amor'],
+    [44, 'anillo-circon-azul', 'Anillo circón azul', 150000, 'anillos', 'mama amor'],
+    [45, 'argolla-eternidad', 'Argolla Eternidad', 75000, 'anillos', 'amor']
   ];
 
   const ESMERALDAS = [25, 26, 27, 28, 29, 30];
-  const CATALOGO = DATOS.map(([n, id, nombre, precio, tipo, para, momentos, desc]) => {
+  const CATALOGO = DATOS.map(([n, id, nombre, precio, tipo, momentos, desc]) => {
     const esm = ESMERALDAS.includes(n);
     return {
       n, id, nombre, precio, tipo,
       material: esm ? 'esmeraldas' : 'plata',
       rotulo: esm ? ESM : PLATA,
       variante: esm ? 'Plata 925 · Esmeralda natural' : 'Plata 925',
-      para: para.split(' '),
       momentos: momentos.split(' '),
       desc: desc || 'Pieza en plata 925 con circones.',
       sello: esm ? 'Esmeralda natural' : '',
@@ -113,7 +112,6 @@
   // precios "desde" de los paneles de colecciones (se calculan del catálogo)
   document.querySelectorAll('[data-desde-material]').forEach((el) => { el.textContent = 'Desde ' + pesos(desde((p) => p.material === el.dataset.desdeMaterial)); });
   document.querySelectorAll('[data-desde-tipo]').forEach((el) => { el.textContent = 'Desde ' + pesos(desde((p) => p.tipo === el.dataset.desdeTipo)); });
-  document.querySelectorAll('[data-desde-para]').forEach((el) => { el.textContent = 'Desde ' + pesos(desde((p) => p.para.includes(el.dataset.desdePara))); });
 
   /* ---------- Ficha de producto (producto.html?id=...) ---------- */
   const ficha = document.querySelector('[data-ficha]');
