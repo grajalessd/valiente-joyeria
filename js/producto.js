@@ -76,7 +76,8 @@
     materialElegido.textContent = s.material;
     salidaCantidad.textContent = cantidad;
     pedirWhatsApp.href = urlWhatsApp(
-      `Hola Valientte ✨ Quiero pedir:\n\n• ${cantidad} x ${ficha.dataset.nombre}\n• ${ficha.dataset.variante}${s.talla ? `\n• Talla ${s.talla}` : ''}\n• Precio: ${pesos(s.precio * cantidad)}\n\n¿Está disponible?`
+      // UNA sola línea por pieza (antes eran 3 viñetas y parecían 3 productos) + enlace para que sepan cuál es
+      `Hola Valientte ✨ Me enamoré de esta joya:\n\n• ${cantidad > 1 ? `${cantidad} × ` : ''}${ficha.dataset.nombre} · ${ficha.dataset.variante}${s.talla ? ` · Talla ${s.talla}` : ''} · ${pesos(s.precio * cantidad)}\n\n¿Está disponible?${/^https?:/.test(location.href) ? `\n${location.href.split('#')[0]}` : ''}`
     );
   }
 

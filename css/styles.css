@@ -424,7 +424,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 .vitrina__pie { margin-top: 3.5rem; display: flex; justify-content: center; }
 
 /* ---------- 10. LA PIEDRA DE LOS VALIENTES ---------- */
-.piedra-sec { background: var(--noche); color: var(--marfil); overflow: hidden; position: relative; }
+.piedra-sec { background: var(--noche); color: var(--marfil); overflow: clip; position: relative; } /* clip (no hidden): hidden rompe el position:sticky del viaje */
 .piedra-sec__intro { padding-top: clamp(4.5rem, 11vw, 8rem); padding-bottom: 3rem; text-align: center; display: grid; justify-items: center; gap: 1.2rem; }
 .piedra-sec__intro .rotulo { color: var(--esmeralda-viva); }
 .piedra-sec__intro h2 { font-size: clamp(3rem, 11vw, 8rem); }
@@ -1280,3 +1280,102 @@ html { scrollbar-color: var(--bosque-2) var(--arena); caret-color: var(--naranja
 .ig-enlace__texto .rotulo { font-size: .7rem; }
 .asistente__boton { box-shadow: 0 16px 34px -14px rgba(6, 26, 18, .55); }
 .nos-texto p.grande em { color: #0F6E4D; }
+/* =========================================================
+   28. RONDA 20-NOV-2026
+   ========================================================= */
+/* Portada: la ubicación va como firma discreta bajo la frase (no compite con ella) */
+.ventana__sub .ventana__lugar { display: block; margin: .9rem 0 0; font-family: var(--f-texto); font-style: normal; font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; opacity: .7; }
+@media (max-width: 899px) { .ventana__sub { max-width: 22ch; margin-inline: auto; } }
+
+/* ---- EL VIAJE DE LA ESMERALDA (reemplaza a "la talla"): 5 capítulos en UNA sola pantalla (avanzan solos).
+   La gema la dibuja js/piedra.js en el canvas; aquí van el riel, los textos y la joya final.
+   Variables que pone el JS en .viaje: --p (avance 0–1), --f (llegada de la joya 0–1). ---- */
+.viaje { --p: 0; --f: 0; position: relative; }
+.viaje__pegado { position: relative; height: 100vh; height: 100svh; max-height: 900px; min-height: 560px; overflow: hidden; cursor: pointer; }
+.viaje__lienzo { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* la joya real: aparece en el mismo lugar donde se desvanece la gema, en ventana talla esmeralda */
+.viaje__joya {
+  position: absolute; margin: 0; left: 50%; top: 40%;
+  width: min(68vw, 40svh); aspect-ratio: 1; translate: -50% -50%;
+  clip-path: polygon(16% 0, 84% 0, 100% 16%, 100% 84%, 84% 100%, 16% 100%, 0 84%, 0 16%);
+  opacity: var(--f); scale: calc(.82 + var(--f) * .18);
+  filter: blur(calc((1 - var(--f)) * 10px));
+  pointer-events: none;
+}
+.viaje__joya img { width: 100%; height: 100%; object-fit: cover; }
+.viaje__joya::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(255, 253, 249, .35), inset 0 0 60px rgba(6, 26, 18, .45); }
+
+/* riel de capítulos: siempre visible, dice dónde vas y deja saltar */
+/* riel ARRIBA en todas las pantallas: la barra se llena de izquierda a derecha y los capítulos van debajo */
+.viaje__riel {
+  position: absolute; top: 3.2rem; left: var(--gutter); right: var(--gutter);
+  margin-inline: auto; max-width: 760px;
+  display: flex; justify-content: space-between; gap: .4rem;
+  padding-top: .5rem; z-index: 2;
+}
+.viaje__riel::before, .viaje__avance { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 100%; background: rgba(247, 243, 236, .18); }
+.viaje__avance { background: var(--esmeralda-viva); transform-origin: left; transform: scaleX(var(--p)); }
+.viaje__riel button {
+  appearance: none; border: 0; background: none; color: rgba(247, 243, 236, .5); cursor: pointer;
+  font: 600 .69rem/1 var(--f-texto); letter-spacing: .14em; text-transform: uppercase;
+  min-height: 44px; padding: 0 .1rem; white-space: nowrap;
+  transition: color 1.2s var(--ease-suave);
+}
+.viaje__riel button[aria-current="step"] { color: var(--marfil); }
+@media (max-width: 480px) { .viaje__riel { gap: 0; } .viaje__riel button { font-size: .56rem; letter-spacing: .05em; padding: 0; } }
+
+/* textos: uno por capítulo, se turnan con un fundido lento */
+.viaje__textos { list-style: none; margin: 0; padding: 0; position: absolute; left: var(--gutter); right: var(--gutter); bottom: 5.6rem; display: grid; z-index: 2; }
+.viaje__textos li {
+  grid-area: 1 / 1; align-self: end; text-align: center;
+  opacity: 0; transform: translateY(18px); filter: blur(6px); pointer-events: none;
+  transition: opacity 1.2s var(--ease-suave), transform 1.2s var(--ease-suave), filter 1.2s var(--ease-suave);
+}
+.viaje__textos li.ver { opacity: 1; transform: none; filter: none; pointer-events: auto; }
+.viaje__textos .rotulo { color: var(--esmeralda-viva); }
+.viaje__textos p { margin: .7rem auto 0; max-width: 24ch; font-family: var(--f-display); font-size: clamp(1.35rem, 5.4vw, 2.5rem); line-height: 1.22; color: var(--marfil); text-wrap: balance; }
+.viaje__textos .enlace-flecha { margin-top: 1.1rem; color: var(--marfil); }
+/* invitación a tocar: frase (es un botón: también avanza) + contorno talla esmeralda que late sobre la piedra */
+.viaje__pista {
+  position: absolute; bottom: 1rem; left: 50%; translate: -50% 0; z-index: 3;
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; padding: 0 1.1rem;
+  appearance: none; border: 0; background: none; cursor: pointer; white-space: nowrap;
+  color: var(--marfil); transition: opacity .8s var(--ease-suave);
+}
+.viaje__pista .flecha { color: var(--esmeralda-viva); animation: viaje-flecha 2.4s var(--ease-suave) infinite; }
+.viaje.moviendo .viaje__pista { opacity: .35; }
+@keyframes viaje-flecha { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+
+.viaje__toque {
+  position: absolute; left: 50%; top: 40%; z-index: 1; pointer-events: none;
+  width: min(52vw, 30svh); aspect-ratio: 1; translate: -50% -50%;
+  transition: opacity 1.2s var(--ease-suave);
+}
+.viaje__toque svg { width: 100%; height: 100%; overflow: visible; animation: viaje-late 2.8s var(--ease-suave) infinite; }
+.viaje__toque polygon { fill: none; stroke: var(--esmeralda-viva); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+@keyframes viaje-late { 0% { transform: scale(.9); opacity: 0; } 35% { opacity: .75; } 100% { transform: scale(1.18); opacity: 0; } }
+.viaje__toque svg { transform-origin: 50% 50%; }
+.viaje.moviendo .viaje__toque, .viaje.final .viaje__toque { opacity: 0; }
+
+@media (min-width: 900px) {
+  .viaje__toque { left: 68%; top: 50%; width: min(26vw, 46vh); }
+  .viaje__textos { left: 16vw; right: auto; width: 34vw; bottom: auto; top: 50%; translate: 0 -50%; }
+  .viaje__textos li { text-align: left; align-self: center; }
+  .viaje__textos p { margin-left: 0; max-width: 18ch; font-size: clamp(2rem, 3.2vw, 3.2rem); }
+  .viaje__joya { left: 68%; top: 50%; width: min(34vw, 62vh); }
+}
+
+/* sin JS o con "reducir movimiento": la joya y los cinco textos uno debajo del otro */
+:is(.viaje.quieta, html:not(.js) .viaje) { height: auto; }
+:is(.viaje.quieta, html:not(.js) .viaje) .viaje__pegado { position: relative; height: auto; overflow: visible; padding: 2rem var(--gutter) 3rem; display: grid; gap: 2rem; justify-items: center; }
+:is(.viaje.quieta, html:not(.js) .viaje) .viaje__lienzo, :is(.viaje.quieta, html:not(.js) .viaje) .viaje__riel, :is(.viaje.quieta, html:not(.js) .viaje) .viaje__pista, :is(.viaje.quieta, html:not(.js) .viaje) .viaje__toque { display: none; }
+:is(.viaje.quieta, html:not(.js) .viaje) .viaje__joya { position: relative; left: auto; top: auto; translate: none; opacity: 1; scale: 1; filter: none; }
+:is(.viaje.quieta, html:not(.js) .viaje) .viaje__textos { position: relative; inset: auto; translate: none; width: auto; gap: 2rem; }
+:is(.viaje.quieta, html:not(.js) .viaje) .viaje__textos li { grid-area: auto; opacity: 1; transform: none; filter: none; pointer-events: auto; text-align: center; }
+.historia { padding-top: clamp(3rem, 8vw, 5rem); }
+/* Ficha: miniaturas facetadas cuando hay foto "puesta" */
+.galeria__miniaturas { display: flex; gap: .6rem; padding: .8rem var(--gutter) 0; }
+.galeria__miniaturas button { width: 52px; height: 64px; padding: 0; border: 0; background: var(--arena-2); clip-path: var(--faceta-chica); opacity: .5; transition: opacity .8s var(--ease-suave); cursor: pointer; min-height: 44px; }
+.galeria__miniaturas button[aria-current="true"] { opacity: 1; }
+.galeria__miniaturas img { width: 100%; height: 100%; object-fit: cover; }

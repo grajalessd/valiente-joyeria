@@ -2,7 +2,7 @@
    VALIENTTE JOYERÍA — JavaScript general
    1. Configuración          2. WhatsApp (enlaces y asistente)
    3. Header + menú          4. La ventana (hero)
-   5. Gema que se inclina    6. Lupa del jardín
+   5. (la esmeralda está en js/piedra.js)
    7. Apariciones            8. Vitrina (tipo + material)
    9. Bolsa (carrito)
    Sin librerías. Respeta "reducir movimiento".
@@ -201,68 +201,7 @@ function pintarVentana() {
   header.classList.toggle('sobre-foto', p > 0.6 && p < 1);
 }
 
-/* ---------- 5. GEMA QUE SE INCLINA ---------- */
-const escenario = $('[data-escenario]');
-if (escenario && !sinMovimiento) {
-  const gema3d = $('[data-gema3d]', escenario);
-  const destello = $('[data-destello]', escenario);
-  const pista = $('.escenario__pista', escenario);
-  if (pista) pista.textContent = conMouse ? 'Acércate y mírala brillar' : 'Desliza y mírala brillar';
-  const mover = (x, y) => {
-    const r = escenario.getBoundingClientRect();
-    const px = limitar((x - r.left) / r.width);
-    const py = limitar((y - r.top) / r.height);
-    gema3d.style.setProperty('--ry', ((px - .5) * 50).toFixed(1) + 'deg');
-    gema3d.style.setProperty('--rx', ((.5 - py) * 40).toFixed(1) + 'deg');
-    destello.style.setProperty('--lx', (px * 100) + '%');
-    destello.style.setProperty('--ly', (py * 100) + '%');
-  };
-  escenario.addEventListener('pointermove', (e) => mover(e.clientX, e.clientY));
-  escenario.addEventListener('pointerleave', () => {
-    gema3d.style.setProperty('--rx', '0deg');
-    gema3d.style.setProperty('--ry', '0deg');
-  });
-  // En celular, sin mouse: la gema se inclina sola mientras pasa por la pantalla
-  if (!conMouse) {
-    window.addEventListener('scroll', () => {
-      const r = escenario.getBoundingClientRect();
-      const p = limitar(1 - (r.top + r.height / 2) / window.innerHeight);
-      gema3d.style.setProperty('--ry', ((p - .5) * 60).toFixed(1) + 'deg');
-      gema3d.style.setProperty('--rx', ((p - .5) * -20).toFixed(1) + 'deg');
-      destello.style.setProperty('--lx', (20 + p * 60) + '%');
-    }, { passive: true });
-  }
-}
-
-/* ---------- 6. LUPA DEL JARDÍN ---------- */
-const lupa = $('[data-lupa]');
-if (lupa) {
-  const img = $('img', lupa);
-  const lente = $('[data-lente]', lupa);
-  const mover = (x, y) => {
-    const r = lupa.getBoundingClientRect();
-    const lx = x - r.left;
-    const ly = y - r.top;
-    const t = lente.offsetWidth / 2;
-    // la foto está recortada (cover): se calcula su tamaño real en pantalla
-    const nw = img.naturalWidth || r.width, nh = img.naturalHeight || r.height;
-    const escala = Math.max(r.width / nw, r.height / nh);
-    const rw = nw * escala, rh = nh * escala;
-    const x0 = (r.width - rw) / 2, y0 = (r.height - rh) / 2;
-    // aumento: lo justo para ver la foto a su resolución real (nunca más), así no se pixela
-    const z = Math.min(2.4, Math.max(1.2, (1 / escala) / (window.devicePixelRatio > 1 ? 1.4 : 1)));
-    lente.style.setProperty('--x', (lx - t) + 'px');
-    lente.style.setProperty('--y', (ly - t) + 'px');
-    lente.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
-    lente.style.backgroundSize = `${rw * z}px ${rh * z}px`;
-    lente.style.backgroundPosition = `${-((lx - x0) * z - t)}px ${-((ly - y0) * z - t)}px`;
-  };
-  lupa.addEventListener('pointerdown', (e) => { lupa.classList.add('activa'); mover(e.clientX, e.clientY); });
-  lupa.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') lupa.classList.add('activa'); });
-  lupa.addEventListener('pointermove', (e) => { if (lupa.classList.contains('activa')) mover(e.clientX, e.clientY); });
-  lupa.addEventListener('pointerleave', () => lupa.classList.remove('activa'));
-  lupa.addEventListener('pointerup', (e) => { if (e.pointerType !== 'mouse') lupa.classList.remove('activa'); });
-}
+/* ---------- 5. LA PIEDRA DE LOS VALIENTES: vive en js/piedra.js (solo en el inicio) ---------- */
 
 /* Un solo bucle de scroll */
 let pendiente = false;
@@ -427,7 +366,7 @@ const piezas = $$('[data-grid-productos] .pieza');
 const pestanas = $$('[data-pestanas] [data-tipo]');
 const filtroActivo = $('[data-filtro-activo]');
 const vitrinaVacia = $('[data-vitrina-vacia]');
-const nombresMaterial = { plata: 'Plata 925', esmeraldas: 'Esmeraldas' };
+const nombresMaterial = { plata: 'Plata 925', esmeraldas: 'Esmeraldas', oro: 'Oro laminado 18k' };
 const estado = { tipo: 'todo', material: null };
 
 function pintarVitrina() {
@@ -547,8 +486,10 @@ const Carrito = (() => {
   const unidades = () => items.reduce((s, i) => s + i.cant, 0);
 
   function mensajePedido() {
-    const lineas = items.map((i) => `• ${i.cant} x ${i.nombre} (${i.variante}) — ${pesos(i.precio * i.cant)}`);
-    return `Hola Valientte ✨ Quiero hacer este pedido:\n\n${lineas.join('\n')}\n\nSubtotal: ${pesos(subtotal())}\n\n¿Me ayudas con el envío y el pago?`;
+    // UNA línea por pieza: nombre · material · precio (si son varias del mismo, "2 × ")
+    const lineas = items.map((i) => `• ${i.cant > 1 ? `${i.cant} × ` : ''}${i.nombre} · ${i.variante} · ${pesos(i.precio * i.cant)}`);
+    const total = items.length > 1 || (items[0] && items[0].cant > 1) ? `\n\nTotal: ${pesos(subtotal())}` : '';
+    return `Hola Valientte ✨ Quiero hacer este pedido:\n\n${lineas.join('\n')}${total}\n\n¿Me confirman disponibilidad, envío y pago?`;
   }
 
   function render() {
