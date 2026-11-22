@@ -381,9 +381,9 @@
     // fondo
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = '#061A12'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#030303'; ctx.fillRect(0, 0, W, H);
     const amb = ctx.createRadialGradient(CX, CY, 0, CX, CY, Math.max(W, H) * .7);
-    amb.addColorStop(0, 'rgba(19,135,95,.16)'); amb.addColorStop(1, 'rgba(6,26,18,0)');
+    amb.addColorStop(0, 'rgba(19,135,95,.12)'); amb.addColorStop(1, 'rgba(3,3,3,0)');
     ctx.fillStyle = amb; ctx.fillRect(0, 0, W, H);
 
     // la gema
@@ -439,8 +439,8 @@
 
     // velo bajo los textos para que siempre se lean (sobre la roca y sobre la piedra)
     const velo = escritorio ? ctx.createLinearGradient(0, 0, W * .55, 0) : ctx.createLinearGradient(0, H * .5, 0, H);
-    velo.addColorStop(0, escritorio ? 'rgba(6,26,18,.82)' : 'rgba(6,26,18,0)');
-    velo.addColorStop(1, escritorio ? 'rgba(6,26,18,0)' : 'rgba(6,26,18,.88)');
+    velo.addColorStop(0, escritorio ? 'rgba(3,3,3,.82)' : 'rgba(3,3,3,0)');
+    velo.addColorStop(1, escritorio ? 'rgba(3,3,3,0)' : 'rgba(3,3,3,.88)');
     ctx.fillStyle = velo; ctx.fillRect(0, 0, W, H);
 
     // textos, riel y avance

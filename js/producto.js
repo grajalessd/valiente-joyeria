@@ -77,7 +77,7 @@
     salidaCantidad.textContent = cantidad;
     pedirWhatsApp.href = urlWhatsApp(
       // UNA sola línea por pieza (antes eran 3 viñetas y parecían 3 productos) + enlace para que sepan cuál es
-      `Hola Valientte ✨ Me enamoré de esta joya:\n\n• ${cantidad > 1 ? `${cantidad} × ` : ''}${ficha.dataset.nombre} · ${ficha.dataset.variante}${s.talla ? ` · Talla ${s.talla}` : ''} · ${pesos(s.precio * cantidad)}\n\n¿Está disponible?${/^https?:/.test(location.href) ? `\n${location.href.split('#')[0]}` : ''}`
+      `Hola Valientte, me enamoré de esta joya:\n\n• ${cantidad > 1 ? `${cantidad} × ` : ''}${ficha.dataset.nombre} · ${ficha.dataset.variante}${s.talla ? ` · Talla ${s.talla}` : ''} · ${pesos(s.precio * cantidad)}\n\n¿Está disponible?${/^https?:/.test(location.href) ? `\n${location.href.split('#')[0]}` : ''}`
     );
   }
 
@@ -85,8 +85,8 @@
   const nombre = ficha.dataset.nombre;
   $$('[data-wa-pieza]').forEach((a) => {
     a.href = urlWhatsApp(a.dataset.waPieza === 'regalo'
-      ? `Hola Valientte ✨ Quiero ver ${nombre} en persona, ¿me mandan más fotos o un video?`
-      : `Hola Valientte ✨ ¿${nombre} está disponible?`);
+      ? `Hola Valientte, quiero ver ${nombre} en persona, ¿me mandan más fotos o un video?`
+      : `Hola Valientte, ¿${nombre} está disponible?`);
   });
 
   form.addEventListener('change', actualizar);

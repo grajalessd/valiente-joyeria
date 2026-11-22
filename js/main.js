@@ -40,12 +40,22 @@ function toast(texto) {
   el.textContent = texto;
   el.classList.add('visible');
   clearTimeout(tToast);
-  tToast = setTimeout(() => el.classList.remove('visible'), 2400);
+  tToast = setTimeout(() => el.classList.remove('visible'), texto.length > 40 ? 4200 : 2400);
 }
 
 /* ---------- 2. WHATSAPP ---------- */
-$$('[data-whatsapp]').forEach((a) => { a.href = urlWhatsApp('Hola Valientte ✨ Quiero asesoría para escoger una joya.'); });
+$$('[data-whatsapp]').forEach((a) => { a.href = urlWhatsApp('Hola Valientte, quiero asesoría para escoger una joya.'); });
 $$('[data-wa-msg]').forEach((a) => { a.href = urlWhatsApp(a.dataset.waMsg); });
+
+/* Mensaje directo de Instagram: Instagram NO deja escribir el texto por enlace (WhatsApp sí).
+   Por eso, al tocar el botón, el mensaje se copia solo y se avisa: en el chat basta con pegar y enviar. */
+const MENSAJE_IG = 'Hola Valientte, vi su página y quiero información sobre sus joyas.';
+$$('a[href*="ig.me/m/"]').forEach((a) => a.addEventListener('click', () => {
+  const texto = a.dataset.igMsg || MENSAJE_IG;
+  try {
+    navigator.clipboard.writeText(texto).then(() => toast('Mensaje copiado: pégalo en el chat y envíalo'), () => {});
+  } catch (e) { /* sin portapapeles: el chat abre igual */ }
+}));
 
 const asistente = $('[data-asistente]');
 if (asistente) {
@@ -88,7 +98,7 @@ const IG_URL = 'https://www.instagram.com/joyeria.valientte/';
   document.body.appendChild(ig);
 
   // PENDIENTE: ajustar frases con la clienta (p. ej. si hacen sorteos o lives)
-  const frases = ['Las novedades, aquí primero', 'Cada pieza, en quien la luce', 'Desde Manizales, con orgullo', 'Plata 925 & esmeraldas ✨'];
+  const frases = ['Las novedades, aquí primero', 'Cada pieza, en quien la luce', 'Desde Manizales, con orgullo', 'Plata 925, esmeraldas y oro laminado'];
   const frase = $('[data-ig-frase]', ig);
   let n = 0, tHabla;
   const hablar = () => {
@@ -366,7 +376,7 @@ const piezas = $$('[data-grid-productos] .pieza');
 const pestanas = $$('[data-pestanas] [data-tipo]');
 const filtroActivo = $('[data-filtro-activo]');
 const vitrinaVacia = $('[data-vitrina-vacia]');
-const nombresMaterial = { plata: 'Plata 925', esmeraldas: 'Esmeraldas', oro: 'Oro laminado 18k' };
+const nombresMaterial = { plata: 'Plata 925', esmeraldas: 'Plata con esmeraldas', oro: 'Oro laminado 18k' };
 const estado = { tipo: 'todo', material: null };
 
 function pintarVitrina() {
@@ -489,7 +499,7 @@ const Carrito = (() => {
     // UNA línea por pieza: nombre · material · precio (si son varias del mismo, "2 × ")
     const lineas = items.map((i) => `• ${i.cant > 1 ? `${i.cant} × ` : ''}${i.nombre} · ${i.variante} · ${pesos(i.precio * i.cant)}`);
     const total = items.length > 1 || (items[0] && items[0].cant > 1) ? `\n\nTotal: ${pesos(subtotal())}` : '';
-    return `Hola Valientte ✨ Quiero hacer este pedido:\n\n${lineas.join('\n')}${total}\n\n¿Me confirman disponibilidad, envío y pago?`;
+    return `Hola Valientte, quiero hacer este pedido:\n\n${lineas.join('\n')}${total}\n\n¿Me confirman disponibilidad, envío y pago?`;
   }
 
   function render() {
@@ -541,7 +551,7 @@ const Carrito = (() => {
     chatPedido.innerHTML = hay ? escapar(mensajePedido()).replace(/\n/g, '<br>') : chatEjemplo;
     if (chatEtiqueta) chatEtiqueta.textContent = hay ? 'Tu pedido, listo para enviar' : 'Así se ve tu mensaje';
     if (chatEnviar) {
-      chatEnviar.href = hay ? urlWhatsApp(mensajePedido()) : urlWhatsApp('Hola Valientte ✨ Quiero asesoría para escoger una joya.');
+      chatEnviar.href = hay ? urlWhatsApp(mensajePedido()) : urlWhatsApp('Hola Valientte, quiero asesoría para escoger una joya.');
       chatEnviar.querySelector('span').textContent = hay ? 'Enviar mi pedido' : 'Escribirnos ahora';
     }
   }

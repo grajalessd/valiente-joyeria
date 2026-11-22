@@ -17,12 +17,12 @@
   const DESTACADAS = [
     { id: 'novedades', nombre: 'Novedades', portada: 2, historias: [
       { f: 2, t: 'Las novedades,<br><i>aquí primero</i>' },
-      { f: 21, t: 'Recién llegadas<br>a la <i>vitrina</i>' } ] },
-    { id: 'esmeraldas', nombre: 'Esmeraldas', portada: 26, historias: [
-      { f: 26, t: 'La piedra de<br>los <i>valientes</i>' },
+      { f: 34, t: 'Recién llegadas<br>a la <i>vitrina</i>' } ] },
+    { id: 'esmeraldas', nombre: 'Esmeraldas', portada: 30, historias: [
+      { f: 30, t: 'La piedra de<br>los <i>valientes</i>' },
       { f: 29, t: 'Esmeralda<br><i>colombiana</i>' } ] },
-    { id: 'mujervaliente', nombre: '#MujerValiente', portada: 25, historias: [
-      { f: 25, t: '<i>#MujerValiente</i><br>tu historia, en la nuestra' },
+    { id: 'mujervaliente', nombre: '#MujerValiente', portada: 12, historias: [
+      { f: 12, t: '<i>#MujerValiente</i><br>tu historia, en la nuestra' },
       { f: 9, t: 'Cada pieza,<br><i>en quien la luce</i>' } ] },
     { id: 'plata', nombre: 'Plata 925', portada: 36, historias: [
       { f: 36, t: 'Plata 925,<br><i>para siempre</i>' },
@@ -116,6 +116,6 @@
     }
     b.classList.add('copiado');
     setTimeout(() => b.classList.remove('copiado'), 1600);
-    if (window.Valientte) window.Valientte.toast(`${texto} copiado ✨ Úsalo en tu publicación`);
+    if (window.Valientte) window.Valientte.toast(`${texto} copiado. Úsalo en tu publicación`);
   }));
 })();

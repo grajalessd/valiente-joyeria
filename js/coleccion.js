@@ -12,9 +12,9 @@
   // Un solo catálogo (la clienta no quiere división por género ni por regalo)
   const PARA = {
     todo: {
-      rotulo: 'Catálogo completo', palabra: 'Colección', titulo: 'Colección', frase: 'Toda nuestra colección, en un solo lugar.', color: '#0D3B2C',
+      rotulo: 'Catálogo completo', palabra: 'Colección', titulo: 'Colección', frase: 'Toda nuestra colección, en un solo lugar.', color: '#E6D4BE',
       ayuda: 'Si no encuentras lo que buscas, lo conseguimos por encargo.',
-      msg: 'Hola Valientte ✨ ¿Me comparten el catálogo completo?',
+      msg: 'Hola Valientte, ¿me comparten el catálogo completo?',
       grupo: () => true
     }
   };
@@ -76,7 +76,7 @@
       if (ok) { f.classList.add('visible'); f.style.setProperty('--orden', n); n++; }
     });
     escalonar();
-    cuenta.textContent = n === 1 ? '1 pieza' : `${n} piezas`;
+    if (cuenta) cuenta.textContent = n === 1 ? '1 pieza' : `${n} piezas`;
     vacia.hidden = n > 0;
     $$('[data-cuenta-col]').forEach((s) => {
       const t = s.dataset.cuentaCol;
