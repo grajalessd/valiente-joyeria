@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada · Valientte Joyería</title>
+  <meta name="robots" content="noindex">
+  <!-- GitHub Pages muestra esta página ante cualquier dirección que no exista, en cualquier carpeta:
+       por eso los enlaces se arman con la raíz del sitio (sirve en github.io y con dominio propio). -->
+  <script>
+    (function () {
+      var raiz = location.pathname.indexOf('/valiente-joyeria/') === 0 ? '/valiente-joyeria/' : '/';
+      document.write('<base href="' + raiz + '">');
+    })();
+  </script>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --crema:#FFF5EB; --arena:#E6D4BE; --caramelo:#946038; --caramelo-hondo:#7A4D2B; --negro:#030303; --gris:#6B5848;
+            --ease:cubic-bezier(.22,.61,.36,1);
+            --baguette:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,14px 100%,0 50%); }
+    * { box-sizing:border-box; }
+    html, body { margin:0; min-height:100%; }
+    body { min-height:100svh; background:var(--arena); color:var(--negro); font-family:"Playfair Display",Georgia,serif;
+           display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+           padding:48px 20px; animation:entrar 1.2s var(--ease) both; }
+    @keyframes entrar { from { opacity:0; transform:translateY(12px); } }
+    .logo { width:min(190px,52vw); height:auto; margin-bottom:clamp(36px,7vh,64px); }
+
+    /* El hueco vacío del estuche: talla esmeralda en contorno, la joya "no está" */
+    .hueco { width:96px; height:120px; margin-bottom:28px; }
+    .hueco path { fill:none; stroke:var(--caramelo); stroke-width:1.5; stroke-dasharray:420; stroke-dashoffset:420;
+                  animation:trazar 2.2s .5s var(--ease) forwards; }
+    .hueco .faceta { stroke-width:1; opacity:.55; animation-delay:1.2s; }
+    @keyframes trazar { to { stroke-dashoffset:0; } }
+
+    .rotulo { font:500 12px/1 Montserrat,sans-serif; letter-spacing:.3em; text-transform:uppercase; color:var(--gris); margin:0 0 16px; }
+    h1 { font-weight:400; font-size:clamp(30px,7vw,48px); line-height:1.1; margin:0 0 14px; }
+    h1 em { font-style:italic; }
+    p.texto { font-size:17px; line-height:1.5; color:var(--gris); max-width:30ch; margin:0 0 36px; }
+
+    .acciones { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+    .boton { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 30px;
+             font:500 12px/1 Montserrat,sans-serif; letter-spacing:.2em; text-transform:uppercase; text-decoration:none;
+             clip-path:var(--baguette); transition:background-color .6s var(--ease), color .6s var(--ease); }
+    .boton--lleno { background:var(--negro); color:var(--crema); }
+    .boton--lleno:hover { background:var(--caramelo-hondo); }
+    .boton--borde { background:var(--crema); color:var(--negro); }
+    .boton--borde:hover { background:var(--negro); color:var(--crema); }
+    .boton:focus-visible { outline:2px solid var(--caramelo); outline-offset:-5px; }
+    .ig { margin-top:32px; font:500 12px/1 Montserrat,sans-serif; letter-spacing:.2em; text-transform:uppercase;
+          color:var(--caramelo-hondo); text-decoration:none; padding:14px 4px; border-bottom:1px solid transparent;
+          transition:border-color .6s var(--ease); }
+    .ig:hover { border-color:currentColor; }
+    @media (prefers-reduced-motion: reduce) {
+      body { animation:none; }
+      .hueco path { animation:none; stroke-dashoffset:0; }
+    }
+  </style>
+</head>
+<body>
+  <a href="./" aria-label="Valientte Joyería, ir al inicio"><img class="logo" src="img/logo.svg" alt="Valientte Joyería" width="298" height="203"></a>
+
+  <svg class="hueco" viewBox="0 0 96 120" aria-hidden="true">
+    <path d="M24 2 H72 L94 24 V96 L72 118 H24 L2 96 V24 Z"/>
+    <path class="faceta" d="M32 18 H64 L78 32 V88 L64 102 H32 L18 88 V32 Z"/>
+  </svg>
+
+  <p class="rotulo">Error 404</p>
+  <h1>Esta pieza no está<br>en el <em>estuche</em></h1>
+  <p class="texto">La página que buscas no existe o cambió de lugar. Las joyas siguen aquí.</p>
+
+  <div class="acciones">
+    <a class="boton boton--lleno" href="./">Volver al inicio</a>
+    <a class="boton boton--borde" href="coleccion.html">Ver la colección</a>
+  </div>
+  <a class="ig" href="https://www.instagram.com/joyeria.valientte/" target="_blank" rel="noopener">@joyeria.valientte</a>
+</body>
+</html>

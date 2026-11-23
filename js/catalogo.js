@@ -31,7 +31,7 @@
     [14, 'cadena-tejido-tenis', 'Cadena Tenis', 350000, 'cadenas', 'amor grado', 'Una línea continua de circones.'],
     [15, 'juego-corazones', 'Set Corazones', 139000, 'juegos', 'amor', 'Circones en forma de corazón.'],
     [16, 'topos-cuadrado-negro', 'Topos Cuadrado negro', 75000, 'aretes', 'ti', 'Circón cuadrado negro.'],
-    [17, 'anillo-con-circon', 'Anillo Bisel verde', 74997, 'anillos', 'ti', 'Circón verde cuadrado engastado en bisel.'],
+    [17, 'anillo-con-circon', 'Anillo Bisel verde', 75000, 'anillos', 'ti', 'Circón verde cuadrado engastado en bisel.'],
     [18, 'anillo-con-circones', 'Anillo Solitario', 75000, 'anillos', 'amor', 'Un circón central sobre un aro de circones.'],
     [19, 'argolla-fina', 'Argolla Riviera', 75000, 'anillos', 'amor', 'Argolla fina con una hilera de circones.'],
     [20, 'juego-cuadrado-verde', 'Set Halo cuadrado verde', 274000, 'juegos', 'mama', 'Collar y aretes con circón verde cuadrado y halo de circones.'],
@@ -84,10 +84,10 @@
     [64, 'topos-ovalados-blancos', 'Topos Halo ovalado blanco', 100000, 'aretes', 'ti', 'Circón blanco ovalado con halo de circones.'],
     [65, 'topos-ovalados-pequenos', 'Topos Ovalados pequeños', 80000, 'aretes', 'ti', 'Circón ovalado con halo, en tamaño pequeño.'],
     [66, 'set-ovalo-de-plata', 'Set Óvalo', 150000, 'juegos', 'ti', 'Collar y aretes en plata 925 con circones ovalados y halo.'],
-    // PRECIO PENDIENTE (precio 0 = la página muestra "(precio pendiente)"). Cuando la clienta lo diga, cambiar el 0.
-    [67, 'candongas-pave-finas', 'Candongas Pavé finas', 0, 'aretes', 'ti', 'Candongas delgadas cubiertas de circones.'],
-    [68, 'candongas-pave-redondas', 'Candongas Pavé redondas', 0, 'aretes', 'ti', 'Candongas abombadas cubiertas de circones.'],
-    [69, 'candongas-cruces', 'Candongas Cruces', 0, 'aretes', 'ti', 'Candongas anchas de circones con cruces caladas por dentro.'],
+    // Precio 0 = la página muestra "(precio pendiente)". Hoy no hay ninguna pendiente (23-nov-2026).
+    [67, 'candongas-pave-finas', 'Candongas Pavé finas', 134000, 'aretes', 'ti', 'Candongas delgadas cubiertas de circones.'],
+    [68, 'candongas-pave-redondas', 'Candongas Pavé redondas', 140000, 'aretes', 'ti', 'Candongas abombadas cubiertas de circones.'],
+    [69, 'candongas-cruces', 'Candongas Cruces', 134000, 'aretes', 'ti', 'Candongas anchas de circones con cruces caladas por dentro.'],
     [70, 'anillo-solitario-baguette', 'Anillo Solitario baguette', 75000, 'anillos', 'amor', 'Circón en talla baguette sobre un aro de circones.'],
     [71, 'topos-halo-redondos', 'Topos Halo redondo', 80000, 'aretes', 'ti', 'Circón redondo con halo de circones.'],
     [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 150000, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.']  // PENDIENTE: ¿esmeralda o circón?
