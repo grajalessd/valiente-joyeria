@@ -88,9 +88,9 @@
     [67, 'candongas-pave-finas', 'Candongas Pavé finas', 0, 'aretes', 'ti', 'Candongas delgadas cubiertas de circones.'],
     [68, 'candongas-pave-redondas', 'Candongas Pavé redondas', 0, 'aretes', 'ti', 'Candongas abombadas cubiertas de circones.'],
     [69, 'candongas-cruces', 'Candongas Cruces', 0, 'aretes', 'ti', 'Candongas anchas de circones con cruces caladas por dentro.'],
-    [70, 'anillo-solitario-baguette', 'Anillo Solitario baguette', 0, 'anillos', 'amor', 'Circón en talla baguette sobre un aro de circones.'],
-    [71, 'topos-halo-redondos', 'Topos Halo redondo', 0, 'aretes', 'ti', 'Circón redondo con halo de circones.'],
-    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 0, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.']  // PENDIENTE: ¿esmeralda o circón?
+    [70, 'anillo-solitario-baguette', 'Anillo Solitario baguette', 75000, 'anillos', 'amor', 'Circón en talla baguette sobre un aro de circones.'],
+    [71, 'topos-halo-redondos', 'Topos Halo redondo', 80000, 'aretes', 'ti', 'Circón redondo con halo de circones.'],
+    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 150000, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.']  // PENDIENTE: ¿esmeralda o circón?
   ];
 
   // AGOTADAS (21-nov-2026, aviso de la clienta): no se muestran en ninguna parte de la página.
