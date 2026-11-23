@@ -989,6 +989,9 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
   border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent #fff;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
 }
+.ig-feed__marco { max-width: 760px; margin-inline: auto; background: #fff; border: 1px solid var(--perla); overflow: hidden; }
+.ig-feed__marco iframe { display: block; width: 100%; height: 640px; border: 0; opacity: 0; transition: opacity .9s var(--ease-suave); }
+.ig-feed__marco iframe.cargado { opacity: 1; }
 @media (min-width: 768px) { .ig-feed__grid { gap: 6px; } }
 
 /* #MujerValiente */

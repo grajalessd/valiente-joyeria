@@ -104,6 +104,24 @@
     if (pedida >= 0) setTimeout(() => caja.scrollIntoView({ behavior: 'auto', block: 'center' }), 60);
   }
 
+  /* ---------- "Lo último": ventana oficial de Instagram ----------
+     Muestra sola sus publicaciones más recientes. El alto se ajusta al ancho
+     (y a lo que mida Instagram si lo avisa); aparece suave cuando carga. */
+  const ventanaIG = $('[data-ig-feed]');
+  if (ventanaIG) {
+    const ajustar = () => { ventanaIG.style.height = Math.round(ventanaIG.offsetWidth * 0.41 + 480) + 'px'; };
+    ajustar();
+    window.addEventListener('resize', ajustar, { passive: true });
+    ventanaIG.addEventListener('load', () => ventanaIG.classList.add('cargado'));
+    window.addEventListener('message', (e) => {
+      if (!/instagram\.com$/.test(new URL(e.origin).hostname)) return;
+      try {
+        const d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (d?.type === 'MEASURE' && d.details?.height > 200) ventanaIG.style.height = d.details.height + 'px';
+      } catch { /* mensaje ajeno */ }
+    });
+  }
+
   /* ---------- Copiar el hashtag ---------- */
   $$('[data-copiar]').forEach((b) => b.addEventListener('click', async () => {
     const texto = b.dataset.copiar;
