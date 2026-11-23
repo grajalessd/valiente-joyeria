@@ -180,13 +180,13 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 }
 .menu__fondos img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  /* corte en diagonal nítido (como la arista de una gema): barre de derecha a izquierda */
   --corte: 100%;
-  -webkit-mask-image: linear-gradient(108deg, transparent var(--corte), #000 calc(var(--corte) + 10%));
-          mask-image: linear-gradient(108deg, transparent var(--corte), #000 calc(var(--corte) + 10%));
+  clip-path: polygon(calc(var(--corte) + 22%) 0, 100% 0, 100% 100%, var(--corte) 100%);
   transform: scale(1.08) translateX(2%);
-  transition: --corte .55s cubic-bezier(.5, 0, .2, 1), transform 1s var(--ease-suave);
+  transition: --corte .9s cubic-bezier(.65, 0, .25, 1), transform 1.4s var(--ease-suave);
 }
-.menu__fondos img.activo { --corte: 4%; transform: none; }
+.menu__fondos img.activo { --corte: 0%; transform: none; }
 .menu__pie { display: grid; gap: 1rem; padding-top: 1rem; justify-items: start; }
 .menu__redes { display: flex; gap: 2rem; color: rgba(255, 245, 235, .75); }
 .menu__redes a:hover { color: var(--marfil); }
@@ -1018,7 +1018,7 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 .con-intro .intro {
   display: block; position: fixed; inset: 0; z-index: 500; pointer-events: none; overflow: hidden;
   background: var(--fondo-portada);
-  animation: intro-funde .7s cubic-bezier(.4, 0, .2, 1) 2.55s forwards;
+  animation: intro-funde .7s cubic-bezier(.4, 0, .2, 1) 2.65s forwards;
 }
 .intro-lista .intro { display: none; }
 @keyframes intro-funde { to { opacity: 0; visibility: hidden; } }
@@ -1027,24 +1027,25 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 .sello__capa svg { display: block; width: 100%; height: 100%; fill: currentColor; }
 /* 1. la ranura: una línea caramelo que se traza donde vive VALIENTE */
 .sello__ranura { position: absolute; left: 0; right: 0; top: 46.3%; height: 1px; background: var(--naranja); transform: scaleX(0); opacity: 0;
-  animation: ranura-traza .75s cubic-bezier(.65, 0, .25, 1) .1s forwards, ranura-apaga .5s ease 1.25s forwards; }
+  animation: ranura-traza .45s cubic-bezier(.65, 0, .25, 1) .05s forwards, ranura-apaga .5s ease 1.35s forwards; }
 @keyframes ranura-traza { to { transform: none; opacity: 1; } }
 @keyframes ranura-apaga { from { transform: none; opacity: 1; } to { opacity: 0; transform: scaleY(3); } }
-/* 2. el VL nace de la ranura: la mitad de arriba sube, la de abajo baja */
+/* 2. cuando la línea ya está trazada, el VL nace de ella: la mitad de arriba sube, la de abajo baja.
+   Cada mitad arranca ENTERA escondida tras la ranura (60 %): antes asomaba la punta negra del VL desde el principio. */
 .sello__capa--arriba { clip-path: inset(-2% -4% 53.7% -4%); }
 .sello__capa--abajo { clip-path: inset(51% -4% 13% -4%); }
-.sello__capa--arriba svg { transform: translateY(40%); animation: nace .95s cubic-bezier(.7, 0, .2, 1) .55s forwards; }
-.sello__capa--abajo svg { transform: translateY(-40%); animation: nace .95s cubic-bezier(.7, 0, .2, 1) .62s forwards; }
+.sello__capa--arriba svg { transform: translateY(60%); animation: nace 1s cubic-bezier(.7, 0, .2, 1) .6s forwards; }
+.sello__capa--abajo svg { transform: translateY(-60%); animation: nace 1s cubic-bezier(.7, 0, .2, 1) .67s forwards; }
 @keyframes nace { to { transform: none; } }
 /* 3. VALIENTE entra en la ranura cerrando su espaciado; luego JOYERIA */
-.sello__capa--nombre { opacity: 0; transform: scaleX(1.18); filter: blur(4px); animation: nombre-entra .9s var(--ease-suave) 1.2s forwards; }
-.sello__capa--joyeria { opacity: 0; transform: translateY(8%); animation: nombre-entra .8s var(--ease-suave) 1.55s forwards; }
+.sello__capa--nombre { opacity: 0; transform: scaleX(1.18); filter: blur(4px); animation: nombre-entra .9s var(--ease-suave) 1.3s forwards; }
+.sello__capa--joyeria { opacity: 0; transform: translateY(8%); animation: nombre-entra .8s var(--ease-suave) 1.65s forwards; }
 @keyframes nombre-entra { to { opacity: 1; transform: none; filter: none; } }
 /* 4. destello caramelo: recorre el sello como un estampado al calor */
 .sello__capa--destello { color: #B98A5E;
   -webkit-mask-image: linear-gradient(105deg, transparent 38%, #000 50%, transparent 62%); mask-image: linear-gradient(105deg, transparent 38%, #000 50%, transparent 62%);
   -webkit-mask-size: 300% 100%; mask-size: 300% 100%; -webkit-mask-position: 100% 0; mask-position: 100% 0; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  animation: destello 1.1s cubic-bezier(.4, 0, .2, 1) 1.75s forwards; }
+  animation: destello 1.1s cubic-bezier(.4, 0, .2, 1) 1.85s forwards; }
 @keyframes destello { to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
 /* todo espera quieto hasta el primer cuadro (clase intro-arranca) */
 .con-intro:not(.intro-arranca) .intro,
@@ -1116,7 +1117,7 @@ html.saliendo-pagina body { opacity: 0; transition: opacity .38s var(--ease); an
 .nos-foto { max-width: 600px; margin-inline: auto; }
 @media (max-width: 660px) { .nos-foto { margin-inline: var(--gutter); } }
 /* Menú en computador: la foto ocupa la mitad derecha (no toda la pantalla) */
-@media (min-width: 900px) { .menu__fondos img { left: auto; width: min(58%, 800px); } }
+@media (min-width: 900px) { .menu__fondos img { left: auto; width: min(74%, 1150px); } }
 /* Colección: la foto de la portada a su tamaño real */
 @media (min-width: 900px) { .col-hero__fotos { inset: 0 0 0 auto; width: min(56%, 820px); } }
 
@@ -1421,13 +1422,30 @@ h1, h2, h3 { line-height: 1.04; letter-spacing: -.012em; }
 .nos-valen__marca { position: absolute; left: 50%; top: 50%; width: 46%; translate: -50% -50%; fill: var(--tinta); opacity: .9; }
 .nos-valen__texto { display: grid; gap: .8rem; justify-items: start; }
 .nos-valen__texto .rotulo { color: var(--naranja-hondo); }
-.nos-valen__texto h2 { font-size: clamp(3rem, 10vw, 6rem); }
-.nos-valen__texto p:last-child { max-width: 34ch; font-size: 1.1rem; color: var(--gris); }
+.nos-valen__texto h2 { font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1.02; }
+.nos-valen__texto p:not(.rotulo) { max-width: 38ch; font-size: 1.1rem; color: var(--gris); }
 @media (min-width: 900px) { .nos-valen { grid-template-columns: minmax(0, 460px) 1fr; gap: 5rem; } }
 .ig-flota .ig-flota__cara { font-size: 0; color: transparent; background: var(--arena) url("../img/logo.svg") center / 72% auto no-repeat; }
 @media (max-width: 899px) { .arco__nombre { font-size: 2rem; } }
 .enlace-flecha { font-family: var(--f-sans); }
-/* Quiénes somos: foto cercana, recta y nítida (sin óvalo difuminado) */
-.nos-foto { aspect-ratio: 4 / 5; max-width: 560px; max-height: none; margin: 0 auto; padding-inline: var(--gutter); }
-.nos-foto img { border-radius: 2px; object-position: 50% 45%; }
-@media (min-width: 900px) { .nos-foto { aspect-ratio: 4 / 5; padding-inline: 0; } }
+/* ---------- Quiénes somos (22-nov-2026): sin la foto ancha de arriba.
+   Recorrido: titular → Valentina (retrato tallado como gema sobre una franja arena que la abraza)
+   → lo que creemos → valores. La franja arena enlaza el retrato con el texto y da continuidad. */
+.nos-hero { padding-bottom: clamp(2.5rem, 6vw, 4rem); }
+.nos-valen { position: relative; isolation: isolate; padding-block: 0 clamp(3.5rem, 9vw, 6rem); row-gap: 2.4rem; }
+.nos-valen::before { /* franja arena a todo el ancho, desde la mitad del retrato hacia abajo */
+  content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: clamp(9rem, 38%, 20rem); bottom: 0;
+  background: var(--arena); box-shadow: 0 0 0 100vmax var(--arena); clip-path: inset(0 -100vmax); }
+.nos-valen__foto { border-radius: 0; clip-path: var(--faceta); max-width: 480px; box-shadow: none; }
+.nos-valen__foto img { transform: scale(1.06); transition: transform 2.4s var(--ease-suave); }
+.nos-valen__foto.visible img { transform: none; }
+.nos-valen__texto { gap: 1rem; }
+.nos-valen__texto h2 { color: var(--tinta); }
+.nos-valen__texto h2::after { /* filete caramelo bajo el nombre, como la ranura del logo */
+  content: ""; display: block; width: 3.5rem; height: 1px; margin-top: 1.1rem; background: var(--naranja); }
+.nos-valen__texto p:not(.rotulo) { color: #4A3B2F; line-height: 1.7; }
+@media (min-width: 900px) {
+  .nos-valen { grid-template-columns: minmax(0, 480px) minmax(0, 1fr); column-gap: clamp(3rem, 6vw, 6rem); align-items: end; }
+  .nos-valen::before { top: 34%; }
+  .nos-valen__texto { padding-bottom: 1rem; }
+}

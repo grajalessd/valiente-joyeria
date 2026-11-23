@@ -23,7 +23,7 @@ const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const limitar = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const suave = (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const mezclar = (a, b, t) => a + (b - a) * t;
-const pesos = (n) => '$' + Math.round(n).toLocaleString('es-CO');
+const pesos = (n) => (n > 0 ? '$' + Math.round(n).toLocaleString('es-CO') : '(precio pendiente)');  // 0 = precio aún sin confirmar
 const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const conMouse = window.matchMedia('(hover: hover)').matches;
 
@@ -493,12 +493,14 @@ const Carrito = (() => {
   function leer() { try { return JSON.parse(localStorage.getItem(CONFIG.claveCarrito)) || []; } catch { return []; } }
   function guardar() { try { localStorage.setItem(CONFIG.claveCarrito, JSON.stringify(items)); } catch { /* modo privado */ } }
   const subtotal = () => items.reduce((s, i) => s + i.precio * i.cant, 0);
+  // si alguna pieza aún no tiene precio, el total lo dice (no se muestra una suma incompleta como si fuera la final)
+  const totalTexto = () => { const t = subtotal(); const falta = items.some((i) => !(i.precio > 0)); return falta ? (t > 0 ? `${pesos(t)} + (precio pendiente)` : pesos(0)) : pesos(t); };
   const unidades = () => items.reduce((s, i) => s + i.cant, 0);
 
   function mensajePedido() {
     // UNA línea por pieza: nombre · material · precio (si son varias del mismo, "2 × ")
     const lineas = items.map((i) => `• ${i.cant > 1 ? `${i.cant} × ` : ''}${i.nombre} · ${i.variante} · ${pesos(i.precio * i.cant)}`);
-    const total = items.length > 1 || (items[0] && items[0].cant > 1) ? `\n\nTotal: ${pesos(subtotal())}` : '';
+    const total = items.length > 1 || (items[0] && items[0].cant > 1) ? `\n\nTotal: ${totalTexto()}` : '';
     return `Hola Valientte, quiero hacer este pedido:\n\n${lineas.join('\n')}${total}\n\n¿Me confirman disponibilidad, envío y pago?`;
   }
 
@@ -526,7 +528,7 @@ const Carrito = (() => {
     vacio.hidden = n > 0;
     pie.hidden = n === 0;
     lista.hidden = n === 0;
-    total.textContent = pesos(subtotal());
+    total.textContent = totalTexto();
     // Barra de envío gratis: solo si la clienta confirma un monto (CONFIG.envioGratisDesde > 0)
     const cajaEnvio = envioTexto && envioTexto.closest('.envio');
     if (cajaEnvio) cajaEnvio.hidden = !CONFIG.envioGratisDesde;

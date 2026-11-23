@@ -20,7 +20,6 @@
     [2, 'pulsera-treboles', 'Pulsera Tréboles', 139000, 'pulseras', 'amor ti', 'Tejido tenis con circones y dijes de trébol.'],
     [3, 'pulsera-espiga', 'Pulsera Espiga', 130000, 'pulseras', 'grado ti', 'Hojas de circones en forma de espiga.'],
     [4, 'argolla-de-colores', 'Argolla Arcoíris', 160000, 'anillos', 'ti amor', 'Pavé de circones de colores.'],
-    [5, 'topos-de-color', 'Topos Halo de color', 100000, 'aretes', 'ti grado', 'Circón rectangular con halo. Disponibles en todos los colores.'],
     [6, 'candongas-con-circones', 'Candongas Azul noche', 150000, 'aretes', 'ti', 'Candongas con circones azul profundo y blancos.'],
     [7, 'juego-verde-y-blanco', 'Set Halo verde', 200000, 'juegos', 'mama grado', 'Set en plata 925 con circones verdes y blancos.'],
     [8, 'anillo-corazon-verde', 'Anillo Corazón verde', 75000, 'anillos', 'amor', 'Circón verde en forma de corazón.'],
@@ -63,7 +62,35 @@
     [45, 'argolla-eternidad', 'Argolla Eternidad', 75000, 'anillos', 'amor', 'Argolla de circones en talla marquesa, delicada y luminosa.'],
     // Llegaron el 20-nov-2026 (fotos y precios enviados por la clienta)
     [46, 'juego-dorado-con-circones', 'Set Gota dorada', 180000, 'juegos', 'ti', 'Collar y aretes en oro laminado 18k con circones.'],
-    [47, 'juego-corazones-azules', 'Set Corazones azules', 180000, 'juegos', 'amor', 'Collar y aretes en plata 925 con corazones de circón azul.']
+    [47, 'juego-corazones-azules', 'Set Corazones azules', 180000, 'juegos', 'amor', 'Collar y aretes en plata 925 con corazones de circón azul.'],
+    // Llegaron el 22-nov-2026 (fotos de la clienta; precios confirmados por ella). El 05 "Topos Halo de color" se retiró:
+    // sus aretes ahora van por color (60, 61, 62). Los topos verdes son de CIRCÓN, no de esmeralda.
+    [48, 'anillo-halo-de-esmeralda', 'Anillo Halo de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana rodeada de circones, sobre un aro liso. Se entrega con garantía de por vida.'],
+    [49, 'anillo-rosa-de-esmeralda', 'Anillo Rosa de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana en un halo de circones, delicada y luminosa. Se entrega con garantía de por vida.'],
+    [50, 'anillo-aura-de-esmeralda', 'Anillo Aura de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana dentro de un aro de circones que parece flotar. Se entrega con garantía de por vida.'],
+    [51, 'anillo-corona-de-esmeralda', 'Anillo Corona de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana con doble halo y aro de circones. Se entrega con garantía de por vida.'],
+    [52, 'anillo-halo-pave-de-esmeralda', 'Anillo Halo pavé de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana con halo y aro cubierto de circones. Se entrega con garantía de por vida.'],
+    [53, 'anillo-infinito-de-esmeralda', 'Anillo Infinito de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana sobre un lazo infinito de circones. Se entrega con garantía de por vida.'],
+    [54, 'anillo-lazo-de-esmeralda', 'Anillo Lazo de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana entre dos líneas que se entrelazan, una de ellas con circones. Se entrega con garantía de por vida.'],
+    [55, 'anillo-luna-de-esmeralda', 'Anillo Luna de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana con halo, sobre medio aro de circones. Se entrega con garantía de por vida.'],
+    [56, 'anillo-ola-de-esmeralda', 'Anillo Ola de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana sobre un aro ondulado de circones. Se entrega con garantía de por vida.'],
+    [57, 'anillo-sendero-de-esmeralda', 'Anillo Sendero de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana entre un aro liso y uno de circones. Se entrega con garantía de por vida.'],
+    [58, 'anillo-trilogia-de-esmeralda', 'Anillo Trilogía de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana entre dos circones. Se entrega con garantía de por vida.'],
+    [59, 'anillo-solitario-pave-de-esmeralda', 'Anillo Solitario pavé de esmeralda', 250000, 'anillos', 'amor', 'Esmeralda natural colombiana en lo alto de un aro de circones. Se entrega con garantía de por vida.'],
+    [60, 'topos-rectangulares-blancos', 'Topos Halo rectangular blanco', 100000, 'aretes', 'ti', 'Circón blanco rectangular con halo de circones.'],
+    [61, 'topos-rectangulares-verdes', 'Topos Halo rectangular verde', 100000, 'aretes', 'ti', 'Circón verde rectangular con halo de circones.'],
+    [62, 'topos-rectangulares-lila', 'Topos Halo rectangular lila', 100000, 'aretes', 'ti', 'Circón lila rectangular con halo de circones.'],
+    [63, 'topos-ovalados-azules', 'Topos Halo ovalado azul', 100000, 'aretes', 'ti', 'Circón azul ovalado con halo de circones.'],
+    [64, 'topos-ovalados-blancos', 'Topos Halo ovalado blanco', 100000, 'aretes', 'ti', 'Circón blanco ovalado con halo de circones.'],
+    [65, 'topos-ovalados-pequenos', 'Topos Ovalados pequeños', 80000, 'aretes', 'ti', 'Circón ovalado con halo, en tamaño pequeño.'],
+    [66, 'set-ovalo-de-plata', 'Set Óvalo', 150000, 'juegos', 'ti', 'Collar y aretes en plata 925 con circones ovalados y halo.'],
+    // PRECIO PENDIENTE (precio 0 = la página muestra "(precio pendiente)"). Cuando la clienta lo diga, cambiar el 0.
+    [67, 'candongas-pave-finas', 'Candongas Pavé finas', 0, 'aretes', 'ti', 'Candongas delgadas cubiertas de circones.'],
+    [68, 'candongas-pave-redondas', 'Candongas Pavé redondas', 0, 'aretes', 'ti', 'Candongas abombadas cubiertas de circones.'],
+    [69, 'candongas-cruces', 'Candongas Cruces', 0, 'aretes', 'ti', 'Candongas anchas de circones con cruces caladas por dentro.'],
+    [70, 'anillo-solitario-baguette', 'Anillo Solitario baguette', 0, 'anillos', 'amor', 'Circón en talla baguette sobre un aro de circones.'],
+    [71, 'topos-halo-redondos', 'Topos Halo redondo', 0, 'aretes', 'ti', 'Circón redondo con halo de circones.'],
+    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 0, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.']  // PENDIENTE: ¿esmeralda o circón?
   ];
 
   // AGOTADAS (21-nov-2026, aviso de la clienta): no se muestran en ninguna parte de la página.
@@ -71,9 +98,11 @@
   // 7 Set Halo verde · 15 Set Corazones · 21 Candongas pavé · 22 Topos Flor con perla · 25 Dije Gota de esmeralda · 26 Dije de esmeralda con halo · 33 Topos Nudo
   const AGOTADAS = [7, 15, 21, 22, 25, 26, 33];
 
-  const ESMERALDAS = [25, 26, 27, 28, 29, 30];
+  const ESMERALDAS = [25, 26, 27, 28, 29, 30, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
+  // El estuche del inicio muestra seis (cabe justo en 3 columnas); el resto está en la vitrina y en la colección
+  const ESTUCHE = [30, 29, 28, 48, 53, 58];
   const ORO = [46];
-  const NUEVAS = [46, 47];
+  const NUEVAS = [46, 47, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72];
   // Piezas sin piedra (solo metal): el rótulo no dice "circones"
   const SIN_PIEDRA = [23, 32, 42];
   // Foto "puesta" (en la mano) de algunas piezas: aparece al pasar el mouse y como 2.ª foto en la ficha
@@ -97,14 +126,15 @@
   });
 
   // Orden de la vitrina del inicio: lo recién llegado primero, luego una selección variada y el resto
-  const PRIMERO = [46, 47, 28, 14, 2, 30, 35, 4, 20, 36, 39, 12, 34, 29, 42, 45, 27, 44, 11, 41];
+  const PRIMERO = [48, 46, 60, 53, 47, 63, 58, 66, 28, 14, 2, 30, 35, 4, 20, 36, 39, 12, 34, 29, 42, 45, 27, 44, 11, 41];
   const porN = (n) => CATALOGO.find((p) => p.n === n);
   const ORDEN_INICIO = [...PRIMERO, ...CATALOGO.map((p) => p.n).filter((n) => !PRIMERO.includes(n))].filter(porN);
 
   const NOMBRE_TIPO = { anillos: 'Anillos', aretes: 'Aretes', cadenas: 'Cadenas y dijes', pulseras: 'Pulseras', juegos: 'Sets' };
-  const pesos = (n) => '$' + Math.round(n).toLocaleString('es-CO');
+  // precio 0 = aún sin confirmar por la clienta
+  const pesos = (n) => (n > 0 ? '$' + Math.round(n).toLocaleString('es-CO') : '(precio pendiente)');
   const porId = (id) => CATALOGO.find((p) => p.id === id);
-  const desde = (filtro) => Math.min(...CATALOGO.filter(filtro).map((p) => p.precio));
+  const desde = (filtro) => Math.min(...CATALOGO.filter((p) => p.precio > 0 && filtro(p)).map((p) => p.precio));
 
   // Tarjeta de una pieza (la misma en todas las páginas)
   function pieza(p, i = 0, carga = 'lazy') {
@@ -132,7 +162,7 @@
   /* ---------- El estuche: las seis esmeraldas del catálogo (inicio) ---------- */
   const estuche = document.querySelector('[data-estuche]');
   if (estuche) {
-    estuche.innerHTML = CATALOGO.filter((p) => p.material === 'esmeraldas').map((p, i) => `
+    estuche.innerHTML = ESTUCHE.map(porN).filter(Boolean).map((p, i) => `
       <li class="hueco aparecer" style="--retraso:${i * 90}ms">
         <a class="hueco__enlace" href="producto.html?id=${p.id}">
           <span class="hueco__cama"><img src="${p.foto}" srcset="${p.foto} 800w, ${p.foto2x} 1600w" sizes="(min-width: 900px) 360px, 46vw" width="800" height="1000" loading="lazy" alt="${p.nombre}, ${p.rotulo.toLowerCase()}"></span>
