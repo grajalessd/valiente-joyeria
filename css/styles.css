@@ -1433,8 +1433,12 @@ h1, h2, h3 { line-height: 1.04; letter-spacing: -.012em; }
    → lo que creemos → valores. La franja arena enlaza el retrato con el texto y da continuidad. */
 .nos-hero { padding-bottom: clamp(2.5rem, 6vw, 4rem); }
 .nos-valen { position: relative; isolation: isolate; padding-block: 0 clamp(3.5rem, 9vw, 6rem); row-gap: 2.4rem; }
-.nos-valen::before { /* franja arena a todo el ancho, desde la mitad del retrato hacia abajo */
-  content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: clamp(9rem, 38%, 20rem); bottom: 0;
+/* Franja arena a todo el ancho. Nace un poco ANTES del texto (no a una altura fija de la sección),
+   así el nombre de Valentina nunca queda partido entre el crema y el arena. */
+.nos-valen__texto { position: relative; }
+.nos-valen__texto::before {
+  content: ""; position: absolute; z-index: -1; left: 0; right: 0;
+  top: clamp(-4rem, -6vw, -2.5rem); bottom: calc(-1 * clamp(3.5rem, 9vw, 6rem));
   background: var(--arena); box-shadow: 0 0 0 100vmax var(--arena); clip-path: inset(0 -100vmax); }
 .nos-valen__foto { border-radius: 0; clip-path: var(--faceta); max-width: 480px; box-shadow: none; }
 .nos-valen__foto img { transform: scale(1.06); transition: transform 2.4s var(--ease-suave); }
@@ -1446,6 +1450,4 @@ h1, h2, h3 { line-height: 1.04; letter-spacing: -.012em; }
 .nos-valen__texto p:not(.rotulo) { color: #4A3B2F; line-height: 1.7; }
 @media (min-width: 900px) {
   .nos-valen { grid-template-columns: minmax(0, 480px) minmax(0, 1fr); column-gap: clamp(3rem, 6vw, 6rem); align-items: end; }
-  .nos-valen::before { top: 34%; }
-  .nos-valen__texto { padding-bottom: 1rem; }
-}
+  .nos-valen__texto { padding-bottom: 1rem; }}
