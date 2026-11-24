@@ -344,7 +344,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 .vitrina .titulo-seccion p { color: var(--marfil); }
 .pestanas { display: flex; gap: .4rem; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid rgba(255, 245, 235, .2); margin-bottom: 1rem; }
 .pestanas::-webkit-scrollbar { display: none; }
-.pestana { flex: none; min-height: 50px; padding: 0 1rem; position: relative; font-family: var(--f-display); font-size: 1.35rem; color: rgba(255, 245, 235, .82); transition: color .3s; }
+.pestana { flex: none; min-height: 50px; padding: 0 1rem; position: relative; font-family: var(--f-display); font-size: 1.35rem; color: rgba(255, 245, 235, .95); transition: color .3s; }
 .pestana sup { font-family: var(--f-texto); font-size: .65rem; margin-left: .2rem; }
 .pestana::after { content: ""; position: absolute; left: 1rem; right: 1rem; bottom: -1px; height: 2px; background: var(--esmeralda-viva); transform: scaleX(0); transition: transform .5s var(--ease); }
 .pestana[aria-selected="true"] { color: var(--marfil); }
@@ -414,7 +414,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 .pieza__enlace { position: absolute; inset: 0; z-index: 1; }
 .pieza__sello { position: absolute; top: 1rem; left: 1rem; z-index: 2; background: var(--hueso); color: var(--tinta); padding: .25rem .6rem; border-radius: 999px; }
 .pieza__sello--verde { background: var(--esmeralda-viva); color: var(--noche); }
-.pieza__sello--naranja { background: var(--naranja); color: var(--tinta); }
+.pieza__sello--naranja { background: var(--naranja); color: var(--marfil); }
 .pieza .tag { margin: -1.5rem 0 0 .5rem; z-index: 2; max-width: calc(100% - .5rem); }
 .pieza .tag::after { content: ""; position: absolute; left: 12px; bottom: 100%; width: 1px; height: 24px; background: rgba(255, 251, 246, .75); transform: rotate(16deg); transform-origin: bottom; }
 .tag__nombre { font-family: var(--f-display); font-size: 1.08rem; line-height: 1.1; }
