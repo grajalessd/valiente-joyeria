@@ -23,7 +23,6 @@
     [6, 'candongas-con-circones', 'Candongas Azul noche', 150000, 'aretes', 'ti', 'Candongas con circones azul profundo y blancos.'],
     [7, 'juego-verde-y-blanco', 'Set Halo verde', 200000, 'juegos', 'mama grado', 'Set en plata 925 con circones verdes y blancos.'],
     [8, 'anillo-corazon-verde', 'Anillo Corazón verde', 75000, 'anillos', 'amor', 'Circón verde en forma de corazón.'],
-    [9, 'topos-con-halo', 'Topos Halo ovalado', 104000, 'aretes', 'mama ti', 'Circón ovalado con doble halo. Disponibles en varios colores.'],
     [10, 'anillo-circones-alargados', 'Anillo Baguette', 140000, 'anillos', 'amor', 'Circones en talla baguette, uno junto al otro.'],
     [11, 'juego-con-circones', 'Set Gota', 100000, 'juegos', 'grado ti', 'Collar y aretes con circones en forma de gota.'],
     [12, 'anillo-corazon', 'Anillo Corazón', 75000, 'anillos', 'amor', 'Circón en forma de corazón con halo.'],
@@ -90,7 +89,8 @@
     [69, 'candongas-cruces', 'Candongas Cruces', 134000, 'aretes', 'ti', 'Candongas anchas de circones con cruces caladas por dentro.'],
     [70, 'anillo-solitario-baguette', 'Anillo Solitario baguette', 75000, 'anillos', 'amor', 'Circón en talla baguette sobre un aro de circones.'],
     [71, 'topos-halo-redondos', 'Topos Halo redondo', 80000, 'aretes', 'ti', 'Circón redondo con halo de circones.'],
-    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 150000, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.']  // PENDIENTE: ¿esmeralda o circón?
+    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 150000, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.'],  // PENDIENTE: ¿esmeralda o circón?
+    [73, 'set-ovalo-azul', 'Set Óvalo azul', 150000, 'juegos', 'ti', 'Collar y aretes en plata 925 con circones azules ovalados y halo.']
   ];
 
   // AGOTADAS (21-nov-2026, aviso de la clienta): no se muestran en ninguna parte de la página.
@@ -102,7 +102,7 @@
   // El estuche del inicio muestra seis (cabe justo en 3 columnas); el resto está en la vitrina y en la colección
   const ESTUCHE = [30, 29, 28, 48, 53, 58];
   const ORO = [46];
-  const NUEVAS = [46, 47, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72];
+  const NUEVAS = [46, 47, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73];
   // Piezas sin piedra (solo metal): el rótulo no dice "circones"
   const SIN_PIEDRA = [23, 32, 42];
   // Foto "puesta" (en la mano) de algunas piezas: aparece al pasar el mouse y como 2.ª foto en la ficha
@@ -126,7 +126,7 @@
   });
 
   // Orden de la vitrina del inicio: lo recién llegado primero, luego una selección variada y el resto
-  const PRIMERO = [48, 46, 60, 53, 47, 63, 58, 66, 28, 14, 2, 30, 35, 4, 20, 36, 39, 12, 34, 29, 42, 45, 27, 44, 11, 41];
+  const PRIMERO = [48, 46, 60, 53, 47, 63, 58, 66, 73, 28, 14, 2, 30, 35, 4, 20, 36, 39, 12, 34, 29, 42, 45, 27, 44, 11, 41];
   const porN = (n) => CATALOGO.find((p) => p.n === n);
   const ORDEN_INICIO = [...PRIMERO, ...CATALOGO.map((p) => p.n).filter((n) => !PRIMERO.includes(n))].filter(porN);
 
