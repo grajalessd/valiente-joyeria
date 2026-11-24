@@ -38,7 +38,6 @@
     [22, 'topos-flor-con-perla', 'Topos Flor con perla', 75000, 'aretes', 'grado ti', 'En forma de flor, con perla y circones.'],
     [23, 'candongas-melcocha', 'Candongas Melcocha', 100000, 'aretes', 'ti', 'Candongas en plata 925 en forma de melcocha.'],
     [24, 'topos-circon-cuadrado', 'Topos Princesa', 75000, 'aretes', 'ti cumple', 'Circón cuadrado en talla princesa.'],
-    [25, 'dije-de-esmeralda', 'Dije Gota de esmeralda', 400000, 'cadenas', 'mama amor', DESC_ESM],
     [26, 'dije-de-esmeralda-con-halo', 'Dije de esmeralda con halo', 500000, 'cadenas', 'mama', DESC_ESM],
     [27, 'anillo-de-esmeralda', 'Anillo Solitario de esmeralda', 250000, 'anillos', 'amor', DESC_ESM],
     [28, 'anillo-de-esmeralda-con-halo', 'Anillo Doble halo de esmeralda', 250000, 'anillos', 'amor mama', DESC_ESM],
@@ -89,16 +88,16 @@
     [69, 'candongas-cruces', 'Candongas Cruces', 134000, 'aretes', 'ti', 'Candongas anchas de circones con cruces caladas por dentro.'],
     [70, 'anillo-solitario-baguette', 'Anillo Solitario baguette', 75000, 'anillos', 'amor', 'Circón en talla baguette sobre un aro de circones.'],
     [71, 'topos-halo-redondos', 'Topos Halo redondo', 80000, 'aretes', 'ti', 'Circón redondo con halo de circones.'],
-    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 150000, 'anillos', 'amor', 'Piedra verde ovalada con halo de circones en talla baguette.'],  // PENDIENTE: ¿esmeralda o circón?
+    [72, 'anillo-estrella-verde', 'Anillo Estrella verde', 150000, 'anillos', 'amor', 'Circón verde ovalado con halo de circones en talla baguette.'],
     [73, 'set-ovalo-azul', 'Set Óvalo azul', 150000, 'juegos', 'ti', 'Collar y aretes en plata 925 con circones azules ovalados y halo.']
   ];
 
   // AGOTADAS (21-nov-2026, aviso de la clienta): no se muestran en ninguna parte de la página.
   // Cuando vuelvan, basta con quitar su número de esta lista.
-  // 7 Set Halo verde · 15 Set Corazones · 21 Candongas pavé · 22 Topos Flor con perla · 25 Dije Gota de esmeralda · 26 Dije de esmeralda con halo · 33 Topos Nudo
-  const AGOTADAS = [7, 15, 21, 22, 25, 26, 33];
+  // 7 Set Halo verde · 15 Set Corazones · 21 Candongas pavé · 22 Topos Flor con perla · 26 Dije de esmeralda con halo · 33 Topos Nudo
+  const AGOTADAS = [7, 15, 21, 22, 26, 33];
 
-  const ESMERALDAS = [25, 26, 27, 28, 29, 30, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
+  const ESMERALDAS = [26, 27, 28, 29, 30, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59];
   // El estuche del inicio muestra seis (cabe justo en 3 columnas); el resto está en la vitrina y en la colección
   const ESTUCHE = [30, 29, 28, 48, 53, 58];
   const ORO = [46];

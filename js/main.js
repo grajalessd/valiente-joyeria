@@ -14,7 +14,7 @@ const CONFIG = {
   // Vacío = se usa el enlace corto de la bio de Instagram (no precarga el mensaje).
   whatsappNumero: '573106990102',   // número de su catálogo (vitrinapp)
   whatsappEnlace: 'https://wa.link/c60ecp',
-  envioGratisDesde: 0,                // PENDIENTE confirmar con la clienta (ej. 150000). En 0 no se promete envío gratis
+  envioGratisDesde: 0,                // La clienta NO hace envíos gratis ni domicilios (24-nov-2026): dejar en 0
   claveCarrito: 'valientte-carrito'
 };
 
@@ -501,7 +501,7 @@ const Carrito = (() => {
     // UNA línea por pieza: nombre · material · precio (si son varias del mismo, "2 × ")
     const lineas = items.map((i) => `• ${i.cant > 1 ? `${i.cant} × ` : ''}${i.nombre} · ${i.variante} · ${pesos(i.precio * i.cant)}`);
     const total = items.length > 1 || (items[0] && items[0].cant > 1) ? `\n\nTotal: ${totalTexto()}` : '';
-    return `Hola Valientte, quiero hacer este pedido:\n\n${lineas.join('\n')}${total}\n\n¿Me confirman disponibilidad, envío y pago?`;
+    return `Hola Valientte, quiero hacer este pedido:\n\n${lineas.join('\n')}${total}\n\n¿Me confirman disponibilidad, entrega y pago?`;
   }
 
   function render() {

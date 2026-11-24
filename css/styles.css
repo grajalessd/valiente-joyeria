@@ -341,10 +341,10 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 /* ---------- 9. VITRINA ---------- */
 .vitrina { background: var(--bosque); color: var(--marfil); padding: clamp(4.5rem, 11vw, 8rem) 0; }
 .vitrina .titulo-seccion h2 i { color: var(--esmeralda-viva); }
-.vitrina .titulo-seccion p { color: rgba(255, 245, 235, .75); }
+.vitrina .titulo-seccion p { color: var(--marfil); }
 .pestanas { display: flex; gap: .4rem; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid rgba(255, 245, 235, .2); margin-bottom: 1rem; }
 .pestanas::-webkit-scrollbar { display: none; }
-.pestana { flex: none; min-height: 50px; padding: 0 1rem; position: relative; font-family: var(--f-display); font-size: 1.35rem; color: rgba(255, 245, 235, .6); transition: color .3s; }
+.pestana { flex: none; min-height: 50px; padding: 0 1rem; position: relative; font-family: var(--f-display); font-size: 1.35rem; color: rgba(255, 245, 235, .82); transition: color .3s; }
 .pestana sup { font-family: var(--f-texto); font-size: .65rem; margin-left: .2rem; }
 .pestana::after { content: ""; position: absolute; left: 1rem; right: 1rem; bottom: -1px; height: 2px; background: var(--esmeralda-viva); transform: scaleX(0); transition: transform .5s var(--ease); }
 .pestana[aria-selected="true"] { color: var(--marfil); }
@@ -353,7 +353,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: .98; 
 .chip { display: inline-flex; align-items: center; gap: .5rem; min-height: 36px; padding: 0 .5rem 0 1rem; border-radius: 999px; background: var(--marfil); color: var(--bosque); font-size: .82rem; font-weight: 500; }
 .chip button { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; }
 .chip button:hover { background: var(--arena); }
-.vitrina__vacia { padding: 3rem 0; text-align: center; color: rgba(255, 245, 235, .75); }
+.vitrina__vacia { padding: 3rem 0; text-align: center; color: var(--marfil); }
 .vitrina__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.6rem .8rem; }
 @media (min-width: 900px) { .vitrina__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3.6rem 1.4rem; } }
 
@@ -800,7 +800,7 @@ dialog.modal::backdrop { background: rgba(3, 3, 3, .55); }
 /* Estante: filtros + piezas escalonadas */
 .col-estante { padding-top: clamp(2.5rem, 7vw, 4.5rem); }
 .momentos { margin-bottom: 1.6rem; }
-.momentos > .rotulo { display: block; color: rgba(255, 245, 235, .7); margin-bottom: .7rem; }
+.momentos > .rotulo { display: block; color: var(--marfil); margin-bottom: .7rem; }
 .momentos__lista, .metales { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
 .momentos__lista::-webkit-scrollbar, .metales::-webkit-scrollbar { display: none; }
 .momento, .metal {
@@ -813,7 +813,7 @@ dialog.modal::backdrop { background: rgba(3, 3, 3, .55); }
 .metal { min-height: 40px; font-size: .82rem; }
 .metal[aria-pressed="true"] { background: var(--marfil); border-color: var(--marfil); color: var(--bosque); }
 .metales { margin-top: .4rem; }
-.estante__cuenta { margin: 1.6rem 0 1.2rem; color: rgba(255, 245, 235, .65); }
+.estante__cuenta { margin: 1.6rem 0 1.2rem; color: var(--marfil); }
 .estante { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.4rem .8rem; align-items: start; }
 .estante .pieza.baja { margin-top: 2.6rem; }
 .estante .pieza .tag { margin: -1.3rem 0 0 .35rem; padding-block: .5rem; }
@@ -995,7 +995,7 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
 @media (min-width: 768px) { .ig-feed__grid { gap: 6px; } }
 
 /* #MujerValiente */
-.ig-etiqueta { background: var(--naranja); color: var(--tinta); padding: clamp(4.5rem, 11vw, 8rem) 0; text-align: center; }
+.ig-etiqueta { background: var(--naranja); color: var(--marfil); padding: clamp(4.5rem, 11vw, 8rem) 0; text-align: center; }
 .ig-etiqueta .contenedor { display: grid; justify-items: center; gap: 1.2rem; }
 .ig-etiqueta__hashtag {
   font-family: var(--f-display); font-size: clamp(2.9rem, 14vw, 9rem); line-height: .95; letter-spacing: -.04em;
@@ -1003,8 +1003,8 @@ body.menu-abierto .ig-flota, body.sin-scroll .ig-flota { opacity: 0; pointer-eve
   transition: transform 1s var(--ease-suave), color .8s var(--ease-suave);
 }
 .ig-etiqueta__hashtag:hover { transform: scale(1.03); }
-.ig-etiqueta__hashtag.copiado { color: var(--hueso); }
-.ig-etiqueta__ayuda { font-size: .85rem; opacity: .75; }
+.ig-etiqueta__hashtag.copiado { color: var(--tinta); }
+.ig-etiqueta__ayuda { font-size: .85rem; font-style: italic; }
 
 @media (prefers-reduced-motion: reduce) { .ig-perfil__anillo, .ig-perfil__cara { animation: none; } }
 
@@ -1296,7 +1296,7 @@ html { scrollbar-color: var(--bosque-2) var(--arena); caret-color: var(--naranja
   transition: color 1.2s var(--ease-suave);
 }
 .viaje__riel button[aria-current="step"] { color: var(--marfil); }
-@media (max-width: 480px) { .viaje__riel { gap: 0; } .viaje__riel button { font-size: .56rem; letter-spacing: .05em; padding: 0; } }
+@media (max-width: 480px) { .viaje__riel { gap: 0; } .viaje__riel button { font-size: .68rem; letter-spacing: .02em; padding: 0; } }
 
 /* textos: uno por capítulo, se turnan con un fundido lento */
 .viaje__textos { list-style: none; margin: 0; padding: 0; position: absolute; left: var(--gutter); right: var(--gutter); bottom: 5.6rem; display: grid; z-index: 2; }
@@ -1389,7 +1389,7 @@ h1, h2, h3 { line-height: 1.04; letter-spacing: -.012em; }
 .con-intro .ventana__sub > span:nth-child(3) { animation-delay: 3.05s; }
 .con-intro .ventana__sub > span:nth-child(4) { animation-delay: 3.25s; }
 @keyframes linea-entra { to { opacity: 1; transform: none; } }
-.ventana__sub .ventana__lugar { margin-top: .7rem; font-family: var(--f-sans); font-size: .68rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--naranja-hondo); }
+.ventana__sub .ventana__lugar { margin-top: .7rem; font-family: var(--f-sans); font-size: .72rem; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--naranja-hondo); }
 .ventana__desliza { bottom: 1rem; }
 @media (max-height: 640px) and (max-width: 899px) { .ventana__sub { bottom: 5.6rem; font-size: .95rem; } }
 @media (prefers-reduced-motion: reduce) { .ventana__sub > span { opacity: 1; transform: none; } }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grajalessd.github.io/valiente-joyeria/sitemap.xml
