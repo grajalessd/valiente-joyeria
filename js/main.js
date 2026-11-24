@@ -490,7 +490,27 @@ const Carrito = (() => {
   const finalizar = $('[data-finalizar]');
   let ultimoFoco = null;
 
-  function leer() { try { return JSON.parse(localStorage.getItem(CONFIG.claveCarrito)) || []; } catch { return []; } }
+  // La bolsa guardada se revisa contra el catálogo de HOY: precio y nombre actuales, fuera las piezas agotadas
+  // o retiradas, y el texto se limpia (nadie puede meter código ni cambiar precios editando el navegador).
+  function limpio(s) { return String(s ?? '').replace(/[<>"'&]/g, '').slice(0, 120); }
+  function validar(lista) {
+    if (!Array.isArray(lista)) return [];
+    const cat = window.Catalogo;
+    return lista.map((i) => {
+      if (!i || typeof i !== 'object') return null;
+      const p = cat ? cat.porId(i.id) : null;
+      if (cat && !p) return null;
+      const cant = Math.min(20, Math.max(1, Math.floor(Number(i.cant)) || 1));
+      const variante = limpio(i.variante);
+      return {
+        clave: `${limpio(i.id)}|${variante}`, id: limpio(i.id), variante, cant,
+        nombre: p ? p.nombre : limpio(i.nombre),
+        precio: p ? p.precio : Math.max(0, Number(i.precio) || 0),
+        img: p ? p.foto : (/^img\/[\w\/.-]+$/.test(i.img) ? i.img : '')
+      };
+    }).filter(Boolean);
+  }
+  function leer() { try { return validar(JSON.parse(localStorage.getItem(CONFIG.claveCarrito))); } catch { return []; } }
   function guardar() { try { localStorage.setItem(CONFIG.claveCarrito, JSON.stringify(items)); } catch { /* modo privado */ } }
   const subtotal = () => items.reduce((s, i) => s + i.precio * i.cant, 0);
   // si alguna pieza aún no tiene precio, el total lo dice (no se muestra una suma incompleta como si fuera la final)
@@ -561,7 +581,7 @@ const Carrito = (() => {
   function agregar({ id, nombre, variante, precio, img, cant = 1 }) {
     const clave = `${id}|${variante}`;
     const ya = items.find((i) => i.clave === clave);
-    if (ya) ya.cant += cant;
+    if (ya) ya.cant = Math.min(20, ya.cant + cant);
     else items.push({ clave, id, nombre, variante, precio: Number(precio), img, cant });
     guardar();
     render();
@@ -574,7 +594,7 @@ const Carrito = (() => {
   function cambiar(clave, accion) {
     const it = items.find((i) => i.clave === clave);
     if (!it) return;
-    if (accion === 'mas') it.cant++;
+    if (accion === 'mas') it.cant = Math.min(20, it.cant + 1);
     if (accion === 'menos') it.cant--;
     if (accion === 'quitar' || it.cant <= 0) items = items.filter((i) => i.clave !== clave);
     guardar();
@@ -612,6 +632,8 @@ const Carrito = (() => {
       else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
     });
     render();
+    // Varias pestañas abiertas: si en una se agrega o quita algo, las demás se ponen al día
+    window.addEventListener('storage', (e) => { if (e.key === CONFIG.claveCarrito) { items = leer(); render(); } });
   }
   return { agregar, abrir, cerrar, estaAbierto: () => !!panel && panel.classList.contains('abierto') };
 })();
