@@ -106,10 +106,14 @@
   const SIN_PIEDRA = [23, 32, 42];
   // Foto "puesta" (en la mano) de algunas piezas: aparece al pasar el mouse y como 2.ª foto en la ficha
   const PUESTA = [35, 39, 45];
+  // Versión de foto: al REEMPLAZAR la foto de una pieza, subir su número aquí (si no, el navegador muestra la vieja)
+  const FOTO_V = { 3: 2, 4: 2, 27: 2, 28: 2, 31: 2, 35: 2, 38: 2, 40: 2, 43: 2 };
   const CATALOGO = DATOS.filter((d) => !AGOTADAS.includes(d[0])).map(([n, id, nombre, precio, tipo, momentos, desc]) => {
     const esm = ESMERALDAS.includes(n);
     const oro = ORO.includes(n);
     const nn = String(n).padStart(2, '0');
+    // ?v=N obliga al navegador a bajar la foto nueva (las fotos se guardan 7 días en caché)
+    const v = FOTO_V[n] ? `?v=${FOTO_V[n]}` : '';
     return {
       n, id, nombre, precio, tipo,
       material: esm ? 'esmeraldas' : oro ? 'oro' : 'plata',
@@ -118,9 +122,9 @@
       momentos: momentos.split(' '),
       desc: desc || (SIN_PIEDRA.includes(n) ? 'Pieza en plata 925.' : 'Pieza en plata 925 con circones.'),
       sello: esm ? 'Esmeralda natural' : NUEVAS.includes(n) ? 'Recién llegado' : '',
-      foto: `img/productos/${nn}.jpg`,
-      foto2x: `img/productos/${nn}-2x.jpg`,  // versión grande (limpiada con IA + original, ver CLAUDE.md)
-      puesta: PUESTA.includes(n) ? `img/productos/${nn}-puesta.jpg` : ''
+      foto: `img/productos/${nn}.jpg${v}`,
+      foto2x: `img/productos/${nn}-2x.jpg${v}`,  // versión grande (limpiada con IA + original, ver CLAUDE.md)
+      puesta: PUESTA.includes(n) ? `img/productos/${nn}-puesta.jpg${v}` : ''
     };
   });
 
