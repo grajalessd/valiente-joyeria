@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://grajalessd.github.io/valiente-joyeria/sitemap.xml
+Sitemap: https://valientte.com/sitemap.xml
