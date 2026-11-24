@@ -1,0 +1,16 @@
+.git
+.gitignore
+.gitattributes
+.assetsignore
+.nojekyll
+wrangler.jsonc
+CLAUDE.md
+PROPUESTAS.md
+REFERENCIAS.md
+.claude
+.impeccable
+modificaciones
+img/originales
+img/LEEME.md
+.DS_Store
+node_modules
